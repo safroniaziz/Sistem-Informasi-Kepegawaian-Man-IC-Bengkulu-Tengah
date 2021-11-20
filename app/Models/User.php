@@ -17,10 +17,20 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $table = 'tbpegawai';
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'pegNip',
+        'pegGlrDpn',
+        'pegNama',
+        'perGlrBlg',
+        'pegTptLhr',
+        'pegTglLhr',
+        'perJenKel',
+        'pegKetkawin',
+        'pegKdkawin',
+        'pegTmtCpns',
+        'pegTmtPns',
+        'pegGolTerakhir',
     ];
 
     /**

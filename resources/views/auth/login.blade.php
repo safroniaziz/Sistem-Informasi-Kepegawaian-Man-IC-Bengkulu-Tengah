@@ -1,73 +1,76 @@
-@extends('layouts.app')
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <title>Simpeg MAN IC | Login</title>
+        <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}">
+        <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href=" {{ asset('css/style_login.css') }} ">
+        <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+	</head>
+	<body>
+		<div id="particles-js">
+            <div class="loginBox">
+                <img src=" {{ asset('assets/images/logo.png') }} " class="user">
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-block" style="font-size:13px;">
+                        <ul style="margin-bottom: 0px !important">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @else
+                    <h6>Form Login Pegawai (Guru)</h6>
+                    <p style="text-align:center; margin-bottom:20px;">Sistem Informasi Kepegawaian <br> MAN IC Bengkulu Tengah</p>
+                @endif
+                <form method="post" action="{{ route('login') }}">
+                    @csrf
+                    <p>Email</p>
+                    <input type="text" value="{{ old('email') }}" name="email" placeholder="masukan email">
+                    <p>Password</p>
+                    <input type="password" name="password" placeholder="••••••">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                    <button type="submit" name="submit" style="margin-bottom:10px;r"><i class="fa fa-sign-in"></i>&nbsp; Login</button>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <a href="#" style="font-weight:100; font-size:12px" >Versi 1.0</a>
+                </form>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </body>
+    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src=" {{ asset('assets/particles/particles.min.js') }} "></script>
+    <script type="text/javascript" src=" {{ asset('assets/particles/app.js') }} "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    {{-- <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script> --}}
+    <script>
+      
+      @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+            toastr.options = {"closeButton": true,"debug": false,"progressBar": true,"positionClass": "toast-top-right","showDuration": "300","hideDuration": "1000","timeOut": "10000","extendedTimeOut": "1000","showEasing": "swing","hideEasing": "linear","showMethod": "fadeIn","hideMethod": "fadeOut"};
+                toastr.info("{{ Session::get('message') }}");
+                break;
+
+            case 'warning':
+            toastr.options = {"closeButton": true,"debug": false,"progressBar": true,"positionClass": "toast-top-right","showDuration": "300","hideDuration": "1000","timeOut": "10000","extendedTimeOut": "1000","showEasing": "swing","hideEasing": "linear","showMethod": "fadeIn","hideMethod": "fadeOut"};
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+
+            case 'success':
+            toastr.options = {"closeButton": true,"progressBar": true,"positionClass": "toast-top-right","showDuration": "300","hideDuration": "1000","timeOut": "10000","showEasing": "swing","hideEasing": "linear","showMethod": "fadeIn","hideMethod": "fadeOut"};
+                toastr.success("{{ Session::get('message') }}");
+                break;
+
+            case 'error':
+            toastr.options = {"closeButton": true,"progressBar": true,"positionClass": "toast-top-right","showDuration": "300","hideDuration": "1000","timeOut": "10000","showEasing": "swing","hideEasing": "linear","showMethod": "fadeIn","hideMethod": "fadeOut"};
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+      @endif
+    </script>
+</html>
