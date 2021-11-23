@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
@@ -31,6 +31,48 @@ class User extends Authenticatable
         'pegTmtCpns',
         'pegTmtPns',
         'pegGolTerakhir',
+        'pegTmtGol',
+        'pegMaskerthn',
+        'perMaskerbln',
+        'pegPendAkhir',
+        'pegThnLulus',
+        'pegJurusan',
+        'pegTempat',
+        'pegAgama',
+        'pegStapeg',
+        'pegKedHukum',
+        'pegIdKedHukum',
+        'pegJenisKepeg',
+        'pegKdJenKepeg',
+        'pegNmJabatan',
+        'pegKdJab',
+        'pegMasapensiun',
+        'oegTmtJab',
+        'pegKdJenisjab',
+        'pegNamaTgsTmbhan',
+        'pegIdTgsTmbhan',
+        'pegIdTgsTmbhan',
+        'pegTntTugasTmbhan',
+        'pegNoKarpeg',
+        'pegSertifikasi',
+        'pegNidn',
+        'pegNamaSubUnit',
+        'pegKdUnitKerja',
+        'pegNpwp',
+        'pegAlamat',
+        'pegRt_Rw',
+        'pegDesa',
+        'pegKecamatan',
+        'pegKabupaten',
+        'pegProvinsi',
+        'pegNoHp',
+        'pegNik',
+        'pegEmail',
+        'pegHobi',
+        'pegPoto',
+        'pegIdpassword',
+        'pegTglUbah',
+        'password',
     ];
 
     /**

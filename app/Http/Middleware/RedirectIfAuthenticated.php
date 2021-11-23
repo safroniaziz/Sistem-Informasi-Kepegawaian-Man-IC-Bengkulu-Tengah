@@ -23,7 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $notification1 = array(
+                    'message' => 'Berhasil, anda login sebagai guru!',
+                    'alert-type' => 'success'
+                );
+                return redirect()->route('guru.dashboard')->with($notification1);
             }
         }
 

@@ -27,8 +27,8 @@
                 @endif
                 <form method="post" action="{{ route('login') }}">
                     @csrf
-                    <p>Email</p>
-                    <input type="text" value="{{ old('email') }}" name="email" placeholder="masukan email">
+                    <p>Nomor Induk Kepegawaian</p>
+                    <input type="text" value="{{ old('pegNip') }}" name="pegNip" placeholder="masukan nip">
                     <p>Password</p>
                     <input type="password" name="password" placeholder="••••••">
 
