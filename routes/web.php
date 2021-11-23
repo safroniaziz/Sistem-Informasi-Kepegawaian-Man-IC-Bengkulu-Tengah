@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Guru\DataPersonalController;
 use App\Http\Controllers\Guru\RiwayatPendidikanController;
+use App\Http\Controllers\Guru\RiwayatKepangkatanController;
 use App\Http\Controllers\Guru\GuruDashboardController;
 use App\Http\Controllers\Guru\RiwayatJabatanController;
 use Illuminate\Support\Facades\Auth;
@@ -41,11 +42,11 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::delete('/delete',[RiwayatPendidikanController::class, 'delete'])->name('guru.pendidikan.delete');
     });
 
-    Route::group(['prefix'  => 'riwayat_jabatan/'],function(){
-        Route::get('/',[RiwayatJabatanController::class, 'index'])->name('guru.jabatan');
-        Route::get('/add',[RiwayatJabatanController::class, 'add'])->name('guru.jabatan.add');
-        Route::post('/post',[RiwayatJabatanController::class, 'post'])->name('guru.jabatan.post');
-        Route::delete('/delete',[RiwayatJabatanController::class, 'delete'])->name('guru.jabatan.delete');
+    Route::group(['prefix'  => 'riwayat_kepangkatan/'],function(){
+        Route::get('/',[RiwayatKepangkatanController::class, 'index'])->name('guru.kepangkatan');
+        Route::get('/add',[RiwayatKepangkatanController::class, 'add'])->name('guru.kepangkatan.add');
+        Route::post('/post',[RiwayatKepangkatanController::class, 'post'])->name('guru.kepangkatan.post');
+        Route::delete('/delete',[RiwayatKepangkatanController::class, 'delete'])->name('guru.kepangkatan.delete');
     });
 });
 

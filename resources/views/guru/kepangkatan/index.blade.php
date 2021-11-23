@@ -42,19 +42,19 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('guru.pendidikan.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                    <a href="{{ route('guru.kepangkatan.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tingkat Pendidikan</th>
-                                <th>Nomor Ijazah</th>
-                                <th>Tahun Lulus</th>
-                                <th>Tanggal Lulus</th>
-                                <th>Tempat Sekolah</th>
-                                <th>Jurusan</th>
+                                <th>Golongan / Ruang</th>
+                                <th>TMT Golongan</th>
+                                <th>Nomor SK</th>
+                                <th>Tanggal SK</th>
+                                <th>Masa Kerja Gol</th>
+                                <th>Gaji Pokok</th>
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>

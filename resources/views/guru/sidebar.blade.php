@@ -12,6 +12,7 @@
 
 <li>
     <a href=" {{ route('guru.jabatan') }} "><i class="fa fa-home"></i>Riwayat Jabatan</a>
+    <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-home"></i>Riwayat Kepangkatan</a>
 </li>
 
 <li style="padding-left:2px;">
