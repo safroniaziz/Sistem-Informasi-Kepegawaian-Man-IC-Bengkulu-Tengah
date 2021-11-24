@@ -26,6 +26,7 @@
 <li><a><i class="fa fa-users"></i>Data Keluarga <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
         <li><a href="{{ route('guru.istri_atau_suami') }}">Data Istri / Suami</a></li>
+        <li><a href="{{ route('guru.data_anak') }}">Data Anak</a></li>
     </ul>
 </li>
 

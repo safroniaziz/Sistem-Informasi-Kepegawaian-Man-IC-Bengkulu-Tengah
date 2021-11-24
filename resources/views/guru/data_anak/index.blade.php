@@ -42,18 +42,23 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('guru.data_keluarga.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                    <a href="{{ route('guru.data_anak.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Istri/Suami</th>
-                                <th>Pekerjaan</th>
+                                <th>Nama</th>
+                                <th>Status Anak</th>
                                 <th>Tempat/Tgl Lahir</th>
-                                <th>Tgl Nikah</th>
-                                <th>Tgl Cerai</th>
+                                <th>Status Pendidikan</th>
+                                <th>Pendidikan Terakhir</th>
+                                <th>Alasan Tidak Sekolah</th>
+                                <th>Pekerjaan</th>
+                                <th>NIP</th>
+                                <th>BPJS No</th>
+                                <th>Nama Ibu</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
