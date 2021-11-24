@@ -6,6 +6,14 @@
     <a href=" {{ route('guru.personal') }} "><i class="fa fa-home"></i>Data Personal</a>
 </li>
 
+<li>
+    <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-home"></i>Riwayat Pendidikan</a>
+</li>
+
+<li>
+    <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-home"></i>Riwayat Kepangkatan</a>
+</li>
+
 <li style="padding-left:2px;">
     <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();
