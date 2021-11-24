@@ -3,27 +3,30 @@
 </li>
 
 <li>
-    <a href=" {{ route('guru.personal') }} "><i class="fa fa-home"></i>Data Personal</a>
+    <a href=" {{ route('guru.personal') }} "><i class="fa fa-user"></i>Data Personal</a>
 </li>
 
 <li>
-    <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-home"></i>Riwayat Pendidikan</a>
+    <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-graduation-cap"></i>Riwayat Pendidikan</a>
 </li>
 
 <li>
-    <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-home"></i>Riwayat Kepangkatan</a>
+    <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-history"></i>Riwayat Kepangkatan</a>
 </li>
 
 <li>
-    <a href=" {{ route('guru.jabatan_fungsional') }} "><i class="fa fa-home"></i>Jabatan Fungsional</a>
+    <a href=" {{ route('guru.jabatan_fungsional') }} "><i class="fa fa-briefcase"></i>Jabatan Fungsional</a>
 </li>
 
 <li>
-    <a href=" {{ route('guru.tugas_tambahan') }} "><i class="fa fa-home"></i>Tugas Tambahan</a>
+    <a href=" {{ route('guru.tugas_tambahan') }} "><i class="fa fa-tasks"></i>Tugas Tambahan</a>
 </li>
 
-<li>
-    <a href=" {{ route('guru.data_keluarga') }} "><i class="fa fa-home"></i>Data Keluarga</a>
+
+<li><a><i class="fa fa-users"></i>Data Keluarga <span class="fa fa-chevron-down"></span></a>
+    <ul class="nav child_menu">
+        <li><a href="{{ route('guru.istri_atau_suami') }}">Data Istri / Suami</a></li>
+    </ul>
 </li>
 
 <li style="padding-left:2px;">

@@ -65,11 +65,11 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::delete('/delete',[RiwayatTugasTambahanController::class, 'delete'])->name('guru.tugas_tambahan.delete');
     });
 
-    Route::group(['prefix'  => 'riwayat_data_keluarga/'],function(){
-        Route::get('/',[RiwayatDataKeluargaController::class, 'index'])->name('guru.data_keluarga');
-        Route::get('/add',[RiwayatDataKeluargaController::class, 'add'])->name('guru.data_keluarga.add');
-        Route::post('/post',[RiwayatDataKeluargaController::class, 'post'])->name('guru.data_keluarga.post');
-        Route::delete('/delete',[RiwayatDataKeluargaController::class, 'delete'])->name('guru.data_keluarga.delete');
+    Route::group(['prefix'  => 'data_keluarga_istri_atau_suami/'],function(){
+        Route::get('/',[RiwayatDataKeluargaController::class, 'index'])->name('guru.istri_atau_suami');
+        Route::get('/add',[RiwayatDataKeluargaController::class, 'add'])->name('guru.istri_atau_suami.add');
+        Route::post('/post',[RiwayatDataKeluargaController::class, 'post'])->name('guru.istri_atau_suami.post');
+        Route::delete('/delete',[RiwayatDataKeluargaController::class, 'delete'])->name('guru.istri_atau_suami.delete');
     });
 });
 
