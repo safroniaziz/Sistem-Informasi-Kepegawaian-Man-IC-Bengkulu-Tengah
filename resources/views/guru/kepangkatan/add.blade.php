@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.personal.post') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('guru.kepangkatan.post') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="col-md-12">
                             <div class="form-group col-md-6">

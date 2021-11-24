@@ -44,9 +44,17 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tingkat Pendidikan</label>
-                                <input type="text" name="pendNmSekol" class="tags form-control @error('pendNmSekol') is-invalid @enderror" />
-                                @if ($errors->has('pendNmSekol'))
-                                    <small class="form-text text-danger">{{ $errors->first('pendNmSekol') }}</small>
+                                <select name="tingkat_pendidikan" class="form-control">
+                                    <option disabled>-- pilih golongan --</option>
+                                    <option value="SD">SD</option>
+                                    <option value="SMP">SMP</option>
+                                    <option value="SMA">SMA \ SMK Sederajat</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                    <option value="S3">S3</option>
+                                </select>
+                                @if ($errors->has('tingkat_pendidikan'))
+                                    <small class="form-text text-danger">{{ $errors->first('tingkat_pendidikan') }}</small>
                                 @endif
                             </div>
                             <div class="form-group col-md-6">

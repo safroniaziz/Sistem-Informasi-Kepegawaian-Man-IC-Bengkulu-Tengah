@@ -27,12 +27,12 @@
                 <div class="col-md-12">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button> 
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>Berhasil :</strong>{{ $message }}
                         </div>
                         @elseif ($message = Session::get('error'))
                             <div class="alert alert-danger alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button> 
+                                <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>Gagal :</strong>{{ $message }}
                             </div>
                             @else
@@ -42,20 +42,18 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('guru.personal.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                    <a href="{{ route('guru.data_keluarga.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Jenis Jabatan</th>
-                                <th></th>
-                                <th>Nama Klasifikasi</th>
-                                <th>Download File</th>
-                                <th>Pengunggah</th>
-                                <th>Unit Pengunggah</th>
-                                <th>Uraian Informasi</th>
+                                <th>Nama Istri/Suami</th>
+                                <th>Pekerjaan</th>
+                                <th>Tempat/Tgl Lahir</th>
+                                <th>Tgl Nikah</th>
+                                <th>Tgl Cerai</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

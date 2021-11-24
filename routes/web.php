@@ -4,7 +4,9 @@ use App\Http\Controllers\Guru\DataPersonalController;
 use App\Http\Controllers\Guru\RiwayatPendidikanController;
 use App\Http\Controllers\Guru\RiwayatKepangkatanController;
 use App\Http\Controllers\Guru\GuruDashboardController;
-use App\Http\Controllers\Guru\RiwayatJabatanController;
+use App\Http\Controllers\Guru\RiwayatJabatanFungsionalController;
+use App\Http\Controllers\Guru\RiwayatTugasTambahanController;
+use App\Http\Controllers\Guru\RiwayatDataKeluargaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,11 +51,25 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::delete('/delete',[RiwayatKepangkatanController::class, 'delete'])->name('guru.kepangkatan.delete');
     });
 
-    Route::group(['prefix'  => 'riwayat_jabatan/'],function(){
-        Route::get('/',[RiwayatJabatanController::class, 'index'])->name('guru.jabatan');
-        Route::get('/add',[RiwayatJabatanController::class, 'add'])->name('guru.jabatan.add');
-        Route::post('/post',[RiwayatJabatanController::class, 'post'])->name('guru.jabatan.post');
-        Route::delete('/delete',[RiwayatJabatanController::class, 'delete'])->name('guru.jabatan.delete');
+    Route::group(['prefix'  => 'riwayat_jabatan_fungsional/'],function(){
+        Route::get('/',[RiwayatJabatanFungsionalController::class, 'index'])->name('guru.jabatan_fungsional');
+        Route::get('/add',[RiwayatJabatanFungsionalController::class, 'add'])->name('guru.jabatan_fungsional.add');
+        Route::post('/post',[RiwayatJabatanFungsionalController::class, 'post'])->name('guru.jabatan_fungsional.post');
+        Route::delete('/delete',[RiwayatJabatanFungsionalController::class, 'delete'])->name('guru.jabatan_fungsional.delete');
+    });
+
+    Route::group(['prefix'  => 'riwayat_tugas_tambahan/'],function(){
+        Route::get('/',[RiwayatTugasTambahanController::class, 'index'])->name('guru.tugas_tambahan');
+        Route::get('/add',[RiwayatTugasTambahanController::class, 'add'])->name('guru.tugas_tambahan.add');
+        Route::post('/post',[RiwayatTugasTambahanController::class, 'post'])->name('guru.tugas_tambahan.post');
+        Route::delete('/delete',[RiwayatTugasTambahanController::class, 'delete'])->name('guru.tugas_tambahan.delete');
+    });
+
+    Route::group(['prefix'  => 'riwayat_data_keluarga/'],function(){
+        Route::get('/',[RiwayatDataKeluargaController::class, 'index'])->name('guru.data_keluarga');
+        Route::get('/add',[RiwayatDataKeluargaController::class, 'add'])->name('guru.data_keluarga.add');
+        Route::post('/post',[RiwayatDataKeluargaController::class, 'post'])->name('guru.data_keluarga.post');
+        Route::delete('/delete',[RiwayatDataKeluargaController::class, 'delete'])->name('guru.data_keluarga.delete');
     });
 });
 

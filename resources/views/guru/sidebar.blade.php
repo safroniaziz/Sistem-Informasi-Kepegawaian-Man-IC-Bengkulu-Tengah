@@ -15,7 +15,15 @@
 </li>
 
 <li>
-    <a href=" {{ route('guru.jabatan') }} "><i class="fa fa-home"></i>Riwayat Jabatan</a>
+    <a href=" {{ route('guru.jabatan_fungsional') }} "><i class="fa fa-home"></i>Riwayat Jabatan Fungsional</a>
+</li>
+
+<li>
+    <a href=" {{ route('guru.tugas_tambahan') }} "><i class="fa fa-home"></i>Riwayat Tugas Tambahan</a>
+</li>
+
+<li>
+    <a href=" {{ route('guru.data_keluarga') }} "><i class="fa fa-home"></i>Data Keluarga</a>
 </li>
 
 <li style="padding-left:2px;">
