@@ -48,6 +48,13 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::post('/post',[RiwayatKepangkatanController::class, 'post'])->name('guru.kepangkatan.post');
         Route::delete('/delete',[RiwayatKepangkatanController::class, 'delete'])->name('guru.kepangkatan.delete');
     });
+
+    Route::group(['prefix'  => 'riwayat_jabatan/'],function(){
+        Route::get('/',[RiwayatJabatanController::class, 'index'])->name('guru.jabatan');
+        Route::get('/add',[RiwayatJabatanController::class, 'add'])->name('guru.jabatan.add');
+        Route::post('/post',[RiwayatJabatanController::class, 'post'])->name('guru.jabatan.post');
+        Route::delete('/delete',[RiwayatJabatanController::class, 'delete'])->name('guru.jabatan.delete');
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -45,7 +45,23 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Golongan / Ruang</label>
-                                <input type="text" name="golongan" class="tags form-control @error('golongan') is-invalid @enderror" />
+                                <select name="golongan" class="form-control">
+                                    <option disabled>-- pilih golongan --</option>
+                                    <option value="2A">2A</option>
+                                    <option value="2B">2B</option>
+                                    <option value="2B">2C</option>
+                                    <option value="2B">2D</option>
+                                    <option disabled>----</option>
+                                    <option value="2B">3A</option>
+                                    <option value="2B">3B</option>
+                                    <option value="2B">3C</option>
+                                    <option value="2B">3D</option>
+                                    <option disabled>----</option>
+                                    <option value="2B">4A</option>
+                                    <option value="2B">4B</option>
+                                    <option value="2B">4C</option>
+                                    <option value="2B">4D</option>
+                                </select>
                                 @if ($errors->has('golongan'))
                                     <small class="form-text text-danger">{{ $errors->first('golongan') }}</small>
                                 @endif

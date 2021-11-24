@@ -39,21 +39,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.personal.post') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('guru.pendidikan.post') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tingkat Pendidikan</label>
-                                <input type="text" name="tingkat_pendidikan" class="tags form-control @error('tingkat_pendidikan') is-invalid @enderror" />
-                                @if ($errors->has('tingkat_pendidikan'))
-                                    <small class="form-text text-danger">{{ $errors->first('tingkat_pendidikan') }}</small>
+                                <input type="text" name="pendNmSekol" class="tags form-control @error('pendNmSekol') is-invalid @enderror" />
+                                @if ($errors->has('pendNmSekol'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendNmSekol') }}</small>
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor Ijazah</label>
-                                <input type="text" name="nomor_ijazah" class="tags form-control @error('nomor_ijazah') is-invalid @enderror" />
-                                @if ($errors->has('nomor_ijazah'))
-                                    <small class="form-text text-danger">{{ $errors->first('nomor_ijazah') }}</small>
+                                <input type="text" name="pendNoIjazah" class="tags form-control @error('pendNoIjazah') is-invalid @enderror" />
+                                @if ($errors->has('pendNoIjazah'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendNoIjazah') }}</small>
                                 @endif
                             </div>
 
@@ -67,7 +67,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Lulus</label>
-                                <input type="text" name="tanggal_lulus" class="tags form-control @error('tanggal_lulus') is-invalid @enderror" />
+                                <input type="date" name="tanggal_lulus" class="tags form-control @error('tanggal_lulus') is-invalid @enderror" />
                                 @if ($errors->has('tanggal_lulus'))
                                     <small class="form-text text-danger">{{ $errors->first('tanggal_lulus') }}</small>
                                 @endif
