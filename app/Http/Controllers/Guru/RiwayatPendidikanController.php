@@ -14,4 +14,5 @@ class RiwayatPendidikanController extends Controller
     public function add(){
         return view('guru/pendidikan.add');
     }
+
 }

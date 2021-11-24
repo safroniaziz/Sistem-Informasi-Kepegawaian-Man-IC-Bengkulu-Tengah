@@ -40,61 +40,69 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.personal.post') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('guru.pendidikan.post') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tingkat Pendidikan</label>
-                                <input type="text" name="tingkat_pendidikan" class="tags form-control @error('tingkat_pendidikan') is-invalid @enderror" />
-                                @if ($errors->has('tingkat_pendidikan'))
-                                    <small class="form-text text-danger">{{ $errors->first('tingkat_pendidikan') }}</small>
+                                <select name="pendNmSekol" class="form-control" id="">
+                                    <option disabled>-- pilih golongan --</option>
+                                    <option value="SD">SD</option>
+                                    <option value="SMP">SMP</option>
+                                    <option value="SMA">SMA / SMK Sederajat</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                    <option value="S3">S3</option>
+                                </select>
+                                @if ($errors->has('pendNmSekol'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendNmSekol') }}</small>
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor Ijazah</label>
-                                <input type="text" name="nomor_ijazah" class="tags form-control @error('nomor_ijazah') is-invalid @enderror" />
-                                @if ($errors->has('nomor_ijazah'))
-                                    <small class="form-text text-danger">{{ $errors->first('nomor_ijazah') }}</small>
+                                <input type="text" name="pendNoIjazah" class="tags form-control @error('pendNoIjazah') is-invalid @enderror" />
+                                @if ($errors->has('pendNoIjazah'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendNoIjazah') }}</small>
                                 @endif
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tahun Lulus</label>
-                                <input type="text" name="tahun_lulus" class="tags form-control @error('tahun_lulus') is-invalid @enderror" />
-                                @if ($errors->has('tahun_lulus'))
-                                    <small class="form-text text-danger">{{ $errors->first('tahun_lulus') }}</small>
+                                <input type="text" name="pendThnLls" class="tags form-control @error('pendThnLls') is-invalid @enderror" />
+                                @if ($errors->has('pendThnLls'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendThnLls') }}</small>
                                 @endif
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Lulus</label>
-                                <input type="text" name="tanggal_lulus" class="tags form-control @error('tanggal_lulus') is-invalid @enderror" />
-                                @if ($errors->has('tanggal_lulus'))
-                                    <small class="form-text text-danger">{{ $errors->first('tanggal_lulus') }}</small>
+                                <input type="date" name="pendTglIjazah" class="tags form-control @error('pendTglIjazah') is-invalid @enderror" />
+                                @if ($errors->has('pendTglIjazah'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendTglIjazah') }}</small>
                                 @endif
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tempat Sekolah</label>
-                                <input type="text" name="tempat_sekolah" class="tags form-control @error('tempat_sekolah') is-invalid @enderror" />
-                                @if ($errors->has('tempat_sekolah'))
-                                    <small class="form-text text-danger">{{ $errors->first('tempat_sekolah') }}</small>
+                                <input type="text" name="pendTempat" class="tags form-control @error('pendTempat') is-invalid @enderror" />
+                                @if ($errors->has('pendTempat'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendTempat') }}</small>
                                 @endif
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jurusan</label>
-                                <input type="text" name="jurusan" class="tags form-control @error('jurusan') is-invalid @enderror" />
-                                @if ($errors->has('jurusan'))
-                                    <small class="form-text text-danger">{{ $errors->first('jurusan') }}</small>
+                                <input type="text" name="pendJurusan" class="tags form-control @error('pendJurusan') is-invalid @enderror" />
+                                @if ($errors->has('pendJurusan'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendJurusan') }}</small>
                                 @endif
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Ijazah : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
-                                <input type="file" name="upload_ijazah" id="upload_ijazah" class="form-control @error('upload_ijazah') is-invalid @enderror" style="padding-bottom:30px;">
-                                @if ($errors->has('upload_ijazah'))
-                                    <small class="form-text text-danger">{{ $errors->first('upload_ijazah') }}</small>
+                                <input type="file" name="pendDokumen" id="pendDokumen" class="form-control @error('pendDokumen') is-invalid @enderror" style="padding-bottom:30px;">
+                                @if ($errors->has('pendDokumen'))
+                                    <small class="form-text text-danger">{{ $errors->first('pendDokumen') }}</small>
                                 @endif
                             </div>
 
