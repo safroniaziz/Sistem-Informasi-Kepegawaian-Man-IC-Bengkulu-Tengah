@@ -64,6 +64,7 @@
                                 $no=1;
                             @endphp
                             @foreach ($pendidikans as $pendidikan)
+                                <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $pendidikan->pendNmSekol }}</td>
                                 <td>{{ $pendidikan->pendNoIjazah }}</td>
@@ -77,7 +78,7 @@
                                 <td>
                                     <a href="{{ route('guru.pendidikan.update',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
                                 </td>
-
+</tr>
                             @endforeach
                         </tbody>
                     </table>

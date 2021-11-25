@@ -27,12 +27,12 @@
                 <div class="col-md-12">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button> 
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>Berhasil :</strong>{{ $message }}
                         </div>
                         @elseif ($message = Session::get('error'))
                             <div class="alert alert-danger alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button> 
+                                <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>Gagal :</strong>{{ $message }}
                             </div>
                             @else
@@ -63,7 +63,18 @@
                                 <th>Gaji Pokok</th>
                                 <th>Tugas Tambahan</th>
                                 <th>TMT</th>
-                            
+                                    <th>Tahun Lulus</th>
+                                <th>Tanggal Lulus</th>
+                                <th>Tempat Sekolah</th>
+                                <th>Jurusan</th>
+                                <th>Golongan / Ruang</th>
+                                <th>TMT Golongan</th>
+                                <th>Nomor SK</th>
+                                <th>Tanggal SK</th>
+                                <th>Masa Kerja Gol</th>
+                                <th>Gaji Pokok</th>
+                                <th>Tugas Tambahan</th>
+                                <th>TMT</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -71,6 +82,45 @@
                             @php
                                 $no=1;
                             @endphp
+                            @foreach ($pegawai as $pegawai)
+                            <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $pegawai->pegNip }}</td>
+                            <td>{{ $pegawai->pegGlrDpn }}</td>
+                            <td>{{ $pegawai->pegNama }}</td>
+                            <td>{{ $pegawai->pegGlrBlg }}</td>
+                            <td>{{ $pegawai->pegTpLhr }}</td>
+                            <td>{{ $pegawai->pegTglLhr }}</td>
+                            <td>{{ $pegawai->pegJenkel }}</td>
+                            <td>{{ $pegawai->pegKetkawin }}</td>
+                            <td>{{ $pegawai->pegKdkawin }}</td>
+                            <td>{{ $pegawai->pegTmtCpns }}</td>
+                            <td>{{ $pegawai->pegTmtPns }}</td>
+                            <td>{{ $pegawai->pegGolTerakhir }}</td>
+                            <td>{{ $pegawai->pegTmtGol }}</td>
+                            <td>{{ $pegawai->pegMaskerthn }}</td>
+                            <td>{{ $pegawai->pegMaskerbln }}</td>
+                            <td>{{ $pegawai->pegPendAkhir }}</td>
+                            <td>{{ $pegawai->pegThnLulus }}</td>
+                            <td>{{ $pegawai->pegJurusan }}</td>
+                              <td>{{ $pegawai->pegTempat }}</td>
+                            <td>{{ $pegawai->pegAgama }}</td>
+                            <td>{{ $pegawai->pegStapeg }}</td>
+                            <td>{{ $pegawai->pegGolTerakhir }}</td>
+                             <td>{{ $pegawai->pegTmtGol }}</td>
+                            <td>{{ $pegawai->pegMaskerthn }}</td>
+                            <td>{{ $pegawai->pegMaskerbln }}</td>
+                            <td>{{ $pegawai->pegPendAkhir }}</td>
+                            <td>{{ $pegawai->pegThnLulus }}</td>
+                            <td>{{ $pegawai->pegJurusan }}</td>
+                            {{--  <td>
+                                <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                            </td>  --}}
+                            {{--  <td>
+                                <a href="{{ route('guru.pendidikan.update',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                            </td>  --}}
+
+                        @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->
