@@ -53,11 +53,11 @@ class RiwayatPendidikanController extends Controller
 
         if ($request->hasFile('pendDokumen')) {
             $model['pendDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->pendDokumen->getClientOriginalExtension();
-            $request->pendDokumen->move(public_path('/upload/dokumen_pendidikan'.$slug_user), $model['pendDokumen']);
+            $request->pendDokumen->move(public_path('/upload/dokumen_pendidikan/'.$slug_user), $model['pendDokumen']);
         }
 
         Pendidikan::create([
-            'pendNip'       =>  Auth::user()->pegNama,
+            'pendNip'       =>  Auth::user()->pegNip,
             'pendNmSekol'    =>  $request->pendNmSekol,
             'pendNoIjazah'    =>  $request->pendNoIjazah,
             'pendThnLls'    =>  $request->pendThnLls,
