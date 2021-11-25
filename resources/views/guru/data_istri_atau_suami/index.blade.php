@@ -42,7 +42,7 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('guru.data_keluarga.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                    <a href="{{ route('guru.istri_atau_suami.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
@@ -50,10 +50,14 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Istri/Suami</th>
+                                <th>Istri/suami ke</th>
                                 <th>Pekerjaan</th>
+                                <th>NIP</th>
                                 <th>Tempat/Tgl Lahir</th>
-                                <th>Tgl Nikah</th>
-                                <th>Tgl Cerai</th>
+                                <th>Tanggal Nikah</th>
+                                <th>Tanggal Meninggal</th>
+                                <th>Tanggal Cerai</th>
+                                <th>BPJS No</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
