@@ -53,7 +53,8 @@
                                 <th>TMT Golongan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
-                                <th>Masa Kerja Gol</th>
+                                <th>Masa Kerja Gol Tahun</th>
+                                <th>Masa Kerja Gol Bulan</th>
                                 <th>Gaji Pokok</th>
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>

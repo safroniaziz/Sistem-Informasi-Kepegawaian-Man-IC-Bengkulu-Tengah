@@ -46,40 +46,51 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tugas Tambahan</label>
                                 <input type="text" name="jfKdJenisjab" class="tags form-control @error('jfKdJenisjab') is-invalid @enderror" />
-                                @if ($errors->has('jfKdJenisjab'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfKdJenisjab'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">TMT</label>
                                 <input type="text" name="jfKdjab" class="tags form-control @error('jfKdjab') is-invalid @enderror" />
-                                @if ($errors->has('jfKdjab'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfKdjab'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor SK</label>
                                 <input type="text" name="jfTmtjab" class="tags form-control @error('jfTmtjab') is-invalid @enderror" />
-                                @if ($errors->has('jfTmtjab'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfTmtjab') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfTmtjab'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfTmtjab') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal SK</label>
                                 <input type="date" name="jfNoSk" class="tags form-control @error('jfNoSk') is-invalid @enderror" />
-                                @if ($errors->has('jfNoSk'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfNoSk') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfNoSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfNoSk') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Pejabat TTD</label>
                                 <input type="text" name="jfTglSk" class="tags form-control @error('jfTglSk') is-invalid @enderror" />
-                                @if ($errors->has('jfTglSk'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfTglSk') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfTglSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfTglSk') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
