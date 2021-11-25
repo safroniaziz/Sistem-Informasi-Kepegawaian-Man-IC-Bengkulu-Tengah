@@ -50,7 +50,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Golongan / Ruang</th>
-                                <th>TMT Golongan</th>
+                                <th>Tamatan Golongan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
                                 <th>Masa Kerja Gol Tahun</th>

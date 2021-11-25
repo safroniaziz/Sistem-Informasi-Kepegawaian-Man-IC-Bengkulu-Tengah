@@ -70,8 +70,8 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">TMT Golongan</label>
-                                <input type="text" name="goTmtGol" class="tags form-control @error('goTmtGol') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Tamatan Golongan</label>
+                                <input type="date" name="goTmtGol" class="tags form-control @error('goTmtGol') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('goTmtGol'))
                                         <small class="form-text text-danger">{{ $errors->first('goTmtGol') }}</small>
@@ -91,7 +91,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal SK</label>
-                                <input type="text" name="goTglSk" class="tags form-control @error('goTglSk') is-invalid @enderror" />
+                                <input type="date" name="goTglSk" class="tags form-control @error('goTglSk') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('goTglSk'))
                                         <small class="form-text text-danger">{{ $errors->first('goTglSk') }}</small>

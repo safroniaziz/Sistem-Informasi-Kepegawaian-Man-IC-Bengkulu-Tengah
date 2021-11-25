@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
+use App\Models\RiwayatGolongan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class RiwayatKepangkatanController extends Controller
 {
     public function index(){
-        return view('guru/kepangkatan.index');
+        $golongans = RiwayatGolongan::all();
+        return view('guru/kepangkatan.index',compact('golongans'));
     }
 
     public function add(){
@@ -40,9 +43,9 @@ class RiwayatKepangkatanController extends Controller
             'goTmtGol'    =>  'required',
             'goNoSk'    =>  'required',
             'goTglSk'    =>  'required',
-            'goMaskerThn'    =>  'required',
-            'goMaskerBln'    =>  'required',
-            'goGapok'    =>  'required',
+            'goMaskerThn'    =>  'required|numeric',
+            'goMaskerBln'    =>  'required|numeric',
+            'goGapok'    =>  'required|numeric',
             'goDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
         ],$messages,$attributes);
 
@@ -51,12 +54,12 @@ class RiwayatKepangkatanController extends Controller
         $slug_user = Str::slug(Auth::user()->pegNama);
 
         if ($request->hasFile('goDokumen')) {
-            $model['goDokumen'] = $slug_user.'-'.Auth::user()->goNip.'-'.date('now').'.'.$request->goDokumen->getClientOriginalExtension();
-            $request->goDokumen->move(public_path('/upload/dokumen_pendidikan'.$slug_user), $model['goDokumen']);
+            $model['goDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->goDokumen->getClientOriginalExtension();
+            $request->goDokumen->move(public_path('/upload/dokumen_kepangkatan/'.$slug_user), $model['goDokumen']);
         }
 
-        Kepangkatan::create([
-            'goNip'       =>  Auth::user()->goNip,
+        RiwayatGolongan::create([
+            'goNip'       =>  Auth::user()->pegNip,
             'goGol'    =>  $request->goGol,
             'goTmtGol'    =>  $request->goTmtGol,
             'goNoSk'    =>  $request->goNoSk,
