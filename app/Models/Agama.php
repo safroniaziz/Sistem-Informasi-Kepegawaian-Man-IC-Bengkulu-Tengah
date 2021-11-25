@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agama extends Model
 {
     protected $table = 'refagama';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'KODE',

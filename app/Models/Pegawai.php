@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pegawai extends Model
 {
     protected $table = 'tbpegawai';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'pendNip',
