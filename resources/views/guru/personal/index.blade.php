@@ -71,6 +71,26 @@
                             @php
                                 $no=1;
                             @endphp
+                             @foreach ($pegawai as $pegawai)
+                             <tr>
+                                 <td> {{ $no++ }} </td>
+                              
+                                 <td> {{ $pegawai->pegNip }} </td>
+                                 <td> {{ $pegawai->pegGlrDpn }} </td>
+                                 <td> {{ $pegawai->pegNama }} </td>
+                                 <td> {{ $pegawai->pegGlrBlg }} </td>
+                                 <td> {{ $pegawai->pegTpLhr }} </td>
+                                 <td> {{ $pegawai->pegTglLhr }} </td>
+                                 <td> {{ $pegawai->pegJenkel }} </td>
+                                 <td> {{ $pegawai->pegKetkawin }} </td>
+                                 <td> {{ $pegawai->pegKdkawin }} </td>
+                                 <td> {{ $pegawai->pegTmtCpns }} </td>
+                                 <td>
+                                     {{-- <a onclick="editUnit({{ $pegawai->id }})" class="btn btn-primary btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-edit"></i></a>
+                                     <a onclick="hapuspegawai({{ $pegawai->id }})" class="btn btn-danger btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-trash"></i></a> --}}
+                                 </td>
+                             </tr>
+                         @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->

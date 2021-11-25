@@ -73,8 +73,14 @@
                               
                                  <td> {{ $pelatihan->pltKddiklat }} </td>
                                  <td> {{ $pelatihan->pltNmdiklat }} </td>
-                                 <td> {{ $pelatihan->pltKddiklat }} </td>
-                                 <td> {{ $pelatihan->pltNmdiklat }} </td>
+                                 <td> {{ $pelatihan->pltKddiklat2 }} </td>
+                                 <td> {{ $pelatihan->pltNmdiklat2 }} </td>
+                                 <td> {{ $pelatihan->pltTglmulai }} </td>
+                                 <td> {{ $pelatihan->pltTglakhir }} </td>
+                                 <td> {{ $pelatihan->pltTempat }} </td>
+                                 <td> {{ $pelatihan->pltThnsertifikat }} </td>
+                                 <td> {{ $pelatihan->pltnosertifikat }} </td>
+                                 <td> {{ $pelatihan->pltDokumen }} </td>
                                  <td>
                                      {{-- <a onclick="editUnit({{ $pelatihan->id }})" class="btn btn-primary btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-edit"></i></a>
                                      <a onclick="hapuspelatihan({{ $pelatihan->id }})" class="btn btn-danger btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-trash"></i></a> --}}
@@ -87,7 +93,7 @@
                     <div class="modal fade modal-danger" id="modalhapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <form action=" {{ route('guru.personal.delete') }} " method="POST">
+                                <form action=" {{ route('guru.pelatihan.delete') }} " method="POST">
                                     {{ csrf_field() }} {{ method_field('DELETE') }}
                                     <div class="modal-header">
                                         <p style="font-size:15px; font-weight:bold;" class="modal-title"><i class="fa fa-trash"></i>&nbsp;Form Konfirmasi Hapus Data</p>
