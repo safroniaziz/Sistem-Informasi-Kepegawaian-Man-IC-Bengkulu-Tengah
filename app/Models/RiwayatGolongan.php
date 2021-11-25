@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RiwayatGolongan extends Model
 {
     protected $table = 'tbriwayatgol';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'goNip',
