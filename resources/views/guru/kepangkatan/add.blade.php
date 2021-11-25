@@ -131,9 +131,9 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">SK Kepangkatan : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
-                                <input type="file" name="sk_kepangkatan" id="sk_kepangkatan" class="form-control @error('sk_kepangkatan') is-invalid @enderror" style="padding-bottom:30px;">
-                                @if ($errors->has('sk_kepangkatan'))
-                                    <small class="form-text text-danger">{{ $errors->first('sk_kepangkatan') }}</small>
+                                <input type="file" name="goDokumen" id="goDokumen" class="form-control @error('goDokumen') is-invalid @enderror" style="padding-bottom:30px;">
+                                @if ($errors->has('goDokumen'))
+                                    <small class="form-text text-danger">{{ $errors->first('goDokumen') }}</small>
                                 @endif
                             </div>
 
