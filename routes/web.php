@@ -44,6 +44,7 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/',[RiwayatPendidikanController::class, 'index'])->name('guru.pendidikan');
         Route::get('/add',[RiwayatPendidikanController::class, 'add'])->name('guru.pendidikan.add');
         Route::post('/post',[RiwayatPendidikanController::class, 'post'])->name('guru.pendidikan.post');
+        Route::post('{penNip}/edit',[RiwayatPendidikanController::class, 'post'])->name('guru.pendidikan.post');
         Route::delete('/delete',[RiwayatPendidikanController::class, 'delete'])->name('guru.pendidikan.delete');
     });
 

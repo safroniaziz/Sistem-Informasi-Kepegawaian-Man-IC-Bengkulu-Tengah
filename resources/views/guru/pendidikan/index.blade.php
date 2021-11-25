@@ -1,5 +1,5 @@
 @php
-    use App\Models\KlasifikasiBerkas;
+    use App\Models\Klasifikasipendidikan;
 @endphp
 @extends('layouts.layout')
 @section('title', 'Manajemen Data Personal')
@@ -37,7 +37,7 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="keterangan">
-                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua berkas berkas yang sudah diupload oleh operator !!
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua pendidikan pendidikan yang sudah diupload oleh operator !!
                             </div>
                     @endif
                 </div>
@@ -64,7 +64,20 @@
                                 $no=1;
                             @endphp
                             @foreach ($pendidikans as $pendidikan)
-                                
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $pendidikan->pendNmSekol }}</td>
+                                <td>{{ $pendidikan->pendNoIjazah }}</td>
+                                <td>{{ $pendidikan->pendThnLls }}</td>
+                                <td>{{ $pendidikan->pendTglIjazah }}</td>
+                                <td>{{ $pendidikan->pendTempat }}</td>
+                                <td>{{ $pendidikan->pendJurusan }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('guru.pendidikan.update',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                </td>
+
                             @endforeach
                         </tbody>
                     </table>
@@ -101,4 +114,12 @@
         </div>
     </section>
 @endsection
-
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush
