@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class DataPersonalController extends Controller
 {
     public function index(){
-        
+
         $pegawai = DB::table('tbpegawai')->where('pegNip',Auth::user()->pegNip)->get();
         return view('guru/personal.index',compact('pegawai'));
     }
