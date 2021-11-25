@@ -10,14 +10,15 @@ use Illuminate\Support\Facades\DB;
 class RiwayatPelatihanController extends Controller
 {
     public function index(){
-        return view('guru/pelatihan.index');
+        $pelatihan = DB::table('tbpelatihan')->select('pltKddiklat','pltNmdiklat','pltKddiklat2','pltNmdiklat2','pltTglmulai','pltTglakhir','pltnosertifikat','pltThnsertifikat','pltTempat','pltDokumen')->get();
+        return view('guru/pelatihan.index',compact('pelatihan'));
     }
 
     public function add(){
-        $diklat = DB::table('refdiklat')->select('dtkddiklat','dtnmdiklat')->get();
-        $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
-        $kawin = DB::table('refkawin')->select('KODE','KET')->get();
-        return view('guru/pelatihan.add',compact('diklat','jabatan','kawin'));
+        $diklat = DB::table('refdiklat')->select('dktkddiklat','dktnmdiklat')->get();
+        $pelatihan = DB::table('tbpelatihan')->select('pltKddiklat','pltNmdiklat','pltKddiklat2','pltNmdiklat2','pltTglmulai','pltTglakhir','pltnosertifikat','pltThnsertifikat','pltTempat','pltDokumen')->get();
+      
+        return view('guru/pelatihan.add',compact('diklat','pelatihan'));
 
 
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Eselon extends Model
 {
     protected $table = 'refeselon';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'KODE1',

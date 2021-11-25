@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RiwayatJabatan extends Model
 {
     protected $table = 'tbriwayatjab';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'jbNoUrt',

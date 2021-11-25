@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kawin extends Model
 {
     protected $table = 'refkawin';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'KODE',

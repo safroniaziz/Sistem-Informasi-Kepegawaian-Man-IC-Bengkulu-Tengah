@@ -65,7 +65,22 @@
                         <tbody>
                             @php
                                 $no=1;
+
                             @endphp
+                             @foreach ($pelatihan as $pelatihan)
+                             <tr>
+                                 <td> {{ $no++ }} </td>
+                              
+                                 <td> {{ $pelatihan->pltKddiklat }} </td>
+                                 <td> {{ $pelatihan->pltNmdiklat }} </td>
+                                 <td> {{ $pelatihan->pltKddiklat }} </td>
+                                 <td> {{ $pelatihan->pltNmdiklat }} </td>
+                                 <td>
+                                     {{-- <a onclick="editUnit({{ $pelatihan->id }})" class="btn btn-primary btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-edit"></i></a>
+                                     <a onclick="hapuspelatihan({{ $pelatihan->id }})" class="btn btn-danger btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-trash"></i></a> --}}
+                                 </td>
+                             </tr>
+                         @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->
