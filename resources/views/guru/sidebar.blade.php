@@ -9,7 +9,9 @@
 <li>
     <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-graduation-cap"></i>Riwayat Pendidikan</a>
 </li>
-
+<li>
+    <a href=" {{ route('guru.pelatihan') }} "><i class="fa fa-home"></i>Riwayat Pelatihan</a>
+</li>
 <li>
     <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-history"></i>Riwayat Kepangkatan</a>
 </li>
@@ -21,7 +23,6 @@
 <li>
     <a href=" {{ route('guru.tugas_tambahan') }} "><i class="fa fa-tasks"></i>Tugas Tambahan</a>
 </li>
-
 
 <li><a><i class="fa fa-users"></i>Data Keluarga <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">

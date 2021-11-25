@@ -3,12 +3,12 @@
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('user-login2')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('sidebar-menu')
