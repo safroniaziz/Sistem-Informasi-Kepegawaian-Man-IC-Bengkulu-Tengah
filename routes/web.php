@@ -44,8 +44,9 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/',[RiwayatPendidikanController::class, 'index'])->name('guru.pendidikan');
         Route::get('/add',[RiwayatPendidikanController::class, 'add'])->name('guru.pendidikan.add');
         Route::post('/post',[RiwayatPendidikanController::class, 'post'])->name('guru.pendidikan.post');
-        Route::post('{penNip}/edit',[RiwayatPendidikanController::class, 'post'])->name('guru.pendidikan.update');
-        Route::delete('/delete',[RiwayatPendidikanController::class, 'delete'])->name('guru.pendidikan.delete');
+        Route::get('{pendNip}/edit',[RiwayatPendidikanController::class, 'edit'])->name('guru.pendidikan.edit');
+        Route::patch('{pendNip}/update',[RiwayatPendidikanController::class, 'update'])->name('guru.pendidikan.update');
+        Route::delete('{pendNip}/delete',[RiwayatPendidikanController::class, 'delete'])->name('guru.pendidikan.delete');
     });
 
     Route::group(['prefix'  => 'riwayat_pelatihan/'],function(){
