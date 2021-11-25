@@ -3,6 +3,8 @@
 use App\Http\Controllers\Guru\DataPersonalController;
 use App\Http\Controllers\Guru\RiwayatPendidikanController;
 use App\Http\Controllers\Guru\RiwayatKepangkatanController;
+use App\Http\Controllers\Guru\RiwayatPelatihanController;
+
 use App\Http\Controllers\Guru\GuruDashboardController;
 use App\Http\Controllers\Guru\RiwayatJabatanFungsionalController;
 use App\Http\Controllers\Guru\RiwayatTugasTambahanController;
@@ -42,6 +44,13 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/add',[RiwayatPendidikanController::class, 'add'])->name('guru.pendidikan.add');
         Route::post('/post',[RiwayatPendidikanController::class, 'post'])->name('guru.pendidikan.post');
         Route::delete('/delete',[RiwayatPendidikanController::class, 'delete'])->name('guru.pendidikan.delete');
+    });
+
+    Route::group(['prefix'  => 'riwayat_pelatihan/'],function(){
+        Route::get('/',[RiwayatPelatihanController::class, 'index'])->name('guru.pelatihan');
+        Route::get('/add',[RiwayatPelatihanController::class, 'add'])->name('guru.pelatihan.add');
+        Route::post('/post',[RiwayatPelatihanController::class, 'post'])->name('guru.pelatihan.post');
+        Route::delete('/delete',[RiwayatPelatihanController::class, 'delete'])->name('guru.pelatihan.delete');
     });
 
     Route::group(['prefix'  => 'riwayat_kepangkatan/'],function(){

@@ -6,12 +6,12 @@
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('user-login2')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('sidebar-menu')
@@ -49,13 +49,21 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nomor Berkas</th>
-                                <th>Jenis Berkas</th>
-                                <th>Nama Klasifikasi</th>
-                                <th>Download File</th>
-                                <th>Pengunggah</th>
-                                <th>Unit Pengunggah</th>
-                                <th>Uraian Informasi</th>
+                                <th>Tingkat Pendidikan</th>
+                                <th>Nomor Ijazah</th>
+                                <th>Tahun Lulus</th>
+                                <th>Tanggal Lulus</th>
+                                <th>Tempat Sekolah</th>
+                                <th>Jurusan</th>
+                                <th>Golongan / Ruang</th>
+                                <th>TMT Golongan</th>
+                                <th>Nomor SK</th>
+                                <th>Tanggal SK</th>
+                                <th>Masa Kerja Gol</th>
+                                <th>Gaji Pokok</th>
+                                <th>Tugas Tambahan</th>
+                                <th>TMT</th>
+                            
                                 <th>Aksi</th>
                             </tr>
                         </thead>

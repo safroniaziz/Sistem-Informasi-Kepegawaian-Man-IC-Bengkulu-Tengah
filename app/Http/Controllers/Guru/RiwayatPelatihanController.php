@@ -6,17 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DataPersonalController extends Controller
+
+class RiwayatPelatihanController extends Controller
 {
     public function index(){
-        return view('guru/personal.index');
+        return view('guru/pelatihan.index');
     }
 
     public function add(){
-        $bidangilmu = DB::table('tbmapel')->select('mapKdMapel','mapNmMapel')->get();
+        $diklat = DB::table('refdiklat')->select('dtkddiklat','dtnmdiklat')->get();
         $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
         $kawin = DB::table('refkawin')->select('KODE','KET')->get();
-        return view('guru/personal.add',compact('bidangilmu','jabatan','kawin'));
+        return view('guru/pelatihan.add',compact('diklat','jabatan','kawin'));
 
 
     }

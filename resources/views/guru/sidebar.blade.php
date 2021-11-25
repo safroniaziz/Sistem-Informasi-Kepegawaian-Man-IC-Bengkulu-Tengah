@@ -9,7 +9,9 @@
 <li>
     <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-home"></i>Riwayat Pendidikan</a>
 </li>
-
+<li>
+    <a href=" {{ route('guru.pelatihan') }} "><i class="fa fa-home"></i>Riwayat Pelatihan</a>
+</li>
 <li>
     <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-home"></i>Riwayat Kepangkatan</a>
 </li>
