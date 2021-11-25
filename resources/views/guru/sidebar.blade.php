@@ -22,7 +22,6 @@
     <a href=" {{ route('guru.tugas_tambahan') }} "><i class="fa fa-tasks"></i>Tugas Tambahan</a>
 </li>
 
-
 <li><a><i class="fa fa-users"></i>Data Keluarga <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
         <li><a href="{{ route('guru.istri_atau_suami') }}">Data Istri / Suami</a></li>

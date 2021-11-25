@@ -3,12 +3,12 @@
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('user-login2')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('sidebar-menu')
@@ -44,7 +44,7 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tingkat Pendidikan</label>
-                                <select name="tingkat_pendidikan" class="form-control">
+                                <select name="tingkat_pendidikan" class="form-control @error('tingkat_pendidikan') is-invalid @enderror">
                                     <option disabled>-- pilih golongan --</option>
                                     <option value="SD">SD</option>
                                     <option value="SMP">SMP</option>
@@ -99,7 +99,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Ijazah : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
-                                <input type="file" name="upload_ijazah" id="upload_ijazah" class="form-control @error('upload_ijazah') is-invalid @enderror" style="padding-bottom:30px;">
+                                <input type="file" name="upload_ijazah" id="upload_ijazah" class="form-control" style="padding-bottom:30px;">
                                 @if ($errors->has('upload_ijazah'))
                                     <small class="form-text text-danger">{{ $errors->first('upload_ijazah') }}</small>
                                 @endif
