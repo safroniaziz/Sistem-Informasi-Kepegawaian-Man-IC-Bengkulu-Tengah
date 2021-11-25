@@ -55,7 +55,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Pekerjaan</label>
-                                <select name="tingkat_pendidikan" class="form-control">
+                                <select name="kelKerjaan" class="form-control">
                                     <option disabled>-- pilih pekerjaan --</option>
                                     <option value="PNS">PNS</option>
                                     <option value="SEWASTA">SEWASTA</option>
@@ -110,17 +110,21 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Cerai</label>
                                 <input type="date" name="kelTglCerai" class="tags form-control" />
-                                @if ($errors->has('kelTglCerai'))
-                                    <small class="form-text text-danger">{{ $errors->first('kelTglCerai') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('kelTglCerai'))
+                                        <small class="form-text text-danger">{{ $errors->first('kelTglCerai') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Meninggal</label>
                                 <input type="date" name="kelTglNinggal" class="tags form-control" />
-                                @if ($errors->has('kelTglNinggal'))
-                                    <small class="form-text text-danger">{{ $errors->first('kelTglNinggal') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('kelTglNinggal'))
+                                        <small class="form-text text-danger">{{ $errors->first('kelTglNinggal') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">

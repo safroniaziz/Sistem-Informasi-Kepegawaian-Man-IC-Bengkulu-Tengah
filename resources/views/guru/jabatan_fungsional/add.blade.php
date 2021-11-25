@@ -46,9 +46,11 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Jabatan</label>
                                 <input type="text" name="jfKdJenisjab" class="tags form-control @error('jfKdJenisjab') is-invalid @enderror" />
-                                @if ($errors->has('jfKdJenisjab'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfKdJenisjab'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -67,8 +69,8 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">TMT</label>
-                                <input type="text" name="jfTmtjab" class="tags form-control @error('jfTmtjab') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Tamatan</label>
+                                <input type="date" name="jfTmtjab" class="tags form-control @error('jfTmtjab') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('jfTmtjab'))
                                         <small class="form-text text-danger">{{ $errors->first('jfTmtjab') }}</small>
@@ -124,9 +126,11 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Dokumen : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
                                 <input type="file" name="jfDokumen" id="jfDokumen" class="form-control @error('jfDokumen') is-invalid @enderror" style="padding-bottom:30px;">
-                                @if ($errors->has('jfDokumen'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfDokumen') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('jfDokumen'))
+                                        <small class="form-text text-danger">{{ $errors->first('jfDokumen') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                         </div>

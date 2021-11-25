@@ -44,61 +44,73 @@
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Tugas Tambahan</label>
-                                <input type="text" name="jfKdJenisjab" class="tags form-control @error('jfKdJenisjab') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">No Urut</label>
+                                <input type="text" name="tgsNoUrut" class="tags form-control @error('tgsNoUrut') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('jfKdJenisjab'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
+                                    @if ($errors->has('tgsNoUrut'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsNoUrut') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">TMT</label>
-                                <input type="text" name="jfKdjab" class="tags form-control @error('jfKdjab') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Tugas Tambahan</label>
+                                <input type="text" name="tgsNamajab" class="tags form-control @error('tgsNamajab') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('jfKdjab'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
+                                    @if ($errors->has('tgsNamajab'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsNamajab') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Tamatan</label>
+                                <input type="date" name="tgsTmt" class="tags form-control @error('tgsTmt') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('tgsTmt'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsTmt') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor SK</label>
-                                <input type="text" name="jfTmtjab" class="tags form-control @error('jfTmtjab') is-invalid @enderror" />
+                                <input type="text" name="tgsNoSk" class="tags form-control @error('tgsNoSk') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('jfTmtjab'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfTmtjab') }}</small>
+                                    @if ($errors->has('tgsNoSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsNoSk') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal SK</label>
-                                <input type="date" name="jfNoSk" class="tags form-control @error('jfNoSk') is-invalid @enderror" />
+                                <input type="date" name="tgsTglSk" class="tags form-control @error('tgsTglSk') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('jfNoSk'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfNoSk') }}</small>
+                                    @if ($errors->has('tgsTglSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsTglSk') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Pejabat TTD</label>
-                                <input type="text" name="jfTglSk" class="tags form-control @error('jfTglSk') is-invalid @enderror" />
+                                <input type="text" name="tgsTtdPejabat" class="tags form-control @error('tgsTtdPejabat') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('jfTglSk'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfTglSk') }}</small>
+                                    @if ($errors->has('tgsTtdPejabat'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsTtdPejabat') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Dokumen : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
-                                <input type="file" name="jfDokumen" id="jfDokumen" class="form-control @error('jfDokumen') is-invalid @enderror" style="padding-bottom:30px;">
-                                @if ($errors->has('jfDokumen'))
-                                    <small class="form-text text-danger">{{ $errors->first('jfDokumen') }}</small>
-                                @endif
+                                <input type="file" name="tgsDokumen" id="tgsDokumen" class="form-control @error('tgsDokumen') is-invalid @enderror" style="padding-bottom:30px;">
+                                <div>
+                                    @if ($errors->has('tgsDokumen'))
+                                        <small class="form-text text-danger">{{ $errors->first('tgsDokumen') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                         </div>

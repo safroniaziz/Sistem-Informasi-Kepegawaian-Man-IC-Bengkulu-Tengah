@@ -50,7 +50,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Tugas Tambahan</th>
-                                <th>TMT</th>
+                                <th>Tamatan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
                                 <th>Pejabat TTD</th>
