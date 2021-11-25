@@ -65,20 +65,25 @@
                             @endphp
                             @foreach ($pendidikans as $pendidikan)
                                 <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $pendidikan->pendNmSekol }}</td>
-                                <td>{{ $pendidikan->pendNoIjazah }}</td>
-                                <td>{{ $pendidikan->pendThnLls }}</td>
-                                <td>{{ $pendidikan->pendTglIjazah }}</td>
-                                <td>{{ $pendidikan->pendTempat }}</td>
-                                <td>{{ $pendidikan->pendJurusan }}</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('guru.pendidikan.update',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                </td>
-</tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $pendidikan->pendNmSekol }}</td>
+                                    <td>{{ $pendidikan->pendNoIjazah }}</td>
+                                    <td>{{ $pendidikan->pendThnLls }}</td>
+                                    <td>{{ $pendidikan->pendTglIjazah }}</td>
+                                    <td>{{ $pendidikan->pendTempat }}</td>
+                                    <td>{{ $pendidikan->pendJurusan }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('guru.pendidikan.edit',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                        <form action="{{ route('guru.pendidikan.delete',[$pendidikan->pendNip]) }}" method="POST">
+                                            {{ csrf_field() }} {{ method_field("DELETE") }}
+
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
