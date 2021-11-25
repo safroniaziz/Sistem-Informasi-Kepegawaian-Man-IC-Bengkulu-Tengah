@@ -20,7 +20,7 @@
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-            <i class="fa fa-home"></i>&nbsp;Riwayat Kepangkatan
+            <i class="fa fa-home"></i>&nbsp;Riwayat Pelatihan
         </header>
         <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
@@ -42,19 +42,22 @@
                     @endif
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('guru.kepangkatan.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+                    <a href="{{ route('guru.pelatihan.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Golongan / Ruang</th>
-                                <th>TMT Golongan</th>
-                                <th>Nomor SK</th>
-                                <th>Tanggal SK</th>
-                                <th>Masa Kerja Gol</th>
-                                <th>Gaji Pokok</th>
+                                <th>Kode Diklat</th>
+                                <th>Nama Diklat</th>
+                                <th>Kode Diklat 2</th>
+                                <th>Nama Diklat 2</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
+                                <th>Tempat Penyelenggara</th>
+                                <th>Tahun</th>
+                                <th>Nomor Sertifikat</th>
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>
