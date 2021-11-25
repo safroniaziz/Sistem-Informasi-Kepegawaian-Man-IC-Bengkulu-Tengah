@@ -63,6 +63,9 @@
                             @php
                                 $no=1;
                             @endphp
+                            @foreach ($pendidikans as $pendidikan)
+                                
+                            @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->
