@@ -7,31 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class RiwayatJabatan extends Model
 {
-    protected $table = 'tbriwayatjab';
+    protected $table = 'tbriwayatjabfung';
     public $timestamps = false;
     use HasFactory;
     protected $fillable = [
-        'jbNoUrt',
-        'jbKdunit',
-        'jbNmunit',
-        'jbKdJenisjab',
-        'jbKdjab',
-        'jbNamajab',
-        'jbTmtJab',
-        'jbTglSk',
-        'jbNoSk',
-        'jbTglakhir',
-        'jbIdTugas',
-        'jbTgstambahan',
-        
-        'jbGol',
-        'jbGapok',
-        'jbPejabat',
-        'jabTunjangan',
-        'jbDokumen',
-        'jbKlsJab',
-        'jbKet',
-        'jbKomen',
-        'jbTglUnggah',
+        'jfNip',
+        'jfNoUrt',
+        'jfKdunit',
+        'jfNmunit',
+        'jfKdJenisjab',
+        'jfKdjab',
+        'jfNamajab',
+        'jfTmtJab',
+        'jfTglSk',
+        'jfNoSk',
+        'jfDokumen',
+        'jfGolongan',
+        'jfjafung',
+        'jfNmMapel',
+        'jfIdMapel',
+        'jfKomen',
+        'jfTglUnggah',
+
+        'jfKdJenisjab',
+        'jfKdjab',
+        'jfKdjab',
+        'jfTmtjab',
+        'jfNoSk',
+        'jfTglSk',
+        'jfPejabat',
+        'jfKdunit',
+        'jfDokumen',
+        'jfTglUnggah',
     ];
 }

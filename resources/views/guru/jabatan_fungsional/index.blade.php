@@ -51,7 +51,7 @@
                                 <th>No</th>
                                 <th>Jenis Jabatan</th>
                                 <th>Jabatan</th>
-                                <th>TMT</th>
+                                <th>Tamatan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
                                 <th>Pejabat TTD</th>
@@ -64,6 +64,23 @@
                             @php
                                 $no=1;
                             @endphp
+                            @foreach ($jabatans as $jabatan)
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $jabatan->jfKdJenisjab }}</td>
+                            <td>{{ $jabatan->jfKdjab }}</td>
+                            <td>{{ $jabatan->jfTmtjab }}</td>
+                            <td>{{ $jabatan->jfNoSk }}</td>
+                            <td>{{ $jabatan->jfTglSk }}</td>
+                            <td>{{ $jabatan->jfPejabat }}</td>
+                            <td>{{ $jabatan->jfKdunit }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_jabatan_fungsional/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$jabatan->jfDokumen) }}" download="{{ $jabatan->jfDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('guru.jabatan_fungsional.update',[$jabatan->goNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                            </td>
+
+                        @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->

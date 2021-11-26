@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Golongan / Ruang</label>
-                                <select name="golongan" class="form-control">
+                                <select name="goGol" class="form-control @error('goGol') is-invalid @enderror">
                                     <option disabled>-- pilih golongan --</option>
                                     <option value="2A">2A</option>
                                     <option value="2B">2B</option>
@@ -62,55 +62,78 @@
                                     <option value="2B">4C</option>
                                     <option value="2B">4D</option>
                                 </select>
-                                @if ($errors->has('golongan'))
-                                    <small class="form-text text-danger">{{ $errors->first('golongan') }}</small>
-                                @endif
+                                <div>
+                                    @if ($errors->has('goGol'))
+                                        <small class="form-text text-danger">{{ $errors->first('goGol') }}</small>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">TMT Golongan</label>
-                                <input type="text" name="tmt_golongan" class="tags form-control @error('tmt_golongan') is-invalid @enderror" />
-                                @if ($errors->has('tmt_golongan'))
-                                    <small class="form-text text-danger">{{ $errors->first('tmt_golongan') }}</small>
-                                @endif
+                                <label for="exampleInputEmail1">Tamatan Golongan</label>
+                                <input type="date" name="goTmtGol" class="tags form-control @error('goTmtGol') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goTmtGol'))
+                                        <small class="form-text text-danger">{{ $errors->first('goTmtGol') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor SK</label>
-                                <input type="text" name="nomor_sk" class="tags form-control @error('nomor_sk') is-invalid @enderror" />
-                                @if ($errors->has('nomor_sk'))
-                                    <small class="form-text text-danger">{{ $errors->first('nomor_sk') }}</small>
-                                @endif
+                                <input type="text" name="goNoSk" class="tags form-control @error('goNoSk') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goNoSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('goNoSk') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal SK</label>
-                                <input type="text" name="tanggal_sk" class="tags form-control @error('tanggal_sk') is-invalid @enderror" />
-                                @if ($errors->has('tanggal_sk'))
-                                    <small class="form-text text-danger">{{ $errors->first('tanggal_sk') }}</small>
-                                @endif
+                                <input type="date" name="goTglSk" class="tags form-control @error('goTglSk') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goTglSk'))
+                                        <small class="form-text text-danger">{{ $errors->first('goTglSk') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Masa Kerja Gol</label>
-                                <input type="text" name="masa_kerja_gol" class="tags form-control @error('masa_kerja_gol') is-invalid @enderror" />
-                                @if ($errors->has('masa_kerja_gol'))
-                                    <small class="form-text text-danger">{{ $errors->first('masa_kerja_gol') }}</small>
-                                @endif
+                                <label for="exampleInputEmail1">Masa Kerja Gol Tahun</label>
+                                <input type="text" name="goMaskerThn" class="tags form-control @error('goMaskerThn') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goMaskerThn'))
+                                        <small class="form-text text-danger">{{ $errors->first('goMaskerThn') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Masa Kerja Gol Bulan</label>
+                                <input type="text" name="goMaskerBln" class="tags form-control @error('goMaskerBln') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goMaskerBln'))
+                                        <small class="form-text text-danger">{{ $errors->first('goMaskerBln') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Gaji Pokok</label>
-                                <input type="text" name="gaji_pokok" class="tags form-control @error('gaji_pokok') is-invalid @enderror" />
-                                @if ($errors->has('gaji_pokok'))
-                                    <small class="form-text text-danger">{{ $errors->first('gaji_pokok') }}</small>
-                                @endif
+                                <input type="text" name="goGapok" class="tags form-control @error('goGapok') is-invalid @enderror" />
+                                <div>
+                                    @if ($errors->has('goGapok'))
+                                        <small class="form-text text-danger">{{ $errors->first('goGapok') }}</small>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">SK Kepangkatan : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
-                                <input type="file" name="sk_kepangkatan" id="sk_kepangkatan" class="form-control @error('sk_kepangkatan') is-invalid @enderror" style="padding-bottom:30px;">
-                                @if ($errors->has('sk_kepangkatan'))
-                                    <small class="form-text text-danger">{{ $errors->first('sk_kepangkatan') }}</small>
+                                <input type="file" name="goDokumen" id="goDokumen" class="form-control @error('goDokumen') is-invalid @enderror" style="padding-bottom:30px;">
+                                @if ($errors->has('goDokumen'))
+                                    <small class="form-text text-danger">{{ $errors->first('goDokumen') }}</small>
                                 @endif
                             </div>
 
