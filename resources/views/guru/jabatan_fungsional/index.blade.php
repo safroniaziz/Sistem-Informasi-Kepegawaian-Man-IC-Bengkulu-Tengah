@@ -65,20 +65,27 @@
                                 $no=1;
                             @endphp
                             @foreach ($jabatans as $jabatan)
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $jabatan->jfKdJenisjab }}</td>
-                            <td>{{ $jabatan->jfKdjab }}</td>
-                            <td>{{ $jabatan->jfTmtjab }}</td>
-                            <td>{{ $jabatan->jfNoSk }}</td>
-                            <td>{{ $jabatan->jfTglSk }}</td>
-                            <td>{{ $jabatan->jfPejabat }}</td>
-                            <td>{{ $jabatan->jfKdunit }}</td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_jabatan_fungsional/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$jabatan->jfDokumen) }}" download="{{ $jabatan->jfDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('guru.jabatan_fungsional.update',[$jabatan->goNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                            </td>
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $jabatan->jfKdJenisjab }}</td>
+                                <td>{{ $jabatan->jfKdjab }}</td>
+                                <td>{{ $jabatan->jfTmtjab }}</td>
+                                <td>{{ $jabatan->jfNoSk }}</td>
+                                <td>{{ $jabatan->jfTglSk }}</td>
+                                <td>{{ $jabatan->jfPejabat }}</td>
+                                <td>{{ $jabatan->jfKdunit }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_jabatan_fungsional/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$jabatan->jfDokumen) }}" download="{{ $jabatan->jfDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('guru.jabatan_fungsional.update',[$jabatan->jfNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                    <form action="{{ route('guru.jabatan_fungsional.delete',[$jabatan->goNip]) }}" method="POST">
+                                        {{ csrf_field() }} {{ method_field("DELETE") }}
+
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
 
                         @endforeach
                         </tbody>
