@@ -55,9 +55,9 @@
                                 <th>Nama Diklat 2</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
-                                <th>Tempat Penyelenggara</th>
-                                <th>Tahun</th>
                                 <th>Nomor Sertifikat</th>
+                                <th>Tahun</th>
+                                <th>Tempat Penyelenggara</th>
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>
@@ -73,8 +73,14 @@
                               
                                  <td> {{ $pelatihan->pltKddiklat }} </td>
                                  <td> {{ $pelatihan->pltNmdiklat }} </td>
-                                 <td> {{ $pelatihan->pltKddiklat }} </td>
-                                 <td> {{ $pelatihan->pltNmdiklat }} </td>
+                                 <td> {{ $pelatihan->pltKddiklat2 }} </td>
+                                 <td> {{ $pelatihan->pltNmdiklat2 }} </td>
+                                  <td> {{ $pelatihan->pltTglmulai }} </td>
+                                 <td> {{ $pelatihan->pltTglakhir }} </td>
+                                 <td> {{ $pelatihan->pltnosertifikat }} </td>
+                                 <td> {{ $pelatihan->pltThnsertifikat }} </td>
+                                 <td> {{ $pelatihan->pltTempat }} </td>
+
                                  <td>
                                      {{-- <a onclick="editUnit({{ $pelatihan->id }})" class="btn btn-primary btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-edit"></i></a>
                                      <a onclick="hapuspelatihan({{ $pelatihan->id }})" class="btn btn-danger btn-sm" style="color:white;cursor:pointer;"><i class="fa fa-trash"></i></a> --}}

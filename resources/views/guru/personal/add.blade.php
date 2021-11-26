@@ -110,7 +110,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Tingkat Pendidikan</label>
+                                <label for="exampleInputEmail1">CPNS Terhitung Mulai Tanggal</label>
                                 <input type="text" name="pendNmSekol" class="tags form-control @error('pendNmSekol') is-invalid @enderror" />
                                 @if ($errors->has('pendNmSekol'))
                                     <small class="form-text text-danger">{{ $errors->first('pendNmSekol') }}</small>

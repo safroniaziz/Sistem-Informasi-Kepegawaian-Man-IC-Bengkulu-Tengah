@@ -44,6 +44,7 @@
                 <div class="col-md-12">
                     <a href="{{ route('guru.personal.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
+                
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
@@ -83,7 +84,7 @@
                                 $no=1;
                             @endphp
                             @foreach ($pegawai as $pegawai)
-                            <tr>
+                        <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $pegawai->pegNip }}</td>
                             <td>{{ $pegawai->pegGlrDpn }}</td>
@@ -113,13 +114,8 @@
                             <td>{{ $pegawai->pegPendAkhir }}</td>
                             <td>{{ $pegawai->pegThnLulus }}</td>
                             <td>{{ $pegawai->pegJurusan }}</td>
-                            {{--  <td>
-                                <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
-                            </td>  --}}
-                            {{--  <td>
-                                <a href="{{ route('guru.pendidikan.update',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                            </td>  --}}
-
+                         
+                        </tr>
                         @endforeach
                         </tbody>
                     </table>
