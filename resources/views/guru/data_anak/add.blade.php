@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.data_anak.post') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }} {{ method_field('POST') }}
+                    <form action="{{ route('guru.data_anak.update') }}" enctype="multipart/form-data" method="POST">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama</label>
@@ -191,7 +191,7 @@
                             <hr style="width: 50%" class="mt-0">
                             <a href="{{ route('guru.personal') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
-                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Berkas</button>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>
                     </form>
                 </div>
