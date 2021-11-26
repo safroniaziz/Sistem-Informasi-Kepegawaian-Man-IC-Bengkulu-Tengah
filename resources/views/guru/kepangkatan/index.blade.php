@@ -65,20 +65,27 @@
                                 $no=1;
                             @endphp
                             @foreach ($golongans as $golongan)
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $golongan->goGol }}</td>
-                            <td>{{ $golongan->goTmtGol }}</td>
-                            <td>{{ $golongan->goNoSk }}</td>
-                            <td>{{ $golongan->goTglSk }}</td>
-                            <td>{{ $golongan->goMaskerThn }}</td>
-                            <td>{{ $golongan->goMaskerBln }}</td>
-                            <td>{{ $golongan->goGapok }}</td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_kepangkatan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$golongan->goDokumen) }}" download="{{ $golongan->goDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('guru.kepangkatan.edit',[$golongan->goNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                            </td>
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $golongan->goGol }}</td>
+                                <td>{{ $golongan->goTmtGol }}</td>
+                                <td>{{ $golongan->goNoSk }}</td>
+                                <td>{{ $golongan->goTglSk }}</td>
+                                <td>{{ $golongan->goMaskerThn }}</td>
+                                <td>{{ $golongan->goMaskerBln }}</td>
+                                <td>{{ $golongan->goGapok }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_kepangkatan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$golongan->goDokumen) }}" download="{{ $golongan->goDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('guru.kepangkatan.edit',[$golongan->goNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                    <form action="{{ route('guru.kepangkatan.delete',[$golongan->goNip]) }}" method="POST">
+                                        {{ csrf_field() }} {{ method_field("DELETE") }}
+
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
 
                         @endforeach
                         </tbody>
