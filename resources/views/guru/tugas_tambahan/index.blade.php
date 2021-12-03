@@ -62,6 +62,29 @@
                             @php
                                 $no=1;
                             @endphp
+                            @foreach ($tugastambahans as $tugastambahan)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $tugastambahan->tgsNoUrut }}</td>
+                                <td>{{ $tugastambahan->tgsNamajab }}</td>
+                                <td>{{ $tugastambahan->tgsTmt }}</td>
+                                <td>{{ $tugastambahan->tgsNoSk }}</td>
+                                <td>{{ $tugastambahan->tgsTglSk }}</td>
+                                <td>{{ $tugastambahan->tgsTtdPejabat }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_tugas_tambahan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$tugastambahan->tgsDokumen) }}" download="{{ $tugastambahan->tgsDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('guru.tugas_tambahan.edit',[$tugastambahan->tgsNoUrut]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                    <form action="{{ route('guru.tugas_tambahan.delete',[$tugastambahan->tgsNoUrut]) }}" method="POST">
+                                        {{ csrf_field() }} {{ method_field("DELETE") }}
+
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        @endforeach
                         </tbody>
                     </table>
                     <!-- Modal Hapus-->

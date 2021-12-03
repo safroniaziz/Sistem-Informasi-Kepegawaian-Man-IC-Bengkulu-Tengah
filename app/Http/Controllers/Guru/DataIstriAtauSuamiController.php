@@ -20,6 +20,7 @@ class DataIstriAtauSuamiController extends Controller
     }
 
     public function post(Request $request){
+        
         $messages = [
             'required' => ':attribute harus diisi',
             'numeric' => ':attribute harus angka',
@@ -31,6 +32,7 @@ class DataIstriAtauSuamiController extends Controller
         $attributes = [
             'kelNama'   =>  'Nama Istri/Suami',
             'kelKerjaan'   =>  'Pekerjaan',
+            'kellstrike'   =>  'kellstrike',
             'kelNip'   =>  'NIP',
             'kelTpLhr'   =>  'Tempat Lahir',
             'kelTglLhr'   =>  'Tanggal Lahir',
@@ -49,31 +51,101 @@ class DataIstriAtauSuamiController extends Controller
             'kelBpjs'    =>  'required',
         ],$messages,$attributes);
 
-        // $model = $request->all();
-        // $model['goDokumen'] = null;
-        // $slug_user = Str::slug(Auth::user()->pegNama);
-
-        // if ($request->hasFile('goDokumen')) {
-        //     $model['goDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->goDokumen->getClientOriginalExtension();
-        //     $request->goDokumen->move(public_path('/upload/dokumen_kepangkatan/'.$slug_user), $model['goDokumen']);
-        // }
-
+      
+      
         Keluarga::create([
             'kelNip'       =>  Auth::user()->pegNip,
             'kelNama'    =>  $request->kelNama,
+            'kellstrike'    =>  $request->kellstrike,
             'kelKerjaan'    =>  $request->kelKerjaan,
-            'kelNip'    =>  $request->kelNip,
+            'kelNipIstri'    =>  $request->kelNip,
             'kelTpLhr'    =>  $request->kelTpLhr,
             'kelTglLhr'    =>  $request->kelTglLhr,
             'kelTglNikah'    =>  $request->kelTglNikah,
             'kelTglCerai'    =>  $request->kelTglCerai,
             'kelTglNinggal'    =>  $request->kelTglNinggal,
+            'kelBpjs'    =>  $request->kelBpjs,
             // 'goDokumen'    =>  $model['goDokumen'],
             'goTglUnggah' =>  date("Y-m-d H:i:s"),
         ]);
 
         $notification = array(
             'message' => 'Berhasil, data pendidikan berhasil ditambahkan!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('guru.istri_atau_suami')->with($notification);
+    }
+    public function edit($kelNoUrt){
+        $data = Keluarga::where('kelNoUrt',$kelNoUrt)->first();
+    
+       
+     
+      
+
+        return view('guru/data_istri_atau_suami.edit',compact('data'));
+    }
+
+    public function update(Request $request, $kelNoUrt){
+        $messages = [
+            'required' => ':attribute harus diisi',
+            'numeric' => ':attribute harus angka',
+            'mimes' => 'The :attribute harus berupa file: :values.',
+            'max' => [
+                'file' => ':attribute tidak boleh lebih dari :max kilobytes.',
+            ],
+        ];
+        $attributes = [
+            'kelNama'   =>  'Nama Istri/Suami',
+            'kelKerjaan'   =>  'Pekerjaan',
+            'kellstrike'   =>  'kellstrike',
+            'kelNip'   =>  'NIP',
+            'kelTpLhr'   =>  'Tempat Lahir',
+            'kelTglLhr'   =>  'Tanggal Lahir',
+            'kelTglNikah'   =>  'Tanggal Nikah',
+            'kelTglCerai'   =>  'Tanggal Cerai ',
+            'kelTglNinggal'   =>  'Tanggal Meninggal ',
+            'kelBpjs'   =>  'BPJS No ',
+        ];
+        $this->validate($request, [
+            // 'pltNmSekol'    =>  'required',
+            // 'pltNoIjazah'    =>  'required',
+            // 'pltThnLls'    =>  'required',
+            // 'pltTglIjazah'    =>  'required',
+            // 'pltTempat'    =>  'required',
+            // 'pltJurusan'    =>  'required',
+            'pltDokumen'    =>  'mimes:doc,pdf,docx,jpg|max:1000',
+        ],$messages,$attributes);
+
+       
+            Keluarga::where('kelNoUrt',$kelNoUrt)->update([
+                // 'kelNip'       =>  Auth::user()->pegNip,
+            'kelNama'    =>  $request->kelNama,
+            // 'kellstrike'    =>  $request->kellstrike,
+            'kelKerjaan'    =>  $request->kelKerjaan,
+            'kelNipIstri'    =>  $request->kelNip,
+            'kelTpLhr'    =>  $request->kelTpLhr,
+            'kelTglLhr'    =>  $request->kelTglLhr,
+            'kelTglNikah'    =>  $request->kelTglNikah,
+            'kelTglCerai'    =>  $request->kelTglCerai,
+            'kelTglNinggal'    =>  $request->kelTglNinggal,
+            'kelBpjs'    =>  $request->kelBpjs,
+            // 'goDokumen'    =>  $model['goDokumen'],
+            'kelTglUnggah' =>  date("Y-m-d H:i:s"),
+            ]);
+    
+            $notification = array(
+                'message' => 'Berhasil, data keluarga berhasil ditambahkan!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.istri_atau_suami')->with($notification);
+        
+    }
+    
+
+    public function delete($kelNoUrt){
+        Keluarga::where('kelNoUrt',$kelNoUrt)->delete();
+        $notification = array(
+            'message' => 'Berhasil, data pendidikan berhasil dihapus!',
             'alert-type' => 'success'
         );
         return redirect()->route('guru.istri_atau_suami')->with($notification);

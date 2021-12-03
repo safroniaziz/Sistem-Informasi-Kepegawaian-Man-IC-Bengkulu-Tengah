@@ -51,7 +51,9 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Status Anak</th>
-                                <th>Tempat/Tgl Lahir</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tangal Lahir</th>
                                 <th>Status Pendidikan</th>
                                 <th>Pendidikan Terakhir</th>
                                 <th>Alasan Tidak Sekolah</th>
@@ -66,36 +68,34 @@
                             @php
                                 $no=1;
                             @endphp
+                            @foreach ($anaks as $anak)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $anak->kelNama }}</td>
+                                <td>{{ $anak->akStatus }}</td>
+                                <td>{{ $anak->akJenkel }}</td>
+                                <td>{{ $anak->akTpLhr }}</td>
+                                <td>{{ $anak->akTglLhr }}</td>
+                                <td>{{ $anak->akStatusPend }}</td>
+                                <td>{{ $anak->akPendAkhir }}</td>
+                                <td>{{ $anak->akAlsanTdkSekolah }}</td>
+                                <td>{{ $anak->akKerjaan }}</td>
+                                <td>{{ $anak->akNip }}</td>
+                                <td>{{ $anak->akNoBpjs }}</td>
+                                <td>{{ $anak->akIbu }}</td>
+
+                                <td>
+                                    <a href="{{ route('guru.data_anak.edit',[$anak->akNoUrt]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                    <form action="{{ route('guru.data_anak.delete',[$anak->akNoUrt]) }}" method="POST">
+                                        {{ csrf_field() }} {{ method_field("DELETE") }}
+
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    <!-- Modal Hapus-->
-                    <div class="modal fade modal-danger" id="modalhapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <form action=" {{ route('guru.personal.delete') }} " method="POST">
-                                    {{ csrf_field() }} {{ method_field('DELETE') }}
-                                    <div class="modal-header">
-                                        <p style="font-size:15px; font-weight:bold;" class="modal-title"><i class="fa fa-trash"></i>&nbsp;Form Konfirmasi Hapus Data</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <input type="hidden" name="id" id="id_hapus">
-                                                Apakah anda yakin ingin menghapus data? klik hapus jika iya !!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Batalkan</button>
-                                        <button type="submit" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline"><i class="fa fa-check-circle"></i>&nbsp; Ya, Hapus</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

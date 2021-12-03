@@ -53,7 +53,8 @@
                                 <th>Istri/suami ke</th>
                                 <th>Pekerjaan</th>
                                 <th>NIP</th>
-                                <th>Tempat/Tgl Lahir</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
                                 <th>Tanggal Nikah</th>
                                 <th>Tanggal Meninggal</th>
                                 <th>Tanggal Cerai</th>
@@ -65,39 +66,37 @@
                             @php
                                 $no=1;
                             @endphp
+                             @foreach ($keluargas as $keluarga)
+                             <tr>
+                                 <td> {{ $no++ }} </td>
+                              
+                                 
+                                 <td> {{ $keluarga->kelNama }} </td>
+                                 <td> {{ $keluarga->kelNoUrt }} </td>
+                                 <td> {{ $keluarga->kelKerjaan }} </td>
+                                 <td> {{ $keluarga->kelNipIstri }} </td>
+                           
+                                 <td> {{ $keluarga->kelTpLhr }} </td>
+                                 <td> {{ $keluarga->kelTglLhr }} </td>
+                                 <td> {{ $keluarga->kelTglNikah }} </td>
+                                 <td> {{ $keluarga->kelTglNinggal }} </td>
+                                   <td> {{ $keluarga->kelTglCerai }} </td>
+                                 <td> {{ $keluarga->kelBpjs }} </td>
+          
+  
+                                    <td>
+                                        <a href="{{ route('guru.istri_atau_suami.edit',[$keluarga->kelNoUrt]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                        <form action="{{ route('guru.istri_atau_suami.delete',[$keluarga->kelNoUrt]) }}" method="POST">
+                                            {{ csrf_field() }} {{ method_field("DELETE") }}
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
+                                        </form>
+                                    </td>
+                             </tr>
+                         @endforeach
                         </tbody>
                     </table>
-                    <!-- Modal Hapus-->
-                    <div class="modal fade modal-danger" id="modalhapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <form action=" {{ route('guru.personal.delete') }} " method="POST">
-                                    {{ csrf_field() }} {{ method_field('DELETE') }}
-                                    <div class="modal-header">
-                                        <p style="font-size:15px; font-weight:bold;" class="modal-title"><i class="fa fa-trash"></i>&nbsp;Form Konfirmasi Hapus Data</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <input type="hidden" name="id" id="id_hapus">
-                                                Apakah anda yakin ingin menghapus data? klik hapus jika iya !!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Batalkan</button>
-                                        <button type="submit" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline"><i class="fa fa-check-circle"></i>&nbsp; Ya, Hapus</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
-

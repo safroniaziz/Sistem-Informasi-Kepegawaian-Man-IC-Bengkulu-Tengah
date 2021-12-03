@@ -29,7 +29,7 @@
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-            <i class="fa fa-home"></i>&nbsp;Sistem Informasi Kepegawaian MAN IC Bengkulu Tengah
+            <i class="fa fa-home"></i>&nbsp;Arsip Dokumen Universitas Bengkulu
         </header>
         <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
@@ -40,15 +40,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.data_anak.post') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }} {{ method_field('POST') }}
+                    <form action="{{ route('guru.data_anak.update',[$data->akNoUrt]) }}" enctype="multipart/form-data" method="POST">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama</label>
-                                <input type="text" name="kelNama" class="tags form-control @error('kelNama') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akNama }}" name="akNama" class="tags form-control @error('akNama') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('kelNama'))
-                                        <small class="form-text text-danger">{{ $errors->first('kelNama') }}</small>
+                                    @if ($errors->has('akNama'))
+                                        <small class="form-text text-danger">{{ $errors->first('akNama') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -57,9 +57,9 @@
                                 <label for="exampleInputEmail1">Status Anak</label>
                                 <select name="akStatus" class="form-control">
                                     <option disabled>-- pilih Status Anak --</option>
-                                    <option value="AK">Anak Kandung</option>
-                                    <option value="AA">Anak Angkat</option>
-                                    <option value="AT">Anak Tiri</option>
+                                    <option {{ $data->pendNmSekol == "AK" ? 'selected' : '' }} value="AK">Anak Kandung</option>
+                                    <option {{ $data->pendNmSekol == "AA" ? 'selected' : '' }} value="AA">Anak Angkat</option>
+                                    <option {{ $data->pendNmSekol == "AT" ? 'selected' : '' }} value="AT">Anak Tiri</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('akStatus'))
@@ -70,21 +70,21 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Kelamin</label>
-                                <select name="akTglLhr" class="form-control">
+                                <select name="akJenkel" class="form-control">
                                     <option disabled>-- pilih Jenis Kelamin --</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option {{ $data->pendNmSekol == "L" ? 'selected' : '' }} value="L">Laki-Laki</option>
+                                    <option {{ $data->pendNmSekol == "P" ? 'selected' : '' }} value="P">Perempuai</option>
                                 </select>
                                 <div>
-                                    @if ($errors->has('akTglLhr'))
-                                        <small class="form-text text-danger">{{ $errors->first('akTglLhr') }}</small>
+                                    @if ($errors->has('akJenkel'))
+                                        <small class="form-text text-danger">{{ $errors->first('akJenkel') }}</small>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tempat Lahir</label>
-                                <input type="text" name="akTpLhr" class="tags form-control @error('akTpLhr') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akTpLhr }}" name="akTpLhr" class="tags form-control @error('akTpLhr') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akTpLhr'))
                                         <small class="form-text text-danger">{{ $errors->first('akTpLhr') }}</small>
@@ -94,7 +94,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Lahir</label>
-                                <input type="date" name="akTglLhr" class="tags form-control @error('akTglLhr') is-invalid @enderror" />
+                                <input type="date" value="{{ $data->akTglLhr }}" name="akTglLhr" class="tags form-control @error('akTglLhr') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akTglLhr'))
                                         <small class="form-text text-danger">{{ $errors->first('akTglLhr') }}</small>
@@ -104,7 +104,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Status Pendidikan</label>
-                                <input type="text" name="akStatusPend" class="tags form-control @error('akStatusPend') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akStatusPend }}" name="akStatusPend" class="tags form-control @error('akStatusPend') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akStatusPend'))
                                         <small class="form-text text-danger">{{ $errors->first('akStatusPend') }}</small>
@@ -116,14 +116,14 @@
                                 <label for="exampleInputEmail1">Pendidikan Terakhir</label>
                                 <select name="akPendAkhir" class="form-control">
                                     <option disabled>-- pilih Pendidikan Terakhir --</option>
-                                    <option value="SD">SD</option>
-                                    <option value="SLTP">SLTP</option>
-                                    <option value="SLTA">SLTA Sederajat</option>
-                                    <option value="D2">D2</option>
-                                    <option value="D3">D3</option>
-                                    <option value="S1">S1</option>
-                                    <option value="S2">S2</option>
-                                    <option value="S3">S3</option>
+                                    <option {{ $data->pendNmSekol == "SD" ? 'selected' : '' }} value="SD">SD</option>
+                                    <option {{ $data->pendNmSekol == "SLTP" ? 'selected' : '' }} value="SLTP">SLTP</option>
+                                    <option {{ $data->pendNmSekol == "SLTA" ? 'selected' : '' }} value="SLTA">SLTA Sederajat</option>
+                                    <option {{ $data->pendNmSekol == "D2" ? 'selected' : '' }} value="D2">D2</option>
+                                    <option {{ $data->pendNmSekol == "D3" ? 'selected' : '' }} value="D3">D3</option>
+                                    <option {{ $data->pendNmSekol == "S1" ? 'selected' : '' }} value="S1">S1</option>
+                                    <option {{ $data->pendNmSekol == "S2" ? 'selected' : '' }} value="S2">S2</option>
+                                    <option {{ $data->pendNmSekol == "S3" ? 'selected' : '' }} value="S3">S3</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('akPendAkhir'))
@@ -134,7 +134,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Alasan Tidak Sekolah</label>
-                                <input type="text" name="akAlsanTdkSekolah" class="tags form-control @error('akAlsanTdkSekolah') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akAlsanTdkSekolah }}" name="akAlsanTdkSekolah" class="tags form-control @error('akAlsanTdkSekolah') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akAlsanTdkSekolah'))
                                         <small class="form-text text-danger">{{ $errors->first('akAlsanTdkSekolah') }}</small>
@@ -146,9 +146,9 @@
                                 <label for="exampleInputEmail1">Pekerjaan</label>
                                 <select name="akKerjaan" class="form-control">
                                     <option disabled>-- pilih pekerjaan --</option>
-                                    <option value="PNS">PNS</option>
-                                    <option value="PEG NON PNS">Peg Non PNS</option>
-                                    <option value="SEWASTA">Sewasta</option>
+                                    <option {{ $data->pendNmSekol == "PNS" ? 'selected' : '' }} value="PNS">PNS</option>
+                                    <option {{ $data->pendNmSekol == "PEG NON PNS" ? 'selected' : '' }} value="PEG NON PNS">Peg Non PNS</option>
+                                    <option {{ $data->pendNmSekol == "SWASTA" ? 'selected' : '' }} value="SWASTA">Swasta</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('akKerjaan'))
@@ -159,7 +159,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">NIP</label>
-                                <input type="text" name="akNip" class="tags form-control @error('akNip') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akNip }}" name="akNip" class="tags form-control @error('akNip') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akNip'))
                                         <small class="form-text text-danger">{{ $errors->first('akNip') }}</small>
@@ -169,7 +169,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">BPJS No</label>
-                                <input type="text" name="akNoBpjs" class="tags form-control @error('akNoBpjs') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akNoBpjs }}" name="akNoBpjs" class="tags form-control @error('akNoBpjs') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akNoBpjs'))
                                         <small class="form-text text-danger">{{ $errors->first('akNoBpjs') }}</small>
@@ -179,7 +179,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Ibu</label>
-                                <input type="text" name="akIbu" class="tags form-control @error('akIbu') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->akIbu }}" name="akIbu" class="tags form-control @error('akIbu') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('akIbu'))
                                         <small class="form-text text-danger">{{ $errors->first('akIbu') }}</small>
