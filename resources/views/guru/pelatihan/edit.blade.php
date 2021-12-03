@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@section('title', 'Edit Data Pendidikan')
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
@@ -29,20 +29,19 @@
 @section('content')
     <section class="panel" style="margin-bottom:20px;">
         <header class="panel-heading" style="color: #ffffff;background-color: #074071;border-color: #fff000;border-image: none;border-style: solid solid none;border-width: 4px 0px 0;border-radius: 0;font-size: 14px;font-weight: 700;padding: 15px;">
-            <i class="fa fa-home"></i>&nbsp;Riwayat Pelatihan
+            <i class="fa fa-home"></i>&nbsp;Arsip Dokumen Universitas Bengkulu
         </header>
         <div class="panel-body" style="border-top: 1px solid #eee; padding:15px; background:white;">
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
-
                         <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan usulan kegiatan anda, harap melengkapi data terlebih dahulu agar proses pengajuan usulan tidak ada masalah kedepannya !!
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.pelatihan.post') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }} {{ method_field('POST') }}
-                        <div class="col-md-12">
+                    <form action="{{ route('guru.pelatihan.update',[$data->pltNourt]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
+                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Diklat</label>
                                 <select name="jendiklat" class="form-control" id="">
@@ -55,9 +54,10 @@
                                     <small class="form-text text-danger">{{ $errors->first('jendiklat') }}</small>
                                 @endif
                             </div>
+                           
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Mulai</label>
-                                <input type="date" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />
+                                <input type="date" value="{{ $data->pltTglmulai }}" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />
                                 @if ($errors->has('pltTglmulai'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTglmulai') }}</small>
                                 @endif
@@ -65,7 +65,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Selesai</label>
-                                <input type="date" name="pltTglakhir" class="tags form-control @error('pltTglakhir') is-invalid @enderror" />
+                                <input type="date" value="{{ $data->pltTglakhir }}" name="pltTglakhir" class="tags form-control @error('pltTglakhir') is-invalid @enderror" />
                                 @if ($errors->has('pltTglakhir'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTglakhir') }}</small>
                                 @endif
@@ -73,7 +73,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tempat</label>
-                                <input type="text" name="pltTempat" class="tags form-control @error('pltTempat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltTempat }}" name="pltTempat" class="tags form-control @error('pltTempat') is-invalid @enderror" />
                                 @if ($errors->has('pltTempat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTempat') }}</small>
                                 @endif
@@ -81,7 +81,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tahun</label>
-                                <input type="text" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltThnsertifikat }}" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
                                 @if ($errors->has('pltThnsertifikat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltThnsertifikat') }}</small>
                                 @endif
@@ -89,7 +89,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor Sertifikat</label>
-                                <input type="text" name="pltnosertifikat" class="tags form-control @error('pltnosertifikat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltnosertifikat }}" name="pltnosertifikat" class="tags form-control @error('pltnosertifikat') is-invalid @enderror" />
                                 @if ($errors->has('pltnosertifikat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltnosertifikat') }}</small>
                                 @endif
@@ -106,7 +106,7 @@
                         </div>
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="{{ route('guru.personal') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('guru.pelatihan') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>

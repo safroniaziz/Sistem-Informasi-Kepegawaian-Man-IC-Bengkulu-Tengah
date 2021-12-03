@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Manajemen Klasifikasi Berkas')
+@section('title', 'Edit Data Pendidikan')
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
@@ -35,15 +35,15 @@
             <div class="row" style="margin-right:-15px; margin-left:-15px;">
                 <div class="col-md-12">
                     <div class="alert alert-primary alert-block text-center" id="keterangan">
-
                         <strong class="text-uppercase"><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong><br> Silahkan tambahkan usulan kegiatan anda, harap melengkapi data terlebih dahulu agar proses pengajuan usulan tidak ada masalah kedepannya !!
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.istri_atau_suami.post') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }} {{ method_field('POST') }}
-
-                            <div class="form-group col-md-6">
+                    <form action="{{ route('guru.istri_atau_suami.update',[$data->kelNoUrt]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
+                         <div class="col-md-12">
+                           
+                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Istri/Suami</label>
                                 <input type="text" name="kelNama" class="tags form-control @error('kelNama') is-invalid @enderror" />
                                 <div>
@@ -144,10 +144,10 @@
                                     @endif
                                 </div>
                             </div>
-
+</div>
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="{{ route('guru.personal') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('guru.pelatihan') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>
@@ -155,7 +155,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 @endsection
 
