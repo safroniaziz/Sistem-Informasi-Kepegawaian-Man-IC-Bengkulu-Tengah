@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RefStapeg extends Model
 {
-    protected $table = 'tbstapeg';
+    protected $table = 'refstapeg';
     public $timestamps = false;
     use HasFactory;
     protected $fillable = [

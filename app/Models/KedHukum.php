@@ -13,8 +13,5 @@ class KedHukum extends Model
     protected $fillable = [
         'kedIdHukum',
         'kedNmHukum',
-     
-      
-       
     ];
 }

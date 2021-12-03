@@ -3,18 +3,30 @@
 namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agama;
+use App\Models\JenJab;
+use App\Models\KedHukum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Pegawai;
+use App\Models\RefStapeg;
 
 class DataPersonalController extends Controller
 {
     public function index(){
-        $pegawai = DB::table('tbpegawai')->where('pegNip', Auth::user()->pegNip)->get();
-        // return $pegawai;
-        return view('guru/personal.index',compact('pegawai'));
+        $bidangilmu = DB::table('tbmapel')->select('mapKdMapel','mapNmMapel')->get();
+        $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
+        $kawin = DB::table('refkawin')->select('KODE','KET')->get();
+        $agama = Agama::all();
+        $stapeg = RefStapeg::all();
+        $kedkum = KedHukum::all();
+        $jabatan = JenJab::all();
+        $data = Pegawai::join('refagama','refagama.KODE','tbpegawai.pegAgama')
+                        ->join('refstapeg','refstapeg.KODE','tbpegawai.pegStapeg')
+                        ->where('pegNip',Auth::user()->pegNip)->first();
+        return view('guru/personal.index',compact('bidangilmu','jabatan','kawin','agama','stapeg','kedkum','jabatan','data'));
     }
 
     public function add(){

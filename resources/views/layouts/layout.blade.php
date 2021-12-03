@@ -24,11 +24,14 @@
     <!-- NProgress -->
     <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <style>
+      .preloader {    position: fixed;    top: 0;    left: 0;    right: 0;    bottom: 0;    background-color: #ffffff;    z-index: 99999;    height: 100%;    width: 100%;    overflow: hidden !important;}.do-loader{    width: 200px;    height: 200px;    position: absolute;    left: 50%;    top: 50%;    margin: 0 auto;    -webkit-border-radius: 100%;       -moz-border-radius: 100%;         -o-border-radius: 100%;            border-radius: 100%;    background-image: url({{ asset('assets/images/logo_2.png') }});    background-size: 80% !important;    background-repeat: no-repeat;    background-position: center;    -webkit-background-size: cover;            background-size: cover;    -webkit-transform: translate(-50%,-50%);       -moz-transform: translate(-50%,-50%);        -ms-transform: translate(-50%,-50%);         -o-transform: translate(-50%,-50%);            transform: translate(-50%,-50%);}.do-loader:before {    content: "";    display: block;    position: absolute;    left: -6px;    top: -6px;    height: calc(100% + 12px);    width: calc(100% + 12px);    border-top: 1px solid #07A8D8;    border-left: 1px solid transparent;    border-bottom: 1px solid transparent;    border-right: 1px solid transparent;    border-radius: 100%;    -webkit-animation: spinning 0.750s infinite linear;       -moz-animation: spinning 0.750s infinite linear;         -o-animation: spinning 0.750s infinite linear;            animation: spinning 0.750s infinite linear;}@-webkit-keyframes spinning {   from {-webkit-transform: rotate(0deg);}   to {-webkit-transform: rotate(359deg);}}@-moz-keyframes spinning {   from {-moz-transform: rotate(0deg);}   to {-moz-transform: rotate(359deg);}}@-o-keyframes spinning {   from {-o-transform: rotate(0deg);}   to {-o-transform: rotate(359deg);}}@keyframes spinning {   from {transform: rotate(0deg);}   to {transform: rotate(359deg);}}
+    </style>
     @stack('styles')
 
     <!-- Custom Theme Style -->
@@ -70,6 +73,9 @@
     </head>
 
   <body class="nav-md sidebar_fixed" >
+    <div class="preloader">
+      <div class="do-loader"></div>
+  </div>
     <div class="container body">
       <div class="main_container" style="background:#013C62;">
         @if (Auth::check())
@@ -78,8 +84,8 @@
             <div class="col-md-3 left_col " style="background: #013C62 !important;">
         @endif
         <div class="left_col scroll-view" style="background: #013C62 !important;">
-            <div class="navbar nav_title" style="border-bottom: 1px white solid;; margin:0; padding-bottom:5px 0px !important; background:#013C62;">
-                <a href="index.html" class="site_title" style="font-weight:600; font-size:18.5px"> <span>SIMPEG MAN IC</span></a>
+            <div class="navbar nav_title" style="border-bottom: 1px white solid; padding-bottom:5px 0px !important; background:#013C62;">
+                <a href="index.html" class="site_title" style="font-weight:600; font-size:16px"> <span>SIMPEG MAN IC BENTENG</span></a>
               </div>
             <div class="clearfix"></div>
 
@@ -227,6 +233,14 @@
                 break;
         }
       @endif
+
+      jQuery(window).load(function() {
+        // will first fade out the loading animation
+        jQuery(".status").fadeOut();
+        // will fade out the whole DIV that covers the website.
+        jQuery(".preloader").delay(0).fadeOut("slow");
+
+      });
     </script>
     @stack('scripts')
   </body>

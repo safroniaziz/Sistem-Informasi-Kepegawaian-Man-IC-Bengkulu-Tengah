@@ -1,19 +1,23 @@
 <li>
-    <a href=" {{ route('guru.dashboard') }} "><i class="fa fa-home"></i>Dashboard</a>
+    <a href=" {{ route('guru.dashboard') }} "><i class="fa fa-dashboard"></i>Dashboard</a>
 </li>
 
 <li>
     <a href=" {{ route('guru.personal') }} "><i class="fa fa-user"></i>Data Personal</a>
 </li>
 
-<li>
-    <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-graduation-cap"></i>Riwayat Pendidikan</a>
-</li>
-<li>
-    <a href=" {{ route('guru.pelatihan') }} "><i class="fa fa-home"></i>Riwayat Pelatihan</a>
-</li>
-<li>
-    <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-history"></i>Riwayat Kepangkatan</a>
+<li><a><i class="fa fa-history"></i>Data Riwayat <span class="fa fa-chevron-down"></span></a>
+    <ul class="nav child_menu">
+        <li>
+            <a href=" {{ route('guru.pendidikan') }} "><i class="fa fa-graduation-cap"></i>Riwayat Pendidikan</a>
+        </li>
+        <li>
+            <a href=" {{ route('guru.pelatihan') }} "><i class="fa fa-list"></i>Riwayat Pelatihan</a>
+        </li>
+        <li>
+            <a href=" {{ route('guru.kepangkatan') }} "><i class="fa fa-level-up"></i>Riwayat Kepangkatan</a>
+        </li>
+    </ul>
 </li>
 
 <li>
@@ -28,6 +32,17 @@
     <ul class="nav child_menu">
         <li><a href="{{ route('guru.istri_atau_suami') }}">Data Istri / Suami</a></li>
         <li><a href="{{ route('guru.data_anak') }}">Data Anak</a></li>
+    </ul>
+</li>
+
+<li><a><i class="fa fa-question-circle"></i>Bantuan Compress File <span class="fa fa-chevron-down"></span></a>
+    <ul class="nav child_menu">
+        <li>
+            <a href="https://www.reduceimages.com/" target="_blank"><i class="fa fa-picture-o"></i>File Gambar</a>
+        </li>
+        <li>
+            <a href="https://smallpdf.com/compress-pdf" target="_blank"><i class="fa fa-file-pdf-o"></i>File PDF</a>
+        </li>
     </ul>
 </li>
 
