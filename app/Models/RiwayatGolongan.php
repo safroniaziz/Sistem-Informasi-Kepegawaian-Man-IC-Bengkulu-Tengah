@@ -23,14 +23,14 @@ class RiwayatGolongan extends Model
         'goNoBkn',
         'goTglBkn',
         'goJenisSk',
-        
+
         'goGapok',
         'goPejabat',
         'goDokumen',
         'goKet',
         'goKomen',
         'goTglUnggah',
-     
-     
+
+
     ];
 }

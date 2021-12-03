@@ -80,4 +80,11 @@ class RiwayatJabatanFungsionalController extends Controller
         );
         return redirect()->route('guru.jabatan_fungsional')->with($notification);
     }
+
+    public function edit($jfNoUrt){
+        $data = RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->first();
+        $bidangilmu = DB::table('tbmapel')->select('mapKdMapel','mapNmMapel')->get();
+        $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
+        return view('guru/jabatan_fungsional.edit',compact('bidangilmu','jabatan','data'));
+    }
 }

@@ -78,46 +78,17 @@
                                     <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_kepangkatan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$golongan->goDokumen) }}" download="{{ $golongan->goDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('guru.kepangkatan.edit',[$golongan->goNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                    <form action="{{ route('guru.kepangkatan.delete',[$golongan->goNip]) }}" method="POST">
+                                    <a href="{{ route('guru.kepangkatan.edit',[$golongan->goNoUrt]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                    <form action="{{ route('guru.kepangkatan.delete',[$golongan->goNoUrt]) }}" method="POST">
                                         {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>
                                     </form>
                                 </td>
                             </tr>
-
                         @endforeach
                         </tbody>
                     </table>
-                    <!-- Modal Hapus-->
-                    <div class="modal fade modal-danger" id="modalhapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <form action=" {{ route('guru.personal.delete') }} " method="POST">
-                                    {{ csrf_field() }} {{ method_field('DELETE') }}
-                                    <div class="modal-header">
-                                        <p style="font-size:15px; font-weight:bold;" class="modal-title"><i class="fa fa-trash"></i>&nbsp;Form Konfirmasi Hapus Data</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <input type="hidden" name="id" id="id_hapus">
-                                                Apakah anda yakin ingin menghapus data? klik hapus jika iya !!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Batalkan</button>
-                                        <button type="submit" style="border: 1px solid #fff;background: transparent;color: #fff;" class="btn btn-sm btn-outline"><i class="fa fa-check-circle"></i>&nbsp; Ya, Hapus</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

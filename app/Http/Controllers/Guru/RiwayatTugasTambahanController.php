@@ -74,4 +74,91 @@ class RiwayatTugasTambahancontroller extends Controller
         );
         return redirect()->route('guru.tugas_tambahan')->with($notification);
     }
+
+    public function edit($tgsNoUrut){
+        $data = TugasTambahan::where('tgsNoUrut',$tgsNoUrut)->first();
+        return view('guru/tugas_tambahan.edit',compact('data'));
+    }
+
+    public function update(Request $request, $tgsNoUrut){
+        $messages = [
+            'required' => ':attribute harus diisi',
+            'numeric' => ':attribute harus angka',
+            'mimes' => 'The :attribute harus berupa file: :values.',
+            'max' => [
+                'file' => ':attribute tidak boleh lebih dari :max kilobytes.',
+            ],
+        ];
+        $attributes = [
+            'tgsNoUrut'   =>  'No Urut',
+            'tgsNamajab'   =>  'Tugas Tambahan',
+            'tgsTmt'   =>  'Tamatan',
+            'tgsNoSk'   =>  'Nomor SK',
+            'tgsTglSk'   =>  'Tanggal SK',
+            'tgsTtdPejabat'   =>  'Pejabat TTD',
+            'tgsDokumen'   =>  'Upload Dokumen ',
+        ];
+        $this->validate($request, [
+            'tgsNoUrut'    =>  'required',
+            'tgsNamajab'    =>  'required',
+            'tgsTmt'    =>  'required',
+            'tgsNoSk'    =>  'required',
+            'tgsTglSk'    =>  'required',
+            'tgsTtdPejabat'    =>  'required',
+            'tgsDokumen'    =>  'mimes:doc,pdf,docx,jpg|max:1000',
+        ],$messages,$attributes);
+
+        $model = $request->all();
+        $model['tgsDokumen'] = null;
+        $slug_user = Str::slug(Auth::user()->pegNama);
+        $tgsDokumen = TugasTambahan::where('tgsNoUrut',$tgsNoUrut)->first();
+        if ($request->hasFile('tgsDokumen')){
+            if (!$tgsDokumen->tgsDokumen == NULL){
+                unlink(public_path('/upload/dokumen_tugas_tambahan/'.$slug_user.'/'.$tgsDokumen->tgsDokumen));
+            }
+            $model['tgsDokumen'] = $slug_user.'-'.Auth::user()->tgsNoUrut.'-'.date('now').'.'.$request->tgsDokumen->getClientOriginalExtension();
+            $request->tgsDokumen->move(public_path('/upload/dokumen_tugas_tambahan/'.$slug_user), $model['tgsDokumen']);
+            TugasTambahan::where('tgsNoUrut',$tgsNoUrut)->update([
+                'tgsNoUrut'    =>  $request->tgsNoUrut,
+                'tgsNamajab'    =>  $request->tgsNamajab,
+                'tgsTmt'    =>  $request->tgsTmt,
+                'tgsNoSk'    =>  $request->tgsNoSk,
+                'tgsTglSk'    =>  $request->tgsTglSk,
+                'tgsTtdPejabat'    =>  $request->tgsTtdPejabat,
+                'tgsDokumen'    =>  $model['tgsDokumen'],
+            ]);
+
+            $notification = array(
+                'message' => 'Berhasil, data tugas tambahan berhasil ditambahkan!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.tugas_tambahan')->with($notification);
+        }
+        else{
+            TugasTambahan::where('tgsNoUrut',$tgsNoUrut)->update([
+                'tgsNoUrut'    =>  $request->tgsNoUrut,
+                'tgsNamajab'    =>  $request->tgsNamajab,
+                'tgsTmt'    =>  $request->tgsTmt,
+                'tgsNoSk'    =>  $request->tgsNoSk,
+                'tgsTglSk'    =>  $request->tgsTglSk,
+                'tgsTtdPejabat'    =>  $request->tgsTtdPejabat,
+            ]);
+
+            $notification = array(
+                'message' => 'Berhasil, data tugas tambahan berhasil ditambahkan!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.tugas_tambahan')->with($notification);
+        }
+    }
+
+    public function delete($tgsNoUrut){
+        TugasTambahan::where('tgsNoUrut',$tgsNoUrut)->delete();
+        $notification = array(
+            'message' => 'Berhasil, data tagus tambahan berhasil dihapus!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('guru.tugas_tambahan')->with($notification);
+    }
+
 }
