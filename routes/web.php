@@ -53,7 +53,9 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/',[RiwayatPelatihanController::class, 'index'])->name('guru.pelatihan');
         Route::get('/add',[RiwayatPelatihanController::class, 'add'])->name('guru.pelatihan.add');
         Route::post('/post',[RiwayatPelatihanController::class, 'post'])->name('guru.pelatihan.post');
-        Route::delete('/delete',[RiwayatPelatihanController::class, 'delete'])->name('guru.pelatihan.delete');
+        Route::get('{pltNourt}/edit',[RiwayatPelatihanController::class, 'edit'])->name('guru.pelatihan.edit');
+        Route::patch('{pltNourt}/update',[RiwayatPelatihanController::class, 'update'])->name('guru.pelatihan.update');
+        Route::delete('{pltNourt}/delete',[RiwayatPelatihanController::class, 'delete'])->name('guru.pelatihan.delete');
     });
 
     Route::group(['prefix'  => 'riwayat_kepangkatan/'],function(){
@@ -90,19 +92,19 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/',[DataIstriAtauSuamiController::class, 'index'])->name('guru.istri_atau_suami');
         Route::get('/add',[DataIstriAtauSuamiController::class, 'add'])->name('guru.istri_atau_suami.add');
         Route::post('/post',[DataIstriAtauSuamiController::class, 'post'])->name('guru.istri_atau_suami.post');
-        Route::get('{pendNip}/edit',[DataIstriAtauSuamiController::class, 'edit'])->name('guru.istri_atau_suami.edit');
-        Route::patch('{pendNip}/update',[DataIstriAtauSuamiController::class, 'update'])->name('guru.istri_atau_suami.update');
-        Route::delete('{pendNip}/delete',[DataIstriAtauSuamiController::class, 'delete'])->name('guru.istri_atau_suami.delete');
-        Route::delete('/delete',[DataIstriAtauSuamiController::class, 'delete'])->name('guru.istri_atau_suami.delete');
+        Route::get('{kelNoUrt}/edit',[DataIstriAtauSuamiController::class, 'edit'])->name('guru.istri_atau_suami.edit');
+        Route::patch('{kelNoUrt}/update',[DataIstriAtauSuamiController::class, 'update'])->name('guru.istri_atau_suami.update');
+        Route::delete('{kelNoUrt}/delete',[DataIstriAtauSuamiController::class, 'delete'])->name('guru.istri_atau_suami.delete');
+
     });
 
     Route::group(['prefix'  => 'data_anak/'],function(){
         Route::get('/',[DataAnakController::class, 'index'])->name('guru.data_anak');
         Route::get('/add',[DataAnakController::class, 'add'])->name('guru.data_anak.add');
         Route::post('/post',[DataAnakController::class, 'post'])->name('guru.data_anak.post');
-        Route::get('{pendNip}/edit',[DataAnakController::class, 'edit'])->name('guru.data_anak.edit');
-        Route::patch('{pendNip}/update',[DataAnakController::class, 'update'])->name('guru.data_anak.update');
-        Route::delete('{pendNip}/delete',[DataAnakController::class, 'delete'])->name('guru.data_anak.delete');
+        Route::get('{kelNoUrt}/edit',[DataAnakController::class, 'edit'])->name('guru.data_anak.edit');
+        Route::patch('{kelNoUrt}/update',[DataAnakController::class, 'update'])->name('guru.data_anak.update');
+        Route::delete('{kelNoUrt}/delete',[DataAnakController::class, 'delete'])->name('guru.data_anak.delete');
         Route::delete('/delete',[DataAnakController::class, 'delete'])->name('guru.data_anak.delete');
     });
 });

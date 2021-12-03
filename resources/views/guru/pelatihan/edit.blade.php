@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.pendidikan.update',[$data->pendNip]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('guru.pelatihan.update',[$data->pltNourt]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
                          <div class="col-md-12">
                             <div class="form-group col-md-6">
@@ -54,9 +54,10 @@
                                     <small class="form-text text-danger">{{ $errors->first('jendiklat') }}</small>
                                 @endif
                             </div>
+                           
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Mulai</label>
-                                <input type="date" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />
+                                <input type="date" value="{{ $data->pltTglmulai }}" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />
                                 @if ($errors->has('pltTglmulai'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTglmulai') }}</small>
                                 @endif
@@ -64,7 +65,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Selesai</label>
-                                <input type="date" name="pltTglakhir" class="tags form-control @error('pltTglakhir') is-invalid @enderror" />
+                                <input type="date" value="{{ $data->pltTglakhir }}" name="pltTglakhir" class="tags form-control @error('pltTglakhir') is-invalid @enderror" />
                                 @if ($errors->has('pltTglakhir'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTglakhir') }}</small>
                                 @endif
@@ -72,7 +73,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tempat</label>
-                                <input type="text" name="pltTempat" class="tags form-control @error('pltTempat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltTempat }}" name="pltTempat" class="tags form-control @error('pltTempat') is-invalid @enderror" />
                                 @if ($errors->has('pltTempat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltTempat') }}</small>
                                 @endif
@@ -80,7 +81,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tahun</label>
-                                <input type="text" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltThnsertifikat }}" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
                                 @if ($errors->has('pltThnsertifikat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltThnsertifikat') }}</small>
                                 @endif
@@ -88,7 +89,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nomor Sertifikat</label>
-                                <input type="text" name="pltnosertifikat" class="tags form-control @error('pltnosertifikat') is-invalid @enderror" />
+                                <input type="text" value="{{ $data->pltnosertifikat }}" name="pltnosertifikat" class="tags form-control @error('pltnosertifikat') is-invalid @enderror" />
                                 @if ($errors->has('pltnosertifikat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltnosertifikat') }}</small>
                                 @endif
@@ -105,7 +106,7 @@
                         </div>
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">
-                            <a href="{{ route('guru.pendidikan') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('guru.pelatihan') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;Simpan Data</button>
                         </div>
