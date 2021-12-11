@@ -10,8 +10,9 @@ class Pegawai extends Model
     protected $table = 'tbpegawai';
     public $timestamps = false;
     use HasFactory;
+    protected $primaryKey = "pegNip";
     protected $fillable = [
-        'pendNip',
+        'pegNip',
         'pegGlrDpn',
         'pegGlrBlg',
         'pegNama',

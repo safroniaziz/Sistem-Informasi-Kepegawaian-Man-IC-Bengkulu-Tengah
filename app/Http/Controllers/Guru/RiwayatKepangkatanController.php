@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class RiwayatKepangkatanController extends Controller
 {
     public function index(){
-        $golongans = RiwayatGolongan::all();
+        $golongans = RiwayatGolongan::where('goNip',Auth::user()->pegNip)->get();
         return view('guru/kepangkatan.index',compact('golongans'));
     }
 
@@ -21,6 +21,7 @@ class RiwayatKepangkatanController extends Controller
         return view('guru/kepangkatan.add');
     }
 
+    
     public function post(Request $request){
         $messages = [
             'required' => ':attribute harus diisi',

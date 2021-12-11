@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="{{ route('guru.pendidikan.update',[$data->pendNip]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('guru.pendidikan.update',[$data->pendNo]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
                         <div class="col-md-12">
                             <div class="form-group col-md-6">

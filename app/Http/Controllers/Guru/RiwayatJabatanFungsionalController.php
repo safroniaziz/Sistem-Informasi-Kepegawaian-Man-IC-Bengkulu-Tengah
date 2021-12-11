@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class RiwayatJabatanFungsionalController extends Controller
 {
     public function index(){
-        $jabatans = RiwayatJabatan::all();
+        $jabatans = RiwayatJabatan::where('jfNip',Auth::user()->pegNip)->get();
         return view('guru/jabatan_fungsional.index',compact('jabatans'));
     }
 
@@ -34,7 +34,7 @@ class RiwayatJabatanFungsionalController extends Controller
         $attributes = [
             'jfKdJenisjab'   =>  'Jenis Jabatan',
             'jfKdjab'   =>  'Jabatan',
-            'jfTmtjab'   =>  'Tamatan',
+            'jfTmtJab'   =>  'Tamatan',
             'jfNoSk'   =>  'Nomor SK',
             'jfTglSk'   =>  'Tanggal SK',
             'jfPejabat'   =>  'Pejabat Tertanda',
@@ -43,12 +43,12 @@ class RiwayatJabatanFungsionalController extends Controller
         ];
         $this->validate($request, [
             'jfKdJenisjab'    =>  'required',
-            'jfKdjab'    =>  'required',
-            'jfTmtjab'    =>  'required',
+            // 'jfKdjab'    =>  'required',
+            'jfTmtJab'    =>  'required',
             'jfNoSk'    =>  'required',
             'jfTglSk'    =>  'required',
-            'jfPejabat'    =>  'required',
-            'jfKdunit'    =>  'required',
+          
+    
             'jfDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
         ],$messages,$attributes);
 
@@ -64,12 +64,12 @@ class RiwayatJabatanFungsionalController extends Controller
         RiwayatJabatan::create([
             'jfNip'       =>  Auth::user()->pegNip,
             'jfKdJenisjab'    =>  $request->jfKdJenisjab,
-            'jfKdjab'    =>  $request->jfKdjab,
-            'jfTmtjab'    =>  $request->jfTmtjab,
+            // 'jfKdjab'    =>  $request->jfKdjab,
+            'jfTmtJab'    =>  $request->jfTmtJab,
             'jfNoSk'    =>  $request->jfNoSk,
             'jfTglSk'    =>  $request->jfTglSk,
-            'jfPejabat'    =>  $request->jfPejabat,
-            'jfKdunit'    =>  $request->jfKdunit,
+            // 'jfPejabat'    =>  $request->jfPejabat,
+            // 'jfKdunit'    =>  $request->jfKdunit,
             'jfDokumen'    =>  $model['jfDokumen'],
             'jfTglUnggah' =>  date("Y-m-d H:i:s"),
         ]);
@@ -87,4 +87,81 @@ class RiwayatJabatanFungsionalController extends Controller
         $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
         return view('guru/jabatan_fungsional.edit',compact('bidangilmu','jabatan','data'));
     }
+    public function update(Request $request, $jfNoUrt){
+        $messages = [
+            'required' => ':attribute harus diisi',
+            'numeric' => ':attribute harus angka',
+            'mimes' => 'The :attribute harus berupa file: :values.',
+            'max' => [
+                'file' => ':attribute tidak boleh lebih dari :max kilobytes.',
+            ],
+        ];
+        $attributes = [
+            'jfKdJenisjab'   =>  'Jenis Jabatan',
+            'jfKdjab'   =>  'Jabatan',
+            'jfTmtJab'   =>  'Tamatan',
+            'jfNoSk'   =>  'Nomor SK',
+            'jfTglSk'   =>  'Tanggal SK',
+            'jfPejabat'   =>  'Pejabat Tertanda',
+            'jfKdunit'   =>  'Bidang Ilmu ',
+            'jfDokumen'   =>  'Upload Dokumen ',
+        ];
+        $this->validate($request, [
+      
+        ],$messages,$attributes);
+
+        $model = $request->all();
+        $model['jfDokumen'] = null;
+        $slug_user = Str::slug(Auth::user()->pegNama);
+        $jfDokumen = RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->first();
+        if ($request->hasFile('jfDokumen')){
+            if (!$jfDokumen->jfDokumen == NULL){
+                unlink(public_path('/upload/dokumen_jabatan_fungsional/'.$slug_user.'/'.$jfDokumen->jfDokumen));
+            }
+            $model['jfDokumen'] = $slug_user.'-'.Auth::user()->jfNoUrt.'-'.date('now').'.'.$request->jfDokumen->getClientOriginalExtension();
+            $request->jfDokumen->move(public_path('/upload/dokumen_jabatan_fungsional/'.$slug_user), $model['jfDokumen']);
+            RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
+                'jfKdJenisjab'    =>  $request->jfKdJenisjab,
+                // 'jfKdjab'    =>  $request->jfKdjab,
+                'jfTmtJab'    =>  $request->jfTmtJab,
+                'jfNoSk'    =>  $request->jfNoSk,
+                'jfTglSk'    =>  $request->jfTglSk,
+                // 'jfPejabat'    =>  $request->jfPejabat,
+                // 'jfKdunit'    =>  $request->jfKdunit,
+               
+                'jfTglUnggah' =>  date("Y-m-d H:i:s"),
+                'jfDokumen'    =>  $model['jfDokumen'],
+            ]);
+
+            $notification = array(
+                'message' => 'Berhasil, data jabatan_fungsional berhasil ditambahkan!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.jabatan_fungsional')->with($notification);
+        }
+        else{
+            RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
+            'jfKdJenisjab'    =>  $request->jfKdJenisjab,
+           
+            'jfTmtJab'    =>  $request->jfTmtJab,
+            'jfNoSk'    =>  $request->jfNoSk,
+            'jfTglSk'    =>  $request->jfTglSk,
+         
+      
+            ]);
+
+            $notification = array(
+                'message' => 'Berhasil, data jabatan_fungsional berhasil ditambahkan!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.jabatan_fungsional')->with($notification);
+        }}
+        public function delete($jfNoUrt){
+            RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->delete();
+            $notification = array(
+                'message' => 'Berhasil, data jabatan_fungsional berhasil dihapus!',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('guru.jabatan_fungsional')->with($notification);
+        }
 }

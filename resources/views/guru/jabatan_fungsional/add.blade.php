@@ -43,7 +43,7 @@
                     <form action="{{ route('guru.jabatan_fungsional.post') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="col-md-12">
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Jabatan</label>
                                 <input type="text" name="jfKdJenisjab" class="tags form-control @error('jfKdJenisjab') is-invalid @enderror" />
                                 <div>
@@ -51,7 +51,7 @@
                                         <small class="form-text text-danger">{{ $errors->first('jfKdJenisjab') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jabatan</label>
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Pejabat Tertanda</label>
                                 <input type="text" name="jfPejabat" class="tags form-control @error('jfPejabat') is-invalid @enderror" />
                                 <div>
@@ -106,9 +106,9 @@
                                         <small class="form-text text-danger">{{ $errors->first('jfPejabat') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Bidang Ilmu</label>
                                 <select name="jfKdunit" class="form-control" id="">
                                     <option disabled>-- pilih bidang ilmu --</option>
@@ -121,7 +121,7 @@
                                         <small class="form-text text-danger">{{ $errors->first('jfKdunit') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Dokumen : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>

@@ -63,7 +63,7 @@ class RiwayatPelatihanController extends Controller
 
         Pelatihan::create([
             'pltnip'       =>  Auth::user()->pegNip,
-            'pltKddiklat'    =>  $request->jendiklat,
+            // 'pltKddiklat'    =>  $request->jendiklat,
             'pltNmdiklat'    =>  $request->jendiklat,
             'pltKddiklat2'    =>  $request->pltKddiklat2,
             'pltNmdiklat2'    =>  $request->pltNmdiklat2,

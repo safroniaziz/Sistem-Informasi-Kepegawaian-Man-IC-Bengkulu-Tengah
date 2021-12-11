@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class DataIstriAtauSuamiController extends Controller
 {
     public function index(){
-        $keluargas = Keluarga::all();
+        $keluargas = Keluarga::where('kelNip',Auth::user()->pegNip)->get();
         return view('guru/data_istri_atau_suami.index',compact('keluargas'));
     }
 
@@ -118,9 +118,9 @@ class DataIstriAtauSuamiController extends Controller
 
        
             Keluarga::where('kelNoUrt',$kelNoUrt)->update([
-                // 'kelNip'       =>  Auth::user()->pegNip,
+                'kelNip'       =>  Auth::user()->pegNip,
             'kelNama'    =>  $request->kelNama,
-            // 'kellstrike'    =>  $request->kellstrike,
+            'kelIstrike'    =>  $request->kelIstrike,
             'kelKerjaan'    =>  $request->kelKerjaan,
             'kelNipIstri'    =>  $request->kelNip,
             'kelTpLhr'    =>  $request->kelTpLhr,

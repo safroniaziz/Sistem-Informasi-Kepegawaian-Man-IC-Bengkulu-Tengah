@@ -37,6 +37,7 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::get('/',[DataPersonalController::class, 'index'])->name('guru.personal');
         Route::get('/add',[DataPersonalController::class, 'add'])->name('guru.personal.add');
         Route::post('/post',[DataPersonalController::class, 'post'])->name('guru.personal.post');
+        Route::patch('update/{pegNip}',[DataPersonalController::class, 'update'])->name('guru.personal.update');
         Route::delete('/delete',[DataPersonalController::class, 'delete'])->name('guru.personal.delete');
     });
 

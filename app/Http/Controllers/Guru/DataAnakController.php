@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class DataAnakController extends Controller
 {
     public function index(){
-        $anaks = Anak::all();
+        $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         return view('guru/data_anak.index',compact('anaks'));
     }
 

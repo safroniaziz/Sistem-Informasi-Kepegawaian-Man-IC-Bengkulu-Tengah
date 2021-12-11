@@ -49,7 +49,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kode Diklat</th>
+                                {{--  <th>Kode Diklat</th>  --}}
                                 <th>Nama Diklat</th>
                                 <th>Kode Diklat 2</th>
                                 <th>Nama Diklat 2</th>
@@ -71,7 +71,7 @@
                              <tr>
                                  <td> {{ $no++ }} </td>
                               
-                                 <td> {{ $pelatihan->pltKddiklat }} </td>
+                                 {{--  <td> {{ $pelatihan->pltKddiklat }} </td>  --}}
                                  <td> {{ $pelatihan->pltNmdiklat }} </td>
                                  <td> {{ $pelatihan->pltKddiklat2 }} </td>
                                  <td> {{ $pelatihan->pltNmdiklat2 }} </td>
