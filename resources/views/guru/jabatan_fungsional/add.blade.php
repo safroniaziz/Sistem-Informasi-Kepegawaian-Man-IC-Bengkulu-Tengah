@@ -58,7 +58,7 @@
                                 <select name="jfKdjab" class="form-control @error('jfKdjab') is-invalid @enderror">
                                     <option disabled>-- pilih Jabatan --</option>
                                     @foreach ($jabatan as $jabatan)
-                                        <option value="{{ $jabatan->jabKdJab }}">{{ $jabatan->jabNama }}</option>
+                                        <option value="{{ $jabatan->jabNama }}">{{ $jabatan->jabNama }}</option>
                                     @endforeach
                                 </select>
                                 <div>

@@ -42,11 +42,11 @@ class RiwayatJabatanFungsionalController extends Controller
             'jfDokumen'   =>  'Upload Dokumen ',
         ];
         $this->validate($request, [
-            'jfKdJenisjab'    =>  'required',
-            // 'jfKdjab'    =>  'required',
-            'jfTmtJab'    =>  'required',
-            'jfNoSk'    =>  'required',
-            'jfTglSk'    =>  'required',
+            // 'jfKdJenisjab'    =>  'required',
+            // // 'jfKdjab'    =>  'required',
+            // 'jfTmtJab'    =>  'required',
+            // 'jfNoSk'    =>  'required',
+            // 'jfTglSk'    =>  'required',
           
     
             'jfDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
@@ -64,8 +64,8 @@ class RiwayatJabatanFungsionalController extends Controller
         RiwayatJabatan::create([
             'jfNip'       =>  Auth::user()->pegNip,
             'jfKdJenisjab'    =>  $request->jfKdJenisjab,
-            // 'jfKdjab'    =>  $request->jfKdjab,
-            'jfTmtJab'    =>  $request->jfTmtJab,
+            'jfNamajab'    =>  $request->jfKdjab,
+            'jfTmtjab'    =>  $request->jfTmtjab,
             'jfNoSk'    =>  $request->jfNoSk,
             'jfTglSk'    =>  $request->jfTglSk,
             // 'jfPejabat'    =>  $request->jfPejabat,

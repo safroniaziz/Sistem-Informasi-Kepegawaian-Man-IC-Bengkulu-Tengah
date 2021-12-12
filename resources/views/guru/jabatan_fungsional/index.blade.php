@@ -68,7 +68,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 {{--  <td>{{ $jabatan->jfKdJenisjab }}</td>  --}}
-                                <td>{{ $jabatan->jfKdjab }}</td>
+                                <td>{{ $jabatan->jfNamajab }}</td>
                                 <td>{{ $jabatan->jfTmtJab }}</td>
                                 <td>{{ $jabatan->jfNoSk }}</td>
                                 <td>{{ $jabatan->jfTglSk }}</td>
