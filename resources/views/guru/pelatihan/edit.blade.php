@@ -54,7 +54,14 @@
                                     <small class="form-text text-danger">{{ $errors->first('jendiklat') }}</small>
                                 @endif
                             </div>
-                           
+                              <div>
+                               <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Nama Diklat</label>
+                                <input type="text" name="pltNmdiklat2" value="{{ $data->pltNmdiklat2 }}" class="tags form-control @error('pltNmdiklat2') is-invalid @enderror" />
+                                @if ($errors->has('pltNmdiklat2'))
+                                    <small class="form-text text-danger">{{ $errors->first('pltNmdiklat2') }}</small>
+                                @endif
+                            </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Mulai</label>
                                 <input type="date" value="{{ $data->pltTglmulai }}" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />

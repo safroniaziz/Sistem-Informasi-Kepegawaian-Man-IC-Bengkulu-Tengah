@@ -94,4 +94,12 @@
         </div>
     </section>
 @endsection
-
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush

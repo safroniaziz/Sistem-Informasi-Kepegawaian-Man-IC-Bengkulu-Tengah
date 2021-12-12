@@ -55,6 +55,7 @@
                                     <small class="form-text text-danger">{{ $errors->first('jendiklat') }}</small>
                                 @endif
                             </div>
+                            <div>
                                <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Diklat</label>
                                 <input type="text" name="pltNmdiklat2" class="tags form-control @error('pltNmdiklat2') is-invalid @enderror" />
