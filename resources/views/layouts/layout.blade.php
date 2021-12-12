@@ -118,7 +118,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small" style="background:#172D44;">
-                <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">Universitas Bengkulu</p>
+                <p style="color:white;text-align:center; margin-bottom:0px; padding:5px;">Man IC Bengkulu Tengah</p>
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -176,7 +176,7 @@
         <!-- footer content -->
         <footer style="overflow:hidden;">
           <div class="pull-right">
-            Lembaga Pengembangan Teknologi Informasi dan Kominikasi <a href="https://colorlib.com">Universitas Bengkulu</a>
+            Copyright © 2021  <a href="https://manicbenteng.sch.id/" target="_blank">MAN Insan Cendikia  Bengkulu Tengah</a>
           </div>
           <div class="clearfix"></div>
         </footer>

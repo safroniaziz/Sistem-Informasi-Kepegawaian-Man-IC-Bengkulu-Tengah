@@ -58,7 +58,7 @@
                                 <th>Pendidikan Terakhir</th>
                                 <th>Alasan Tidak Sekolah</th>
                                 <th>Pekerjaan</th>
-                                <th>NIP</th>
+                                {{--  <th>NIP</th>  --}}
                                 <th>BPJS No</th>
                                 <th>Nama Ibu</th>
                                 <th>Aksi</th>
@@ -80,7 +80,7 @@
                                 <td>{{ $anak->akPendAkhir }}</td>
                                 <td>{{ $anak->akAlsanTdkSekolah }}</td>
                                 <td>{{ $anak->akKerjaan }}</td>
-                                <td>{{ $anak->akNip }}</td>
+                                {{--  <td>{{ $anak->akNip }}</td>  --}}
                                 <td>{{ $anak->akNoBpjs }}</td>
                                 <td>{{ $anak->akIbu }}</td>
 

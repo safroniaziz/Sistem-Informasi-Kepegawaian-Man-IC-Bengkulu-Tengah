@@ -37,7 +37,7 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="keterangan">
-                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua berkas berkas yang sudah diupload oleh operator !!
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data yang sudah diunggah
                             </div>
                     @endif
                 </div>
