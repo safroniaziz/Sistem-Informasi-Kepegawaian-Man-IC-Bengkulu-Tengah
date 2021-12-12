@@ -58,7 +58,7 @@
                                 <th>Tanggal Nikah</th>
                                 <th>Tanggal Meninggal</th>
                                 <th>Tanggal Cerai</th>
-                                <th>BPJS No</th>
+                                <th>Nomor BPJS</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

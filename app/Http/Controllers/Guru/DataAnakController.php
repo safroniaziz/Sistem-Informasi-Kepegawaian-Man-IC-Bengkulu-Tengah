@@ -16,6 +16,7 @@ class DataAnakController extends Controller
     }
 
     public function add(){
+
         return view('guru/data_anak.add');
     }
 
@@ -43,23 +44,25 @@ class DataAnakController extends Controller
             'akIbu'   =>  'Nama Ibu',
         ];
         $this->validate($request, [
-            'akNama'    =>  'required',
-            'akStatus'    =>  'required',
-            'akJenkel'    =>  'required',
-            'akTpLhr'    =>  'required',
-            'akTglLhr'    =>  'required',
-            'akStatusPend'    =>  'required',
-            'akPendAkhir'    =>  'required',
-            'akAlsanTdkSekolah'    =>  'required',
-            'akKerjaan'    =>  'required',
-            'akNip'    =>  'required',
-            'akNoBpjs'    =>  'required',
-            'akIbu'    =>  'required',
+            // 'akNama'    =>  'required',
+            // 'akStatus'    =>  'required',
+            // 'akJenkel'    =>  'required',
+            // 'akTpLhr'    =>  'required',
+            // 'akTglLhr'    =>  'required',
+            // 'akStatusPend'    =>  'required',
+            // 'akPendAkhir'    =>  'required',
+            // 'akAlsanTdkSekolah'    =>  'required',
+            // 'akKerjaan'    =>  'required',
+            // 'akNip'    =>  'required',
+            // 'akNoBpjs'    =>  'required',
+            // 'akIbu'    =>  'required',
         ],$messages,$attributes);
 
         Anak::create([
-            'akNoUrt'       =>  Auth::user()->pegNoUrt,
-            'akNama'    =>  $request->akNama,
+            // 'akNoUrt'       =>  Auth::user()->pegNoUrt,
+            'akNip'       =>  Auth::user()->pegNip,
+            
+            'akNama'    =>  $request->kelNama,
             'akStatus'    =>  $request->akStatus,
             'akJenkel'    =>  $request->akJenkel,
             'akTpLhr'    =>  $request->akTpLhr,

@@ -136,7 +136,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">BPJS No</label>
+                                <label for="exampleInputEmail1">Nomor BPJS</label>
                                 <input type="text" name="kelBpjs" value="{{ $data->kelBpjs }}"  class="tags form-control @error('kelBpjs') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelBpjs'))
