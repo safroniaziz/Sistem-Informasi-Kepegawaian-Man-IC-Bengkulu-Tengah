@@ -47,7 +47,8 @@
                                 <select name="jendiklat" class="form-control" id="">
                                     <option disabled>-- pilih Jenis Diklat --</option>
                                     @foreach ($jendiklat as $jendiklat)
-                                        <option value="{{ $jendiklat->jendikkd }}">{{ $jendiklat->jendiknama }}</option>
+                                       <option {{ $data->pltKddiklat == $jendiklat->jendikkd ? 'selected' : '' }} value="{{ $jendiklat->jendikkd }}">{{ $jendiklat->jendiknama }}</option>
+
                                     @endforeach
                                 </select>
                                 @if ($errors->has('jendiklat'))

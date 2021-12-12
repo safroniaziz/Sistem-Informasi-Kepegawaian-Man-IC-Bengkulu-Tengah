@@ -111,7 +111,6 @@ class DataPersonalController extends Controller
         $data = Pegawai::where('pegNip',$pegNip)->first();
         return view('guru/personal.edit',compact('data'));
     }
-
     public function update(Request $request, $pegNip){
         $ketKawin = Kawin::where('KODE',$request->pegKetKawin)->first();
         $kedkum = KedHukum::where('kedIdHukum',$request->pegKedHukum)->first();

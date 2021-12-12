@@ -55,7 +55,7 @@
                                 <th>Tanggal SK</th>
                                 <th>Masa Kerja Gol Tahun</th>
                                 <th>Masa Kerja Gol Bulan</th>
-                                <th>Gaji Pokok</th>
+                                {{--  <th>Gaji Pokok</th>  --}}
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>
@@ -73,7 +73,7 @@
                                 <td>{{ $golongan->goTglSk }}</td>
                                 <td>{{ $golongan->goMaskerThn }}</td>
                                 <td>{{ $golongan->goMaskerBln }}</td>
-                                <td>{{ $golongan->goGapok }}</td>
+                                {{--  <td>{{ $golongan->goGapok }}</td>  --}}
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_kepangkatan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$golongan->goDokumen) }}" download="{{ $golongan->goDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
                                 </td>

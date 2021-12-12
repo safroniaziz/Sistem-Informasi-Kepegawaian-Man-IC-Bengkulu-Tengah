@@ -38,7 +38,7 @@ class RiwayatKepangkatanController extends Controller
             'goTglSk'   =>  'Tanggal SK',
             'goMaskerThn'   =>  'Masa Kerja Gol Tahun',
             'goMaskerBln'   =>  'Masa Kerja Gol Bulan',
-            'goGapok'   =>  'Gaji Pokok ',
+            // 'goGapok'   =>  'Gaji Pokok ',
             'goDokumen'   =>  'SK Kepangkatan ',
         ];
         $this->validate($request, [
@@ -48,7 +48,7 @@ class RiwayatKepangkatanController extends Controller
             'goTglSk'    =>  'required',
             'goMaskerThn'    =>  'required|numeric',
             'goMaskerBln'    =>  'required|numeric',
-            'goGapok'    =>  'required|numeric',
+            // 'goGapok'    =>  'required|numeric',
             'goDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
         ],$messages,$attributes);
 
@@ -69,7 +69,7 @@ class RiwayatKepangkatanController extends Controller
             'goTglSk'    =>  $request->goTglSk,
             'goMaskerThn'    =>  $request->goMaskerThn,
             'goMaskerBln'    =>  $request->goMaskerBln,
-            'goGapok'    =>  $request->goGapok,
+            // 'goGapok'    =>  $request->goGapok,
             'goDokumen'    =>  $model['goDokumen'],
             'goTglUnggah' =>  date("Y-m-d H:i:s"),
         ]);
@@ -102,7 +102,7 @@ class RiwayatKepangkatanController extends Controller
             'goTglSk'   =>  'Tanggal SK',
             'goMaskerThn'   =>  'Masa Kerja Gol Tahun',
             'goMaskerBln'   =>  'Masa Kerja Gol Bulan',
-            'goGapok'   =>  'Gaji Pokok ',
+            // 'goGapok'   =>  'Gaji Pokok ',
             'goDokumen'   =>  'SK Kepangkatan ',
         ];
         $this->validate($request, [
@@ -112,7 +112,7 @@ class RiwayatKepangkatanController extends Controller
             'goTglSk'    =>  'required',
             'goMaskerThn'    =>  'required|numeric',
             'goMaskerBln'    =>  'required|numeric',
-            'goGapok'    =>  'required|numeric',
+            // 'goGapok'    =>  'required|numeric',
             'goDokumen'    =>  'mimes:doc,pdf,docx,jpg|max:1000',
         ],$messages,$attributes);
 
@@ -133,7 +133,7 @@ class RiwayatKepangkatanController extends Controller
                 'goTglSk'    =>  $request->goTglSk,
                 'goMaskerThn'    =>  $request->goMaskerThn,
                 'goMaskerBln'    =>  $request->goMaskerBln,
-                'goGapok'    =>  $request->goGapok,
+                // 'goGapok'    =>  $request->goGapok,
                 'goDokumen'    =>  $model['goDokumen'],
             ]);
 
@@ -151,7 +151,7 @@ class RiwayatKepangkatanController extends Controller
                 'goTglSk'    =>  $request->goTglSk,
                 'goMaskerThn'    =>  $request->goMaskerThn,
                 'goMaskerBln'    =>  $request->goMaskerBln,
-                'goGapok'    =>  $request->goGapok,
+                // 'goGapok'    =>  $request->goGapok,
             ]);
 
             $notification = array(

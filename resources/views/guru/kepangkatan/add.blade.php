@@ -119,16 +119,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Gaji Pokok</label>
-                                <input type="text" name="goGapok" class="tags form-control @error('goGapok') is-invalid @enderror" />
-                                <div>
-                                    @if ($errors->has('goGapok'))
-                                        <small class="form-text text-danger">{{ $errors->first('goGapok') }}</small>
-                                    @endif
-                                </div>
-                            </div>
-
+                          
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">SK Kepangkatan : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
                                 <input type="file" name="goDokumen" id="goDokumen" class="form-control @error('goDokumen') is-invalid @enderror" style="padding-bottom:30px;">

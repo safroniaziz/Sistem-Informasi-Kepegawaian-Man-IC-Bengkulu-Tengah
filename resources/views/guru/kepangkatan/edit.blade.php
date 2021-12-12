@@ -119,7 +119,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Gaji Pokok</label>
                                 <input type="text" value="{{ $data->goGapok }}" name="goGapok" class="tags form-control @error('goGapok') is-invalid @enderror" />
                                 <div>
@@ -127,7 +127,7 @@
                                         <small class="form-text text-danger">{{ $errors->first('goGapok') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">SK Kepangkatan : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>
