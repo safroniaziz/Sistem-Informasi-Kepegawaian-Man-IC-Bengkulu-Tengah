@@ -71,7 +71,7 @@
                             @foreach ($anaks as $anak)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $anak->kelNama }}</td>
+                                <td>{{ $anak->akNama }}</td>
                                 <td>{{ $anak->akStatus }}</td>
                                 <td>{{ $anak->akJenkel }}</td>
                                 <td>{{ $anak->akTpLhr }}</td>
