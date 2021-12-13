@@ -46,7 +46,7 @@ class LoginController extends Controller
             'required' => ':attribute harus diisi',
         ];
         $attributes = [
-            'pegNip'    =>  'pegNip',
+            'pegNip'    =>  'Nip Pegawai',
             'password'    =>  'Password',
         ];
         $this->validate($request,[

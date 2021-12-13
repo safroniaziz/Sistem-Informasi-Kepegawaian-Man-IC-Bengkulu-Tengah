@@ -56,9 +56,15 @@
                             <!-- small box -->
                             <div class="small-box bg-aqua" style="margin-bottom:0px;">
                                 <div class="inner">
-                                <h3> </h3>
+                                <h3>
+                                    @if ($personal->pegPendAkhir != null)
+                                        {{ $personal->pegPendAkhir }}
+                                        @else
+                                        -
+                                    @endif
+                                </h3>
         
-                                <p>Total Skim Penelitian</p>
+                                <p>Pendidikan Terakhir</p>
                                 </div>
                                 <div class="icon">
                                 <i class="fa fa-list"></i>
@@ -70,9 +76,15 @@
                             <!-- small box -->
                             <div class="small-box bg-red" style="margin-bottom:0px;">
                                 <div class="inner">
-                                <h3></h3>
+                                <h3>
+                                    @if ($personal->pegNmJabatan != null)
+                                        {{ $personal->pegNmJabatan }}
+                                        @else
+                                        -
+                                    @endif
+                                </h3>
         
-                                <p>Jumlah Usulan Kegiatan</p>
+                                <p>Nama Jabatan</p>
                                 </div>
                                 <div class="icon">
                                 <i class="fa fa-list-alt"></i>
@@ -84,9 +96,15 @@
                             <!-- small box -->
                             <div class="small-box bg-yellow" style="margin-bottom:0px;">
                                 <div class="inner">
-                                <h3></h3>
+                                <h3>
+                                    @if ($personal->pegGolTerakhir != null)
+                                        {{ $personal->pegGolTerakhir }}
+                                        @else
+                                        -
+                                    @endif
+                                </h3>
         
-                                <p>Total Formulir Penilaian</p>
+                                <p>Golongan Terakhir</p>
                                 </div>
                                 <div class="icon">
                                 <i class="fa fa-wpforms"></i>
@@ -98,9 +116,15 @@
                             <!-- small box -->
                             <div class="small-box bg-green" style="margin-bottom:0px;">
                                 <div class="inner">
-                                <h3></h3>
+                                <h3>
+                                    @if ($personal->pegStapeg != "1")
+                                        Tidak Aktif
+                                        @else
+                                        Aktif
+                                    @endif
+                                </h3>
         
-                                <p>Usulan Kegiatan Disetujui</p>
+                                <p>Status Pegawai</p>
                                 </div>
                                 <div class="icon">
                                 <i class="fa fa-check-circle"></i>

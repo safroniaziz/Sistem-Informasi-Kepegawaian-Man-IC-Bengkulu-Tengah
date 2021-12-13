@@ -22,7 +22,7 @@ class GuruDashboardController extends Controller
     }
 
     public function dashboard(){
-        
-        return view('guru/dashboard');
+        $personal = Pegawai::select('pegNmJabatan','pegPendAkhir','pegGolTerakhir','pegStapeg')->where('pegNip',Auth::user()->pegNip)->first();
+        return view('guru/dashboard',compact('personal'));
     }
 }
