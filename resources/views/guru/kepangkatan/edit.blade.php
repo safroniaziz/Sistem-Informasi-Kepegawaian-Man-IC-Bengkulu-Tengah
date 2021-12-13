@@ -52,15 +52,15 @@
                                     <option {{ $data->pendNmSekol == "2C" ? 'selected' : '' }} value="2C">2C</option>
                                     <option {{ $data->pendNmSekol == "2D" ? 'selected' : '' }} value="2D">2D</option>
                                     <option disabled>----</option>
-                                    <option {{ $data->pendNmSekol == "3A" ? 'selected' : '' }} value="D3">3A</option>
-                                    <option {{ $data->pendNmSekol == "3B" ? 'selected' : '' }} value="S1">3B</option>
-                                    <option {{ $data->pendNmSekol == "3C" ? 'selected' : '' }} value="S2">3C</option>
-                                    <option {{ $data->pendNmSekol == "3A" ? 'selected' : '' }} value="S3">3D</option>
+                                    <option {{ $data->pendNmSekol == "3A" ? 'selected' : '' }} value="3A">3A</option>
+                                    <option {{ $data->pendNmSekol == "3B" ? 'selected' : '' }} value="3B">3B</option>
+                                    <option {{ $data->pendNmSekol == "3C" ? 'selected' : '' }} value="3C">3C</option>
+                                    <option {{ $data->pendNmSekol == "3D" ? 'selected' : '' }} value="3D">3D</option>
                                     <option disabled>----</option>
-                                    <option {{ $data->pendNmSekol == "4A" ? 'selected' : '' }} value="D3">4A</option>
-                                    <option {{ $data->pendNmSekol == "4B" ? 'selected' : '' }} value="S1">4B</option>
-                                    <option {{ $data->pendNmSekol == "4C" ? 'selected' : '' }} value="S2">4C</option>
-                                    <option {{ $data->pendNmSekol == "4A" ? 'selected' : '' }} value="S3">4D</option>
+                                    <option {{ $data->pendNmSekol == "4A" ? 'selected' : '' }} value="4A">4A</option>
+                                    <option {{ $data->pendNmSekol == "4B" ? 'selected' : '' }} value="4B">4B</option>
+                                    <option {{ $data->pendNmSekol == "4C" ? 'selected' : '' }} value="4C">4C</option>
+                                    <option {{ $data->pendNmSekol == "4D" ? 'selected' : '' }} value="4D">4D</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('goGol'))

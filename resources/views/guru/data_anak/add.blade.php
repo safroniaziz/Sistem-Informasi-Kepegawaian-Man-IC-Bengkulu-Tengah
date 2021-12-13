@@ -45,10 +45,10 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama</label>
-                                <input type="text" name="kelNama" class="tags form-control @error('kelNama') is-invalid @enderror" />
+                                <input type="text" name="akNama" class="tags form-control @error('akNama') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('kelNama'))
-                                        <small class="form-text text-danger">{{ $errors->first('kelNama') }}</small>
+                                    @if ($errors->has('akNama'))
+                                        <small class="form-text text-danger">{{ $errors->first('akNama') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -70,14 +70,14 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jenis Kelamin</label>
-                                <select name="akTglLhr" class="form-control">
+                                <select name="akJenkel" class="form-control">
                                     <option disabled>-- pilih Jenis Kelamin --</option>
                                     <option value="L">Laki-Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
                                 <div>
-                                    @if ($errors->has('akTglLhr'))
-                                        <small class="form-text text-danger">{{ $errors->first('akTglLhr') }}</small>
+                                    @if ($errors->has('akJenkel'))
+                                        <small class="form-text text-danger">{{ $errors->first('akJenkel') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">NIP</label>
                                 <input type="text" name="akNip" class="tags form-control @error('akNip') is-invalid @enderror" />
                                 <div>
@@ -165,7 +165,7 @@
                                         <small class="form-text text-danger">{{ $errors->first('akNip') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">BPJS No</label>

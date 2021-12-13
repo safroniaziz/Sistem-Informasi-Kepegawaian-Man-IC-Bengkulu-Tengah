@@ -62,7 +62,7 @@ class DataAnakController extends Controller
             // 'akNoUrt'       =>  Auth::user()->pegNoUrt,
             'akNip'       =>  Auth::user()->pegNip,
             
-            'akNama'    =>  $request->kelNama,
+            'akNama'    =>  $request->akNama,
             'akStatus'    =>  $request->akStatus,
             'akJenkel'    =>  $request->akJenkel,
             'akTpLhr'    =>  $request->akTpLhr,
@@ -129,7 +129,7 @@ class DataAnakController extends Controller
             Anak::where('akNoUrt',$akNoUrt)->update([
             'akNip'       =>  Auth::user()->pegNip,
                 
-                'akNama'    =>  $request->kelNama,
+                'akNama'    =>  $request->akNama,
                 'akStatus'    =>  $request->akStatus,
                 'akJenkel'    =>  $request->akJenkel,
                 'akTpLhr'    =>  $request->akTpLhr,

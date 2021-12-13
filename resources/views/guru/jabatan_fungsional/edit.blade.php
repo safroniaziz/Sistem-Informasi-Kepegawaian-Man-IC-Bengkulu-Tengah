@@ -52,8 +52,7 @@
                                     @endif
                                 </div>
                             </div>  --}}
-
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jabatan</label>
                                 <select name="jfKdjab" class="form-control @error('jfKdjab') is-invalid @enderror">
                                     <option disabled>-- pilih Jabatan --</option>
@@ -66,6 +65,19 @@
                                         <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
                                     @endif
                                 </div>
+                            </div>  --}}
+                             <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Jabatan</label>
+                                <select name="jenjab" class="form-control" id="">
+                                    <option disabled>-- pilih Jabatan --</option>
+                                    @foreach ($jenjab as $jenjab)
+                                       <option {{ $data->jfKdjab == $jenjab->jabKdJab ? 'selected' : '' }} value="{{ $jenjab->jabKdJab }}">{{ $jenjab->jabNama }}</option>
+
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('jenjab'))
+                                    <small class="form-text text-danger">{{ $errors->first('jenjab') }}</small>
+                                @endif
                             </div>
 
                            <div class="form-group col-md-6">

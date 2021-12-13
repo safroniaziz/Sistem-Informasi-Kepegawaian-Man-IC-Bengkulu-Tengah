@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\RiwayatJabatan;
+use App\Models\JenJab;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +20,8 @@ class RiwayatJabatanFungsionalController extends Controller
 
     public function add(){
         $bidangilmu = DB::table('tbmapel')->select('mapKdMapel','mapNmMapel')->get();
-        $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
-        return view('guru/jabatan_fungsional.add',compact('bidangilmu','jabatan'));
+        $jenjab = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
+        return view('guru/jabatan_fungsional.add',compact('bidangilmu','jenjab'));
     }
 
     public function post(Request $request){
@@ -60,11 +62,12 @@ class RiwayatJabatanFungsionalController extends Controller
             $model['jfDokumen'] = $slug_user.'-'.Auth::user()->jfNip.'-'.date('now').'.'.$request->jfDokumen->getClientOriginalExtension();
             $request->jfDokumen->move(public_path('/upload/dokumen_jabatan_fungsional/'.$slug_user), $model['jfDokumen']);
         }
-
+        $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
+       
         RiwayatJabatan::create([
             'jfNip'       =>  Auth::user()->pegNip,
-            'jfKdJenisjab'    =>  $request->jfKdJenisjab,
-            'jfNamajab'    =>  $request->jfKdjab,
+            'jfKdjab'    =>  $request->jenjab,
+            'jfNamajab'    =>  $jenjab->jabNama,
             'jfTmtjab'    =>  $request->jfTmtjab,
             'jfNoSk'    =>  $request->jfNoSk,
             'jfTglSk'    =>  $request->jfTglSk,
@@ -84,8 +87,8 @@ class RiwayatJabatanFungsionalController extends Controller
     public function edit($jfNoUrt){
         $data = RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->first();
         $bidangilmu = DB::table('tbmapel')->select('mapKdMapel','mapNmMapel')->get();
-        $jabatan = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
-        return view('guru/jabatan_fungsional.edit',compact('bidangilmu','jabatan','data'));
+        $jenjab = DB::table('tbjenjab')->select('jabKdJab','jabNama')->get();
+        return view('guru/jabatan_fungsional.edit',compact('bidangilmu','jenjab','data'));
     }
     public function update(Request $request, $jfNoUrt){
         $messages = [
@@ -120,9 +123,14 @@ class RiwayatJabatanFungsionalController extends Controller
             }
             $model['jfDokumen'] = $slug_user.'-'.Auth::user()->jfNoUrt.'-'.date('now').'.'.$request->jfDokumen->getClientOriginalExtension();
             $request->jfDokumen->move(public_path('/upload/dokumen_jabatan_fungsional/'.$slug_user), $model['jfDokumen']);
+         
+            $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
+
             RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
-                'jfKdJenisjab'    =>  $request->jfKdJenisjab,
-                // 'jfKdjab'    =>  $request->jfKdjab,
+              
+                'jfKdjab'    =>  $request->jenjab,
+                'jfNamajab'    =>  $jenjab->jabNama,
+            
                 'jfTmtJab'    =>  $request->jfTmtJab,
                 'jfNoSk'    =>  $request->jfNoSk,
                 'jfTglSk'    =>  $request->jfTglSk,

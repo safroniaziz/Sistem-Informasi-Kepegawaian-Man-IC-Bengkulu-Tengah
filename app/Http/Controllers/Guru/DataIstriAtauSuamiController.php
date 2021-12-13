@@ -56,7 +56,7 @@ class DataIstriAtauSuamiController extends Controller
         Keluarga::create([
             'kelNip'       =>  Auth::user()->pegNip,
             'kelNama'    =>  $request->kelNama,
-            'kellstrike'    =>  $request->kellstrike,
+            'kelIstrike'    =>  $request->kelIstrike,
             'kelKerjaan'    =>  $request->kelKerjaan,
             'kelNipIstri'    =>  $request->kelNip,
             'kelTpLhr'    =>  $request->kelTpLhr,

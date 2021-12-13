@@ -49,18 +49,18 @@
                                     <option disabled>-- pilih golongan --</option>
                                     <option value="2A">2A</option>
                                     <option value="2B">2B</option>
-                                    <option value="2B">2C</option>
-                                    <option value="2B">2D</option>
+                                    <option value="2C">2C</option>
+                                    <option value="2D">2D</option>
                                     <option disabled>----</option>
-                                    <option value="2B">3A</option>
-                                    <option value="2B">3B</option>
-                                    <option value="2B">3C</option>
-                                    <option value="2B">3D</option>
+                                    <option value="3A">3A</option>
+                                    <option value="3B">3B</option>
+                                    <option value="3C">3C</option>
+                                    <option value="3D">3D</option>
                                     <option disabled>----</option>
-                                    <option value="2B">4A</option>
-                                    <option value="2B">4B</option>
-                                    <option value="2B">4C</option>
-                                    <option value="2B">4D</option>
+                                    <option value="4A">4A</option>
+                                    <option value="4B">4B</option>
+                                    <option value="4C">4C</option>
+                                    <option value="4D">4D</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('goGol'))
