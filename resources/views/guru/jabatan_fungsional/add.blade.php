@@ -55,15 +55,15 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Jabatan</label>
-                                <select name="jfKdjab" class="form-control @error('jfKdjab') is-invalid @enderror">
+                                <select name="jenjab" class="form-control @error('jenjab') is-invalid @enderror">
                                     <option disabled>-- pilih Jabatan --</option>
-                                    @foreach ($jabatan as $jabatan)
-                                        <option value="{{ $jabatan->jabNama }}">{{ $jabatan->jabNama }}</option>
+                                    @foreach ($jenjab as $jenjab)
+                                        <option value="{{ $jenjab->jabKdJab }}">{{ $jenjab->jabNama }}</option>
                                     @endforeach
                                 </select>
                                 <div>
-                                    @if ($errors->has('jfKdjab'))
-                                        <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
+                                    @if ($errors->has('jenjab'))
+                                        <small class="form-text text-danger">{{ $errors->first('jenjab') }}</small>
                                     @endif
                                 </div>
                             </div>

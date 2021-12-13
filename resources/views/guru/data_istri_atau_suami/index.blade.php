@@ -72,7 +72,7 @@
                               
                                  
                                  <td> {{ $keluarga->kelNama }} </td>
-                                 <td> {{ $keluarga->kelNoUrt }} </td>
+                                 <td> {{ $keluarga->kelIstrike }} </td>
                                  <td> {{ $keluarga->kelKerjaan }} </td>
                                  <td> {{ $keluarga->kelNipIstri }} </td>
                            
@@ -100,3 +100,12 @@
         </div>
     </section>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush
