@@ -76,8 +76,8 @@
                                         <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pendidikan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pendidikan->pendDokumen) }}" download="{{ $pendidikan->pendDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('guru.pendidikan.edit',[$pendidikan->pendNip]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                        <form action="{{ route('guru.pendidikan.delete',[$pendidikan->pendNip]) }}" method="POST">
+                                        <a href="{{ route('guru.pendidikan.edit',[$pendidikan->pendNo]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                        <form action="{{ route('guru.pendidikan.delete',[$pendidikan->pendNo]) }}" method="POST">
                                             {{ csrf_field() }} {{ method_field("DELETE") }}
 
                                             <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Hapus</button>

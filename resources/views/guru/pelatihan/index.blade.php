@@ -49,10 +49,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kode Diklat</th>
-                                <th>Nama Diklat</th>
-                                <th>Kode Diklat 2</th>
-                                <th>Nama Diklat 2</th>
+                                {{--  <th>Kode Diklat</th>  --}}
+                                <th>Jenis Diklat</th>
+                                <th>Nama Diklat </th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Nomor Sertifikat</th>
@@ -71,9 +70,9 @@
                              <tr>
                                  <td> {{ $no++ }} </td>
                               
-                                 <td> {{ $pelatihan->pltKddiklat }} </td>
+                                 {{--  <td> {{ $pelatihan->pltKddiklat }} </td>  --}}
                                  <td> {{ $pelatihan->pltNmdiklat }} </td>
-                                 <td> {{ $pelatihan->pltKddiklat2 }} </td>
+                               
                                  <td> {{ $pelatihan->pltNmdiklat2 }} </td>
                                   <td> {{ $pelatihan->pltTglmulai }} </td>
                                  <td> {{ $pelatihan->pltTglakhir }} </td>
@@ -99,4 +98,12 @@
         </div>
     </section>
 @endsection
-
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush

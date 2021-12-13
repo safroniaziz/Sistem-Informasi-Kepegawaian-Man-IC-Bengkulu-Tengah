@@ -157,7 +157,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{--  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">NIP</label>
                                 <input type="text" value="{{ $data->akNip }}" name="akNip" class="tags form-control @error('akNip') is-invalid @enderror" />
                                 <div>
@@ -165,7 +165,7 @@
                                         <small class="form-text text-danger">{{ $errors->first('akNip') }}</small>
                                     @endif
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">BPJS No</label>

@@ -55,6 +55,14 @@
                                     <small class="form-text text-danger">{{ $errors->first('jendiklat') }}</small>
                                 @endif
                             </div>
+                            <div>
+                               <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Nama Diklat</label>
+                                <input type="text" name="pltNmdiklat2" class="tags form-control @error('pltNmdiklat2') is-invalid @enderror" />
+                                @if ($errors->has('pltNmdiklat2'))
+                                    <small class="form-text text-danger">{{ $errors->first('pltNmdiklat2') }}</small>
+                                @endif
+                            </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Mulai</label>
                                 <input type="date" name="pltTglmulai" class="tags form-control @error('pltTglmulai') is-invalid @enderror" />
@@ -81,7 +89,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tahun</label>
-                                <input type="text" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
+                                <input type="number" name="pltThnsertifikat" class="tags form-control @error('pltThnsertifikat') is-invalid @enderror" />
                                 @if ($errors->has('pltThnsertifikat'))
                                     <small class="form-text text-danger">{{ $errors->first('pltThnsertifikat') }}</small>
                                 @endif

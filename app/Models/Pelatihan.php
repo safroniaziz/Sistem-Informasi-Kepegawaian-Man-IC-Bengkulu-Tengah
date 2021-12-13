@@ -11,7 +11,8 @@ class Pelatihan extends Model
     public $timestamps = false;
     use HasFactory;
     protected $fillable = [
-        'pltNip',
+        'pltnip',
+        'pltNourt',
         'pltKddiklat',
         'pltNmdiklat',
         'pltKddiklat2',

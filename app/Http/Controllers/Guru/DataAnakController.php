@@ -11,11 +11,12 @@ use Illuminate\Support\Str;
 class DataAnakController extends Controller
 {
     public function index(){
-        $anaks = Anak::all();
+        $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         return view('guru/data_anak.index',compact('anaks'));
     }
 
     public function add(){
+
         return view('guru/data_anak.add');
     }
 
@@ -43,23 +44,25 @@ class DataAnakController extends Controller
             'akIbu'   =>  'Nama Ibu',
         ];
         $this->validate($request, [
-            'akNama'    =>  'required',
-            'akStatus'    =>  'required',
-            'akJenkel'    =>  'required',
-            'akTpLhr'    =>  'required',
-            'akTglLhr'    =>  'required',
-            'akStatusPend'    =>  'required',
-            'akPendAkhir'    =>  'required',
-            'akAlsanTdkSekolah'    =>  'required',
-            'akKerjaan'    =>  'required',
-            'akNip'    =>  'required',
-            'akNoBpjs'    =>  'required',
-            'akIbu'    =>  'required',
+            // 'akNama'    =>  'required',
+            // 'akStatus'    =>  'required',
+            // 'akJenkel'    =>  'required',
+            // 'akTpLhr'    =>  'required',
+            // 'akTglLhr'    =>  'required',
+            // 'akStatusPend'    =>  'required',
+            // 'akPendAkhir'    =>  'required',
+            // 'akAlsanTdkSekolah'    =>  'required',
+            // 'akKerjaan'    =>  'required',
+            // 'akNip'    =>  'required',
+            // 'akNoBpjs'    =>  'required',
+            // 'akIbu'    =>  'required',
         ],$messages,$attributes);
 
         Anak::create([
-            'akNoUrt'       =>  Auth::user()->pegNoUrt,
-            'akNama'    =>  $request->akNama,
+            // 'akNoUrt'       =>  Auth::user()->pegNoUrt,
+            'akNip'       =>  Auth::user()->pegNip,
+            
+            'akNama'    =>  $request->kelNama,
             'akStatus'    =>  $request->akStatus,
             'akJenkel'    =>  $request->akJenkel,
             'akTpLhr'    =>  $request->akTpLhr,
@@ -108,23 +111,25 @@ class DataAnakController extends Controller
             'akIbu'   =>  'Nama Ibu',
         ];
         $this->validate($request, [
-            'akNama'    =>  'required',
-            'akStatus'    =>  'required',
-            'akJenkel'    =>  'required',
-            'akTpLhr'    =>  'required',
-            'akTglLhr'    =>  'required',
-            'akStatusPend'    =>  'required',
-            'akPendAkhir'    =>  'required',
-            'akAlsanTdkSekolah'    =>  'required',
-            'akKerjaan'    =>  'required',
-            'akNip'    =>  'required|numeric',
-            'akNoBpjs'    =>  'required|numeric',
-            'akIbu'    =>  'required',
+            // 'akNama'    =>  'required',
+            // 'akStatus'    =>  'required',
+            // 'akJenkel'    =>  'required',
+            // 'akTpLhr'    =>  'required',
+            // 'akTglLhr'    =>  'required',
+            // 'akStatusPend'    =>  'required',
+            // 'akPendAkhir'    =>  'required',
+            // 'akAlsanTdkSekolah'    =>  'required',
+            // 'akKerjaan'    =>  'required',
+            // 'akNip'    =>  'required|numeric',
+            // 'akNoBpjs'    =>  'required|numeric',
+            // 'akIbu'    =>  'required',
         ],$messages,$attributes);
 
 
             Anak::where('akNoUrt',$akNoUrt)->update([
-                'akNama'    =>  $request->akNama,
+            'akNip'       =>  Auth::user()->pegNip,
+                
+                'akNama'    =>  $request->kelNama,
                 'akStatus'    =>  $request->akStatus,
                 'akJenkel'    =>  $request->akJenkel,
                 'akTpLhr'    =>  $request->akTpLhr,
@@ -133,7 +138,7 @@ class DataAnakController extends Controller
                 'akPendAkhir'    =>  $request->akPendAkhir,
                 'akAlsanTdkSekolah'    =>  $request->akAlsanTdkSekolah,
                 'akKerjaan'    =>  $request->akKerjaan,
-                'akNip'    =>  $request->akNip,
+                // 'akNip'    =>  $request->akNip,
                 'akNoBpjs'    =>  $request->akNoBpjs,
                 'akIbu'    =>  $request->akIbu,
             ]);

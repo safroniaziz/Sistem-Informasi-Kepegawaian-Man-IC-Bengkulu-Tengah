@@ -49,13 +49,13 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Jenis Jabatan</th>
+                                {{--  <th>Jenis Jabatan</th>  --}}
                                 <th>Jabatan</th>
                                 <th>Tamatan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
-                                <th>Pejabat TTD</th>
-                                <th>Bidang Ilmu</th>
+                                {{--  <th>Pejabat TTD</th>
+                                <th>Bidang Ilmu</th>  --}}
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>
@@ -67,13 +67,13 @@
                             @foreach ($jabatans as $jabatan)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $jabatan->jfKdJenisjab }}</td>
-                                <td>{{ $jabatan->jfKdjab }}</td>
+                                {{--  <td>{{ $jabatan->jfKdJenisjab }}</td>  --}}
+                                <td>{{ $jabatan->jfNamajab }}</td>
                                 <td>{{ $jabatan->jfTmtJab }}</td>
                                 <td>{{ $jabatan->jfNoSk }}</td>
                                 <td>{{ $jabatan->jfTglSk }}</td>
-                                <td>{{ $jabatan->jfPejabat }}</td>
-                                <td>{{ $jabatan->jfKdunit }}</td>
+                                {{--  <td>{{ $jabatan->jfPejabat }}</td>
+                                <td>{{ $jabatan->jfKdunit }}</td>  --}}
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_jabatan_fungsional/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$jabatan->jfDokumen) }}" download="{{ $jabatan->jfDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
                                 </td>
@@ -95,4 +95,12 @@
         </div>
     </section>
 @endsection
-
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush

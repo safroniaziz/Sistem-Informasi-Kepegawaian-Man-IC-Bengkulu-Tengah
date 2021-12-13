@@ -45,7 +45,7 @@
                            
                              <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Nama Istri/Suami</label>
-                                <input type="text" name="kelNama" class="tags form-control @error('kelNama') is-invalid @enderror" />
+                                <input type="text" name="kelNama" value="{{ $data->kelNama }}" class="tags form-control @error('kelNama') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelNama'))
                                         <small class="form-text text-danger">{{ $errors->first('kelNama') }}</small>
@@ -54,10 +54,10 @@
                             </div>
  <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Istri / Suami Ke</label>
-                                <input type="text" name="kellstrike" class="tags form-control @error('kellstrike') is-invalid @enderror" />
+                                <input type="text" name="kelIstrike" value="{{ $data->kelIstrike }}" class="tags form-control @error('kelIstrike') is-invalid @enderror" />
                                 <div>
-                                    @if ($errors->has('kellstrike'))
-                                        <small class="form-text text-danger">{{ $errors->first('kellstrike') }}</small>
+                                    @if ($errors->has('kelIstrike'))
+                                        <small class="form-text text-danger">{{ $errors->first('kelIstrike') }}</small>
                                     @endif
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 <select name="kelKerjaan" class="form-control">
                                     <option disabled>-- pilih pekerjaan --</option>
                                     <option value="PNS">PNS</option>
-                                    <option value="SEWASTA">SEWASTA</option>
+                                    <option value="SWASTA">SWASTA</option>
                                 </select>
                                 <div>
                                     @if ($errors->has('kelKerjaan'))
@@ -77,7 +77,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">NIP</label>
-                                <input type="text" name="kelNip" class="tags form-control @error('kelNip') is-invalid @enderror" />
+                                <input type="text" name="kelNip" value="{{ $data->kelNip }}" class="tags form-control @error('kelNip') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelNip'))
                                         <small class="form-text text-danger">{{ $errors->first('kelNip') }}</small>
@@ -87,7 +87,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tempat Lahir</label>
-                                <input type="text" name="kelTpLhr" class="tags form-control @error('kelTpLhr') is-invalid @enderror" />
+                                <input type="text" name="kelTpLhr"  value="{{ $data->kelTpLhr }}" class="tags form-control @error('kelTpLhr') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelTpLhr'))
                                         <small class="form-text text-danger">{{ $errors->first('kelTpLhr') }}</small>
@@ -97,7 +97,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Lahir</label>
-                                <input type="date" name="kelTglLhr" class="tags form-control @error('kelTglLhr') is-invalid @enderror" />
+                                <input type="date" name="kelTglLhr" value="{{ $data->kelTglLhr }}" class="tags form-control @error('kelTglLhr') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelTglLhr'))
                                         <small class="form-text text-danger">{{ $errors->first('kelTglLhr') }}</small>
@@ -107,7 +107,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Nikah</label>
-                                <input type="date" name="kelTglNikah" class="tags form-control @error('kelTglNikah') is-invalid @enderror" />
+                                <input type="date" name="kelTglNikah" value="{{ $data->kelTglNikah }}" class="tags form-control @error('kelTglNikah') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelTglNikah'))
                                         <small class="form-text text-danger">{{ $errors->first('kelTglNikah') }}</small>
@@ -117,7 +117,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Cerai</label>
-                                <input type="date" name="kelTglCerai" class="tags form-control" />
+                                <input type="date" name="kelTglCerai" value="{{ $data->kelTglCerai }}" class="tags form-control" />
                                 <div>
                                     @if ($errors->has('kelTglCerai'))
                                         <small class="form-text text-danger">{{ $errors->first('kelTglCerai') }}</small>
@@ -127,7 +127,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Meninggal</label>
-                                <input type="date" name="kelTglNinggal" class="tags form-control" />
+                                <input type="date" name="kelTglNinggal" value="{{ $data->kelTglNinggal }}" class="tags form-control" />
                                 <div>
                                     @if ($errors->has('kelTglNinggal'))
                                         <small class="form-text text-danger">{{ $errors->first('kelTglNinggal') }}</small>
@@ -136,8 +136,8 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">BPJS No</label>
-                                <input type="text" name="kelBpjs" class="tags form-control @error('kelBpjs') is-invalid @enderror" />
+                                <label for="exampleInputEmail1">Nomor BPJS</label>
+                                <input type="text" name="kelBpjs" value="{{ $data->kelBpjs }}"  class="tags form-control @error('kelBpjs') is-invalid @enderror" />
                                 <div>
                                     @if ($errors->has('kelBpjs'))
                                         <small class="form-text text-danger">{{ $errors->first('kelBpjs') }}</small>

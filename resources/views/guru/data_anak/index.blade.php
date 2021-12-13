@@ -58,7 +58,7 @@
                                 <th>Pendidikan Terakhir</th>
                                 <th>Alasan Tidak Sekolah</th>
                                 <th>Pekerjaan</th>
-                                <th>NIP</th>
+                                {{--  <th>NIP</th>  --}}
                                 <th>BPJS No</th>
                                 <th>Nama Ibu</th>
                                 <th>Aksi</th>
@@ -71,7 +71,7 @@
                             @foreach ($anaks as $anak)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $anak->kelNama }}</td>
+                                <td>{{ $anak->akNama }}</td>
                                 <td>{{ $anak->akStatus }}</td>
                                 <td>{{ $anak->akJenkel }}</td>
                                 <td>{{ $anak->akTpLhr }}</td>
@@ -80,7 +80,7 @@
                                 <td>{{ $anak->akPendAkhir }}</td>
                                 <td>{{ $anak->akAlsanTdkSekolah }}</td>
                                 <td>{{ $anak->akKerjaan }}</td>
-                                <td>{{ $anak->akNip }}</td>
+                                {{--  <td>{{ $anak->akNip }}</td>  --}}
                                 <td>{{ $anak->akNoBpjs }}</td>
                                 <td>{{ $anak->akIbu }}</td>
 

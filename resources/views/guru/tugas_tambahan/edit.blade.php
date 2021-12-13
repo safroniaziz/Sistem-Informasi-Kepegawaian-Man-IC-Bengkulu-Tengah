@@ -43,15 +43,7 @@
                     <form action="{{ route('guru.tugas_tambahan.update',[$data->tgsNoUrut]) }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
                         <div class="col-md-12">
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">No Urut</label>
-                                <input type="text" value="{{ $data->tgsNoUrut }}" name="tgsNoUrut" class="tags form-control @error('tgsNoUrut') is-invalid @enderror" />
-                                <div>
-                                    @if ($errors->has('tgsNoUrut'))
-                                        <small class="form-text text-danger">{{ $errors->first('tgsNoUrut') }}</small>
-                                    @endif
-                                </div>
-                            </div>
+                           
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tugas Tambahan</label>
@@ -93,15 +85,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Pejabat TTD</label>
-                                <input type="text" value="{{ $data->tgsTtdPejabat }}" name="tgsTtdPejabat" class="tags form-control @error('tgsTtdPejabat') is-invalid @enderror" />
-                                <div>
-                                    @if ($errors->has('tgsTtdPejabat'))
-                                        <small class="form-text text-danger">{{ $errors->first('tgsTtdPejabat') }}</small>
-                                    @endif
-                                </div>
-                            </div>
+                          
 
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Upload Dokumen : <a class="text-danger">Harap masukan file DOC/PDF. Max : 2MB</a></label>

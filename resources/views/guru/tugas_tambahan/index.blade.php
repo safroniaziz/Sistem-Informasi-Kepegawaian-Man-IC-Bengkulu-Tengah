@@ -53,7 +53,7 @@
                                 <th>Tamatan</th>
                                 <th>Nomor SK</th>
                                 <th>Tanggal SK</th>
-                                <th>Pejabat TTD</th>
+                           
                                 <th>Download Dokumen</th>
                                 <th>Aksi</th>
                             </tr>
@@ -65,12 +65,12 @@
                             @foreach ($tugastambahans as $tugastambahan)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $tugastambahan->tgsNoUrut }}</td>
+                            
                                 <td>{{ $tugastambahan->tgsNamajab }}</td>
                                 <td>{{ $tugastambahan->tgsTmt }}</td>
                                 <td>{{ $tugastambahan->tgsNoSk }}</td>
                                 <td>{{ $tugastambahan->tgsTglSk }}</td>
-                                <td>{{ $tugastambahan->tgsTtdPejabat }}</td>
+                            
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_tugas_tambahan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$tugastambahan->tgsDokumen) }}" download="{{ $tugastambahan->tgsDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
                                 </td>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Pelatihan;
+use App\Models\RefJendiklat;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -60,11 +62,12 @@ class RiwayatPelatihanController extends Controller
             $model['pltDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->pltDokumen->getClientOriginalExtension();
             $request->pltDokumen->move(public_path('/upload/dokumen_pelatihan/'.$slug_user), $model['pltDokumen']);
         }
+        $jendiklat = RefJendiklat::where('jendikkd',$request->jendiklat)->first();
 
         Pelatihan::create([
             'pltnip'       =>  Auth::user()->pegNip,
             'pltKddiklat'    =>  $request->jendiklat,
-            'pltNmdiklat'    =>  $request->jendiklat,
+            'pltNmdiklat'    =>  $jendiklat->jendiknama,
             'pltKddiklat2'    =>  $request->pltKddiklat2,
             'pltNmdiklat2'    =>  $request->pltNmdiklat2,
             'pltTglmulai'    =>  $request->pltTglmulai,
@@ -129,16 +132,20 @@ class RiwayatPelatihanController extends Controller
         $model['pltDokumen'] = null;
         $slug_user = Str::slug(Auth::user()->pegNama);
         $pltDokumen = Pelatihan::where('pltNourt',$pltNourt)->first();
+        $jendiklat = RefJendiklat::where('jendikkd',$request->jendiklat)->first();
+
         if ($request->hasFile('pltDokumen')){
             if (!$pltDokumen->pltDokumen == NULL){
                 unlink(public_path('/upload/dokumen_pelatihan/'.$slug_user.'/'.$pltDokumen->pltDokumen));
             }
             $model['pltDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->pltDokumen->getClientOriginalExtension();
             $request->pltDokumen->move(public_path('/upload/dokumen_pelatihan/'.$slug_user), $model['pltDokumen']);
+           
+            
             Pelatihan::where('pltNourt',$pltNourt)->update([
                 'pltnip'       =>  Auth::user()->pegNip,
                 'pltKddiklat'    =>  $request->jendiklat,
-                'pltNmdiklat'    =>  $request->jendiklat,
+                'pltNmdiklat'    =>  $jendiklat->jendiknama,
                 'pltKddiklat2'    =>  $request->pltKddiklat2,
                 'pltNmdiklat2'    =>  $request->pltNmdiklat2,
                 'pltTglmulai'    =>  $request->pltTglmulai,
@@ -160,7 +167,7 @@ class RiwayatPelatihanController extends Controller
             Pelatihan::where('pltNourt',$pltNourt)->update([
                 'pltnip'       =>  Auth::user()->pegNip,
                 'pltKddiklat'    =>  $request->jendiklat,
-                'pltNmdiklat'    =>  $request->jendiklat,
+                'pltNmdiklat'    =>  $jendiklat->jendiknama,
                 'pltKddiklat2'    =>  $request->pltKddiklat2,
                 'pltNmdiklat2'    =>  $request->pltNmdiklat2,
                 'pltTglmulai'    =>  $request->pltTglmulai,
