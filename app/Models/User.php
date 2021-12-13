@@ -11,13 +11,14 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $primaryKey = 'pegNip';
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $table = 'tbpegawai';
+    protected $primaryKey = 'pegNip';
+    public $incrementing = false;
     protected $fillable = [
         'pegNip',
         'pegGlrDpn',
