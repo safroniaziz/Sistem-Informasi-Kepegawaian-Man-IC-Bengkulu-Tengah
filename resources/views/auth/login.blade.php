@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     @else
-                    <h6>Form Login Pegawai (Guru)</h6>
+                    <h6>Form Login</h6>
                     <p style="text-align:center; margin-bottom:20px;">Sistem Informasi Kepegawaian <br> MAN IC Bengkulu Tengah</p>
                 @endif
                 <form method="post" action="{{ route('login') }}">
