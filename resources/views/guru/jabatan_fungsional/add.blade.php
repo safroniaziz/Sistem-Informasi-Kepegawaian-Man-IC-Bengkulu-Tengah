@@ -62,6 +62,7 @@
                                     @endforeach
                                 </select>
                                 <div>
+                             
                                     @if ($errors->has('jenjab'))
                                         <small class="form-text text-danger">{{ $errors->first('jenjab') }}</small>
                                     @endif

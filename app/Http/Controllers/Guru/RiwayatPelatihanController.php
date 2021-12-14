@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Pelatihan;
 use App\Models\RefJendiklat;
-
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,7 +17,6 @@ class RiwayatPelatihanController extends Controller
         $pelatihans = Pelatihan::where('pltnip',Auth::user()->pegNip)->get();
         return view('guru/pelatihan.index',compact('pelatihans'));
     }
-
     public function add(){
         $jendiklat = DB::table('refjendiklat')->select('jendikkd','jendiknama')->get();
         $diklat = DB::table('refdiklat')->select('dktkddiklat','dktnmdiklat')->get();
