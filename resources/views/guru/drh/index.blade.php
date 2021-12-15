@@ -111,7 +111,7 @@
           @php
               $no=1;
           @endphp
-          {{ $data['pelatihan'] }}
+         @if (!empty($pelatihan))
           @foreach ($pelatihan as $item)
             <tr>
                 <td align="center"><?=$no++ ?></td>
@@ -122,6 +122,7 @@
                 <td align="center"><a target="_blank" href="{{ asset('upload/dokumen_pelatihan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$item->pltDokumen) }}">...</a></td>
             </tr>
           @endforeach
+         @endif
         </tbody>
       </table>
     </div>

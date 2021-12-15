@@ -34,7 +34,7 @@ class CetakDrh extends Controller
         $anak     = Anak::where('akNip',Auth::user()->pegNip)->get();
 
         
-        // return $pelatihan;
+        // return $pendidikan;
         return view('guru/drh.index',compact('title','pelatihan','foto',
         'personal','pendidikan','kepangkatan','jabatan','tugas_tambahan','suami_istri','anak'));
     }
