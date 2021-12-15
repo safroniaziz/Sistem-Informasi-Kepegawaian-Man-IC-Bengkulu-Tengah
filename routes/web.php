@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guru\CetakDrh;
 use App\Http\Controllers\Guru\DataPersonalController;
 use App\Http\Controllers\Guru\RiwayatPendidikanController;
 use App\Http\Controllers\Guru\RiwayatKepangkatanController;
@@ -104,6 +105,9 @@ Route::group(['prefix'  => 'guru/'],function(){
         Route::patch('{akNoUrt}/update',[DataAnakController::class, 'update'])->name('guru.data_anak.update');
         Route::delete('{akNoUrt}/delete',[DataAnakController::class, 'delete'])->name('guru.data_anak.delete');
     });
+
+    Route::get('/drh',[CetakDrh::class, 'index'])->name('guru.drh');
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -10,6 +10,11 @@ use Illuminate\Support\Str;
 
 class DataIstriAtauSuamiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $keluargas = Keluarga::where('kelNip',Auth::user()->pegNip)->get();
         return view('guru/data_istri_atau_suami.index',compact('keluargas'));

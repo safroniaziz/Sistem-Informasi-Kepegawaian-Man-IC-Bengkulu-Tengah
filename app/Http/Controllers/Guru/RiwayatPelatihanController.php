@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RiwayatPelatihanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $pelatihans = Pelatihan::where('pltnip',Auth::user()->pegNip)->get();
         return view('guru/pelatihan.index',compact('pelatihans'));

@@ -46,6 +46,10 @@
     </ul>
 </li>
 
+<li>
+    <a href=" {{ route('guru.drh') }} " target="_blank"><i class="fa fa-download"></i>Download Daftar Riwayat Hidup</a>
+</li>
+
 <li style="padding-left:2px;">
     <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();

@@ -10,6 +10,11 @@ use Illuminate\Support\Str;
 
 class RiwayatPendidikanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $pendidikans = Pendidikan::where('pendNip',Auth::user()->pegNip)->get();
         return view('guru/pendidikan.index',compact('pendidikans'));

@@ -10,6 +10,11 @@ use Illuminate\Support\Str;
 
 class DataAnakController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $anaks = Anak::where('akNip',Auth::user()->pegNip)->get();
         return view('guru/data_anak.index',compact('anaks'));

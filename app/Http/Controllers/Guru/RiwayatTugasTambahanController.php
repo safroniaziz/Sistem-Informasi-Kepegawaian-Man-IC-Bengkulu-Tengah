@@ -10,6 +10,11 @@ use Illuminate\Support\Str;
 
 class RiwayatTugasTambahancontroller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $tugastambahans = TugasTambahan::where('tgsNip',Auth::user()->pegNip)->get();
         return view('guru/tugas_tambahan.index',compact('tugastambahans'));

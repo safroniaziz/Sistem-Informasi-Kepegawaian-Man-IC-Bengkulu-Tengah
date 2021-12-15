@@ -79,8 +79,12 @@
                                  <td> {{ $pelatihan->pltnosertifikat }} </td>
                                  <td> {{ $pelatihan->pltThnsertifikat }} </td>
                                  <td> {{ $pelatihan->pltTempat }} </td>
-    <td>
-                                        <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pelatihan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pelatihan->pltDokumen) }}" download="{{ $pelatihan->pltDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                    <td>
+                                        @if ($pelatihan->pltDokumen == null || $pelatihan->pltDokumen == "")
+                                            <a style="color: red">tidak ada dokumen</a>
+                                        @else
+                                            <a class="btn btn-primary btn-sm" href="{{ asset('upload/dokumen_pelatihan/'.\Illuminate\Support\Str::slug(Auth::user()->pegNama).'/'.$pelatihan->pltDokumen) }}" download="{{ $pelatihan->pltDokumen }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{ route('guru.pelatihan.edit',[$pelatihan->pltNourt]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
