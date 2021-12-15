@@ -70,7 +70,6 @@
                                     <small class="form-text text-danger">{{ $errors->first('pltTglmulai') }}</small>
                                 @endif
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Tanggal Selesai</label>
                                 <input type="date" name="pltTglakhir" class="tags form-control @error('pltTglakhir') is-invalid @enderror" />

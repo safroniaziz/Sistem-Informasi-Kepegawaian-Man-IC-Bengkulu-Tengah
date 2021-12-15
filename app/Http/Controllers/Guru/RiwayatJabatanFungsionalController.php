@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use App\Models\RiwayatJabatan;
 use App\Models\JenJab;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -132,9 +131,9 @@ class RiwayatJabatanFungsionalController extends Controller
             $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
 
             RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
-              
+            
                 'jfKdjab'    =>  $request->jenjab,
-                'jfNamajab'    =>  $jenjab->jabNama,
+            'jfNamajab'    =>  $jenjab->jabNama,
             
                 'jfTmtJab'    =>  $request->jfTmtJab,
                 'jfNoSk'    =>  $request->jfNoSk,
@@ -153,9 +152,11 @@ class RiwayatJabatanFungsionalController extends Controller
             return redirect()->route('guru.jabatan_fungsional')->with($notification);
         }
         else{
+            $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
             RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
             'jfKdJenisjab'    =>  $request->jfKdJenisjab,
-           
+            'jfKdjab'    =>  $request->jenjab,
+            'jfNamajab'    =>  $jenjab->jabNama,
             'jfTmtJab'    =>  $request->jfTmtJab,
             'jfNoSk'    =>  $request->jfNoSk,
             'jfTglSk'    =>  $request->jfTglSk,

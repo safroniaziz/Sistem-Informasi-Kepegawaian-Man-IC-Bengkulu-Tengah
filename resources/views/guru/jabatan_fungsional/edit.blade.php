@@ -72,7 +72,6 @@
                                     <option disabled>-- pilih Jabatan --</option>
                                     @foreach ($jenjab as $jenjab)
                                        <option {{ $data->jfKdjab == $jenjab->jabKdJab ? 'selected' : '' }} value="{{ $jenjab->jabKdJab }}">{{ $jenjab->jabNama }}</option>
-
                                     @endforeach
                                 </select>
                                 @if ($errors->has('jenjab'))
