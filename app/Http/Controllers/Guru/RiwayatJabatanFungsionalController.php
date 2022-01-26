@@ -149,7 +149,7 @@ class RiwayatJabatanFungsionalController extends Controller
         else{
             $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
             RiwayatJabatan::where('jfNoUrt',$jfNoUrt)->update([
-            'jfKdJenisjab'    =>  $request->jfKdJenisjab,
+            // 'jfKdJenisjab'    =>  $request->jfKdJenisjab,
             'jfKdjab'    =>  $request->jenjab,
             'jfNamajab'    =>  $jenjab->jabNama,
             'jfTmtJab'    =>  $request->jfTmtJab,

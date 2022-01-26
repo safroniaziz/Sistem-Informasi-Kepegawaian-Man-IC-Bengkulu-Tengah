@@ -37,7 +37,6 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="keterangan">
-                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua berkas berkas yang sudah diupload oleh operator !!
                             </div>
                     @endif
                 </div>
@@ -91,8 +90,8 @@
                     <div class="modal fade modal-danger" id="modalhapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <form action=" {{ route('guru.personal.delete') }} " method="POST">
-                                    {{ csrf_field() }} {{ method_field('DELETE') }}
+                                {{--  <form action=" {{ route('guru.tugas_tambahan.delete',[$tugastambahan->tgsNoUrut]) }}" method="POST">
+                                    {{ csrf_field() }} {{ method_field('DELETE') }}  --}}
                                     <div class="modal-header">
                                         <p style="font-size:15px; font-weight:bold;" class="modal-title"><i class="fa fa-trash"></i>&nbsp;Form Konfirmasi Hapus Data</p>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
