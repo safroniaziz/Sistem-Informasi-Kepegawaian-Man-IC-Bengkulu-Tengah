@@ -37,6 +37,7 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="keterangan">
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data keluarga istri atau suami yang sudah diunggah
                               
                             </div>
                     @endif

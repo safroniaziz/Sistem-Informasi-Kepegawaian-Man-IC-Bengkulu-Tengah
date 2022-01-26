@@ -6,12 +6,12 @@
 @section('login_as', 'Guru')
 @section('user-login')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('user-login2')
     @if (Auth::check())
-    {{ Auth::user()->nm_user }}
+    {{ Auth::user()->pegNama }}
     @endif
 @endsection
 @section('sidebar-menu')
@@ -37,6 +37,8 @@
                             </div>
                             @else
                             <div class="alert alert-success alert-block" id="keterangan">
+                                <strong><i class="fa fa-info-circle"></i>&nbsp;Perhatian: </strong> Berikut semua data anak yang sudah diunggah
+                          
                             </div>
                     @endif
                 </div>
