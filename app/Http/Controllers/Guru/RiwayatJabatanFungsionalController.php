@@ -12,6 +12,11 @@ use Illuminate\Support\Str;
 
 class RiwayatJabatanFungsionalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $jabatans = RiwayatJabatan::where('jfNip',Auth::user()->pegNip)->get();
         return view('guru/jabatan_fungsional.index',compact('jabatans'));

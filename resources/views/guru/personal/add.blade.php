@@ -250,14 +250,6 @@
                                     <small class="form-text text-danger">{{ $errors->first('jfKdjab') }}</small>
                                 @endif
                             </div>
-
-                          
-
-                          
-
-                          
-
-                     
                         </div>
                         <div class="col-md-12 text-center">
                             <hr style="width: 50%" class="mt-0">

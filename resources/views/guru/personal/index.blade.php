@@ -278,7 +278,6 @@
                                     <small class="form-text text-danger">{{ $errors->first('pegMasapensiun') }}</small>
                                 @endif
                             </div>
-
                             <div class="form-group col-md-4">
                                 <label for="exampleInputEmail1">TMT</label>
                                 <input type="date" disabled name="pegTmtJab" id="pegTmtJab" value="{{ $data->pegTmtJab }}" class="tags form-control @error('pegTmtJab') is-invalid @enderror" />
@@ -412,6 +411,24 @@
                                     <small class="form-text text-danger">{{ $errors->first('pegEmail') }}</small>
                                 @endif
                             </div>
+
+                            <div class="form-group col-md-4">
+                                <label>Pas Foto</label>
+                                <input type="file" disabled name="pegPoto" id="foto" onchange="previewFoto()" class="form-control file-upload-default">
+                                @if ($errors->has('pegPoto'))
+                                    <small class="form-text text-danger">{{ $errors->first('pegPoto') }}</small>
+                                @endif
+                                {{-- <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info upload_value" id="upload-value" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                    </span>
+                                </div> --}}
+                            </div>
+                            <div class="form-group col-md-4" id="password-form">
+                                <img class="foto-baru" id="preview-foto" src="{{ asset('upload/pas_foto/'.$data->pegPoto) }}" height="100" width="100" alt="" style="font-size:12px;">
+                            </div>
+
                              <div class="col-md-12" style="text-align:center;">
                             <a onclick="enable()" id="ubahdata" class="btn btn-primary btn-sm" style="color:white;"><i class="fa fa-edit"></i>&nbsp; Ubah Data </a>
                             <button type="submit" id="simpan" class="btn btn-primary btn-sm" style="display:none;"><i class="fa fa-check-circle"></i>&nbsp; Simpan Perubahan</button>
@@ -426,6 +443,21 @@
 
 @push('scripts')
     <script>
+        function previewFoto() {
+            var preview = document.querySelector('#preview-foto');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            reader.onloadend = function () {
+            preview.src = reader.result;
+            }
+
+            if (file) {
+            reader.readAsDataURL(file);
+            } else {
+            preview.src = "";
+            }
+        }
         function enable(){
             $("#pegNip").prop('disabled', false);
             $("#pegGlrDpn").prop('disabled', false);
@@ -473,9 +505,7 @@
             $("#pegGolTerakhir").prop('disabled', false);
             $("#pegNmJabatan").prop('disabled', false);
             $("#pegKdJenisjab").prop('disabled', false);
-
-            
-
+            $("#foto").prop('disabled', false);
             $('#ubahdata').hide();
             $('#simpan').show();
         }

@@ -52,7 +52,66 @@ class DataPersonalController extends Controller
 
 
     }
-    public function post(Request $request){
+    // public function post(Request $request){
+    //     $messages = [
+    //         'required' => ':attribute harus diisi',
+    //         'numeric' => ':attribute harus angka',
+    //         'mimes' => 'The :attribute harus berupa file: :values.',
+    //         'max' => [
+    //             'file' => ':attribute tidak boleh lebih dari :max kilobytes.',
+    //         ],
+    //     ];
+    //     $attributes = [
+    //         'pegNmSekol'   =>  'Nama Sekolah',
+    //         'pegNoIjazah'   =>  'Nomor Ijazah',
+    //         'pegThnLls'   =>  'Tahun Lulus',
+    //         'pegTglIjazah'   =>  'Tanggal Ijazah',
+    //         'pegTempat'   =>  'Tempat Pegawai',
+    //         'pegJurusan'   =>  'Pegawai Jurusan',
+    //         'pegDokumen'   =>  'Upload Ijazah ',
+    //     ];
+    //     $this->validate($request, [
+    //         'pegNmSekol'    =>  'required',
+    //         'pegNoIjazah'    =>  'required',
+    //         'pegThnLls'    =>  'required',
+    //         'pegTglIjazah'    =>  'required',
+    //         'pegTempat'    =>  'required',
+    //         'pegJurusan'    =>  'required',
+    //         'pegDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
+    //     ],$messages,$attributes);
+
+    //     // $model = $request->all();
+    //     // $model['pegDokumen'] = null;
+    //     // $slug_user = Str::slug(Auth::user()->pegNama);
+
+    //     // if ($request->hasFile('pegDokumen')) {
+    //     //     $model['pegDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->pegDokumen->getClientOriginalExtension();
+    //     //     $request->pegDokumen->move(public_path('/upload/dokumen_pegidikan/'.$slug_user), $model['pegDokumen']);
+    //     // }
+
+    //     Pegawai::create([
+    //         'pegNip'       =>  Auth::user()->pegNip,
+    //         'pegNmSekol'    =>  $request->pegNmSekol,
+    //         'pegNoIjazah'    =>  $request->pegNoIjazah,
+    //         'pegThnLls'    =>  $request->pegThnLls,
+    //         'pegTglIjazah'    =>  $request->pegTglIjazah,
+    //         'pegTempat'    =>  $request->pegTempat,
+    //         'pegJurusan'    =>  $request->pegJurusan,
+    //         'pegDokumen'    =>  $model['pegDokumen'],
+    //         'pegTglUnggah' =>  date("Y-m-d H:i:s"),
+    //     ]);
+
+    //     $notification = array(
+    //         'message' => 'Berhasil, data pegidikan berhasil ditambahkan!',
+    //         'alert-type' => 'success'
+    //     );
+    //     return redirect()->route('guru.personal')->with($notification);
+    // }
+    public function edit($pegNip){
+        $data = Pegawai::where('pegNip',$pegNip)->first();
+        return view('guru/personal.edit',compact('data'));
+    }
+    public function update(Request $request, $pegNip){
         $messages = [
             'required' => ':attribute harus diisi',
             'numeric' => ':attribute harus angka',
@@ -62,66 +121,28 @@ class DataPersonalController extends Controller
             ],
         ];
         $attributes = [
-            'pegNmSekol'   =>  'Nama Sekolah',
-            'pegNoIjazah'   =>  'Nomor Ijazah',
-            'pegThnLls'   =>  'Tahun Lulus',
-            'pegTglIjazah'   =>  'Tanggal Ijazah',
-            'pegTempat'   =>  'Tempat Pegawai',
-            'pegJurusan'   =>  'Pegawai Jurusan',
-            'pegDokumen'   =>  'Upload Ijazah ',
+            'pegPoto'   =>  'Foto',
         ];
         $this->validate($request, [
-            'pegNmSekol'    =>  'required',
-            'pegNoIjazah'    =>  'required',
-            'pegThnLls'    =>  'required',
-            'pegTglIjazah'    =>  'required',
-            'pegTempat'    =>  'required',
-            'pegJurusan'    =>  'required',
-            'pegDokumen'    =>  'required|mimes:doc,pdf,docx,jpg|max:1000',
+            'pegPoto'    =>  'required|mimes:jpg,png|max:500',
         ],$messages,$attributes);
-
-        // $model = $request->all();
-        // $model['pegDokumen'] = null;
-        // $slug_user = Str::slug(Auth::user()->pegNama);
-
-        // if ($request->hasFile('pegDokumen')) {
-        //     $model['pegDokumen'] = $slug_user.'-'.Auth::user()->pegNip.'-'.date('now').'.'.$request->pegDokumen->getClientOriginalExtension();
-        //     $request->pegDokumen->move(public_path('/upload/dokumen_pegidikan/'.$slug_user), $model['pegDokumen']);
-        // }
-
-        Pegawai::create([
-            'pegNip'       =>  Auth::user()->pegNip,
-            'pegNmSekol'    =>  $request->pegNmSekol,
-            'pegNoIjazah'    =>  $request->pegNoIjazah,
-            'pegThnLls'    =>  $request->pegThnLls,
-            'pegTglIjazah'    =>  $request->pegTglIjazah,
-            'pegTempat'    =>  $request->pegTempat,
-            'pegJurusan'    =>  $request->pegJurusan,
-            'pegDokumen'    =>  $model['pegDokumen'],
-            'pegTglUnggah' =>  date("Y-m-d H:i:s"),
-        ]);
-
-        $notification = array(
-            'message' => 'Berhasil, data pegidikan berhasil ditambahkan!',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('guru.personal')->with($notification);
-    }
-    public function edit($pegNip){
-        $data = Pegawai::where('pegNip',$pegNip)->first();
-        return view('guru/personal.edit',compact('data'));
-    }
-    public function update(Request $request, $pegNip){
+        
         $ketKawin = Kawin::where('KODE',$request->pegKetKawin)->first();
         $kedkum = KedHukum::where('kedIdHukum',$request->pegKedHukum)->first();
-        $agama = Agama::where('KODE',$request->pegAgama)->first();
-        $stapeg = RefStapeg::where('KODE',$request->pegStapeg)->first();
-        $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
-        $refpendidikan = RefPendidikan::where('pendTingkat',$request->pegPendAkhir)->first();
-        $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
-        $jenisjabatan = JenisJab::where('jenKdJenJab',$request->pegKdJenisjab)->first();
-
-
+        // $agama = Agama::where('KODE',$request->pegAgama)->first();
+        // $stapeg = RefStapeg::where('KODE',$request->pegStapeg)->first();
+        // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
+        // $refpendidikan = RefPendidikan::where('pendTingkat',$request->pegPendAkhir)->first();
+        // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
+        // $jenisjabatan = JenisJab::where('jenKdJenJab',$request->pegKdJenisjab)->first();
+        $personal = Pegawai::where('pegNip',$pegNip)->select('pegPoto')->first();
+        $slug_user = Str::slug(Auth::user()->pegNama);
+        if ($request->hasFile('pegPoto')){
+            if (!$personal->pegPoto == NULL){
+                unlink(public_path('/upload/pas_foto/'.$personal->pegPoto));
+            }
+            $model['foto'] = $slug_user.'-'.Auth::user()->pegNip.'.'.$request->pegPoto->getClientOriginalExtension();
+            $request->pegPoto->move(public_path('/upload/pas_foto/'), $model['foto']);
         // return $ketKawin;
             Pegawai::where('pegNip',$pegNip)->update([
             'pegNip'       =>  Auth::user()->pegNip,
@@ -173,6 +194,7 @@ class DataPersonalController extends Controller
             'pegNoHp'  =>  $request->pegNoHp,
             'pegNik'  =>  $request->pegNik,
             'pegEmail'  =>  $request->pegEmail,
+            'pegPoto'  =>  $model['foto'],
             // 'pegHobi'  =>  $request->
             // 'pegPoto'  =>  $request->
             // 'pegIdpasword'  =>  $request->
@@ -184,7 +206,7 @@ class DataPersonalController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->route('guru.personal')->with($notification);
-
+        }
     }
 
     public function delete($pegNip){
