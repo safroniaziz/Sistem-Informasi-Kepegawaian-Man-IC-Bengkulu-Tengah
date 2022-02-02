@@ -12,6 +12,7 @@ use App\Models\Pegawai;
 use App\Models\RefStapeg;
 use App\Models\KedHukum;
 use App\Models\RefPendidikan;
+use App\Models\Password;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -124,90 +125,183 @@ class DataPersonalController extends Controller
             'pegPoto'   =>  'Foto',
         ];
         $this->validate($request, [
-            'pegPoto'    =>  'required|mimes:jpg,png|max:1000',
-            'pegKetKawin'   =>  'required'
+            'pegPoto'    =>  'mimes:jpg,png|max:1000',
+            'pegKetKawin'   =>  'required',
+            'pegEmail' => 'required|email'
         ],$messages,$attributes);
-        
-        $ketKawin = Kawin::where('KODE',$request->pegKetKawin)->first();
-        $kedkum = KedHukum::where('kedIdHukum',$request->pegKedHukum)->first();
-        // $agama = Agama::where('KODE',$request->pegAgama)->first();
-        // $stapeg = RefStapeg::where('KODE',$request->pegStapeg)->first();
-        // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
-        // $refpendidikan = RefPendidikan::where('pendTingkat',$request->pegPendAkhir)->first();
-        // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
-        // $jenisjabatan = JenisJab::where('jenKdJenJab',$request->pegKdJenisjab)->first();
-        $personal = Pegawai::where('pegNip',$pegNip)->select('pegPoto')->first();
-        $slug_user = Str::slug(Auth::user()->pegNama);
-        $slug_time = $time_now = date("Y-m-d h:i:s a");
-        if ($request->hasFile('pegPoto')){
-            if (!$personal->pegPoto == NULL){
-                unlink(public_path('/upload/pas_foto/'.$personal->pegPoto));
+        DB::beginTransaction();
+        try{
+            $ketKawin = Kawin::where('KODE',$request->pegKetKawin)->first();
+            $kedkum = KedHukum::where('kedIdHukum',$request->pegKedHukum)->first();
+            // $agama = Agama::where('KODE',$request->pegAgama)->first();
+            // $stapeg = RefStapeg::where('KODE',$request->pegStapeg)->first();
+            // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
+            // $refpendidikan = RefPendidikan::where('pendTingkat',$request->pegPendAkhir)->first();
+            // $golongan = Golongan::where('KODE',$request->pegGolTerakhir)->first();
+            // $jenisjabatan = JenisJab::where('jenKdJenJab',$request->pegKdJenisjab)->first();
+            $personal = Pegawai::where('pegNip',$pegNip)->select('pegPoto')->first();
+            $slug_user = Str::slug(Auth::user()->pegNama);
+            $slug_date = $time_now = date("Y-m-d");
+            if ($request->hasFile('pegPoto')){
+                if (!$personal->pegPoto == NULL){
+                    unlink(public_path('/upload/pas_foto/'.$personal->pegPoto));
+                }
+                $model['foto'] = $slug_date.'-'.Str::random(9).'-'.Auth::user()->pegNip.'-'.$slug_user.'.'.$request->pegPoto->getClientOriginalExtension();
+                $request->pegPoto->move(public_path('/upload/pas_foto/'), $model['foto']);
+            // return $ketKawin;
+                Pegawai::where('pegNip',$pegNip)->update([
+                'pegNip'       =>  Auth::user()->pegNip,
+                'pegGlrDpn'   =>  $request->pegGlrDpn,
+                'pegNama'  =>  $request->pegNama,
+                'pegGlrBlg'  =>  $request->pegGlrBlg,
+                'pegTpLhr'  =>  $request->pegTpLhr,
+                'pegTglLhr'   =>  $request->pegTglLhr,
+                'pegJenkel'  =>  $request->pegJenkel,
+                'pegKetkawin'  =>  $ketKawin->KET,
+                'pegKdkawin'  =>  $request->pegKetKawin,
+                'pegTmtCpns'  =>  $request->pegTmtCpns,
+                'pegTmtPns'  =>  $request->pegTmtPns,
+                'pegGolTerakhir'  =>  $request->pegGolTerakhir,
+                'pegTmtGol'  =>  $request->pegTmtGol,
+                'pegMaskerthn'  =>  $request->pegMaskerthn,
+                'pegMaskerbln'  =>  $request->pegMaskerbln,
+                'pegPendAkhir'  =>  $request->pegPendAkhir,
+                'pegThnLulus'  =>  $request->pegThnLulus,
+                'pegJurusan'  =>  $request->pegJurusan,
+                'pegTempat'  =>  $request->pegTempat,
+                'pegAgama'  =>  $request->pegAgama,
+                'pegStapeg'  =>  $request->pegStapeg,
+                'pegKedHukum'  =>  $kedkum->kedNmHukum,
+                'pegIdKedHukum'  =>  $request->pegKedHukum,
+                'pegJenisKepeg'  =>  $request->pegJenisKepeg,
+                // 'pegKdJenKepeg'  =>  $request->pegKdJenKepeg,
+                'pegNmJabatan'  =>  $request->pegNmJabatan,
+                // 'pegKdJab'  =>  $request->pegKdJab,
+                'pegMasapensiun'  =>  $request->pegMasapensiun,
+                'pegTmtJab'  =>  $request->pegTmtJab,
+                'pegKdJenisjab' =>  $request->pegKdJenisjab,
+                'pegNamaTgsTmbhan'  =>  $request->pegNamaTgsTmbhan,
+                // 'pegIdTgsTmbhan'  =>  $request->pegIdTgsTmbhan,
+                'pegTmtTugasTmbhan'  =>  $request->pegTmtTugasTmbhan,
+                'pegNoKarpeg'  =>  $request->pegNoKarpeg,
+                'pegSertifikasi'  =>  $request->pegSertifikasi,
+                'pegNosertifikasi'  =>  $request->pegNosertifikasi,
+                'pegNidn'  =>  $request->pegNidn,
+                'pegNamaSubUnit' =>  $request->pegNamaSubUnit,
+                // 'pegKdUnitKerja'  =>  $request->pegKdUnitKerja,
+                'pegNpwp'  =>  $request->pegNpwp,
+                'pegAlamat'  =>  $request->pegAlamat,
+                'pegRt_Rw'  =>  $request->pegRt_Rw,
+                'pegDesa'  =>  $request->pegDesa,
+                'pegKecamatan'  =>  $request->pegKecamatan,
+                'pegKabupaten'  =>  $request->pegKabupaten,
+                'pegProvinsi'  =>  $request->pegProvinsi,
+                'pegNoHp'  =>  $request->pegNoHp,
+                'pegNik'  =>  $request->pegNik,
+                'pegEmail'  =>  $request->pegEmail,
+                'pegPoto'  =>  $model['foto'],
+                // 'pegHobi'  =>  $request->
+                // 'pegPoto'  =>  $request->
+                // 'pegIdpasword'  =>  $request->
+                'pegTglUbah'  =>  $request->pegTglUbah,
+                ]);
+                // return Auth::user()->pegNip;
+                if (Auth::user()->pegNip == "196806071992031006") {
+                    Password::where('level_user','tu')->update([
+                        'email' =>  $request->pegEmail,
+                    ]);
+                }else if (Auth::user()->pegNip == "197808202005011007") {
+                    Password::where('level_user','kepsek')->update([
+                        'email' =>  $request->pegEmail,
+                    ]);
+                }
+                DB::commit();
+                $notification = array(
+                    'message' => 'Berhasil, data personal berhasil diperbarui!',
+                    'alert-type' => 'success'
+                );
+                return redirect()->route('guru.personal')->with($notification);
+            }else {
+                Pegawai::where('pegNip',$pegNip)->update([
+                    'pegNip'       =>  Auth::user()->pegNip,
+                    'pegGlrDpn'   =>  $request->pegGlrDpn,
+                    'pegNama'  =>  $request->pegNama,
+                    'pegGlrBlg'  =>  $request->pegGlrBlg,
+                    'pegTpLhr'  =>  $request->pegTpLhr,
+                    'pegTglLhr'   =>  $request->pegTglLhr,
+                    'pegJenkel'  =>  $request->pegJenkel,
+                    'pegKetkawin'  =>  $ketKawin->KET,
+                    'pegKdkawin'  =>  $request->pegKetKawin,
+                    'pegTmtCpns'  =>  $request->pegTmtCpns,
+                    'pegTmtPns'  =>  $request->pegTmtPns,
+                    'pegGolTerakhir'  =>  $request->pegGolTerakhir,
+                    'pegTmtGol'  =>  $request->pegTmtGol,
+                    'pegMaskerthn'  =>  $request->pegMaskerthn,
+                    'pegMaskerbln'  =>  $request->pegMaskerbln,
+                    'pegPendAkhir'  =>  $request->pegPendAkhir,
+                    'pegThnLulus'  =>  $request->pegThnLulus,
+                    'pegJurusan'  =>  $request->pegJurusan,
+                    'pegTempat'  =>  $request->pegTempat,
+                    'pegAgama'  =>  $request->pegAgama,
+                    'pegStapeg'  =>  $request->pegStapeg,
+                    'pegKedHukum'  =>  $kedkum->kedNmHukum,
+                    'pegIdKedHukum'  =>  $request->pegKedHukum,
+                    'pegJenisKepeg'  =>  $request->pegJenisKepeg,
+                    // 'pegKdJenKepeg'  =>  $request->pegKdJenKepeg,
+                    'pegNmJabatan'  =>  $request->pegNmJabatan,
+                    // 'pegKdJab'  =>  $request->pegKdJab,
+                    'pegMasapensiun'  =>  $request->pegMasapensiun,
+                    'pegTmtJab'  =>  $request->pegTmtJab,
+                    'pegKdJenisjab' =>  $request->pegKdJenisjab,
+                    'pegNamaTgsTmbhan'  =>  $request->pegNamaTgsTmbhan,
+                    // 'pegIdTgsTmbhan'  =>  $request->pegIdTgsTmbhan,
+                    'pegTmtTugasTmbhan'  =>  $request->pegTmtTugasTmbhan,
+                    'pegNoKarpeg'  =>  $request->pegNoKarpeg,
+                    'pegSertifikasi'  =>  $request->pegSertifikasi,
+                    'pegNosertifikasi'  =>  $request->pegNosertifikasi,
+                    'pegNidn'  =>  $request->pegNidn,
+                    'pegNamaSubUnit' =>  $request->pegNamaSubUnit,
+                    // 'pegKdUnitKerja'  =>  $request->pegKdUnitKerja,
+                    'pegNpwp'  =>  $request->pegNpwp,
+                    'pegAlamat'  =>  $request->pegAlamat,
+                    'pegRt_Rw'  =>  $request->pegRt_Rw,
+                    'pegDesa'  =>  $request->pegDesa,
+                    'pegKecamatan'  =>  $request->pegKecamatan,
+                    'pegKabupaten'  =>  $request->pegKabupaten,
+                    'pegProvinsi'  =>  $request->pegProvinsi,
+                    'pegNoHp'  =>  $request->pegNoHp,
+                    'pegNik'  =>  $request->pegNik,
+                    'pegEmail'  =>  $request->pegEmail,
+                    // 'pegHobi'  =>  $request->
+                    // 'pegPoto'  =>  $request->
+                    // 'pegIdpasword'  =>  $request->
+                    'pegTglUbah'  =>  $request->pegTglUbah,
+                    ]);
+                    // return Auth::user()->pegNip;
+                    if (Auth::user()->pegNip == "196806071992031006") {
+                        Password::where('level_user','tu')->update([
+                            'email' =>  $request->pegEmail,
+                        ]);
+                    }else if (Auth::user()->pegNip == "197808202005011007") {
+                        Password::where('level_user','kepsek')->update([
+                            'email' =>  $request->pegEmail,
+                        ]);
+                    }
+                    DB::commit();
+                    $notification = array(
+                        'message' => 'Berhasil, data personal berhasil diperbarui!',
+                        'alert-type' => 'success'
+                    );
+                    return redirect()->route('guru.personal')->with($notification);
             }
-            $model['foto'] = $slug_user.'-'.Auth::user()->pegNip.'-'.$slug_time.'.'.$request->pegPoto->getClientOriginalExtension();
-            $request->pegPoto->move(public_path('/upload/pas_foto/'), $model['foto']);
-        // return $ketKawin;
-            Pegawai::where('pegNip',$pegNip)->update([
-            'pegNip'       =>  Auth::user()->pegNip,
-            'pegGlrDpn'   =>  $request->pegGlrDpn,
-            'pegNama'  =>  $request->pegNama,
-            'pegGlrBlg'  =>  $request->pegGlrBlg,
-            'pegTpLhr'  =>  $request->pegTpLhr,
-            'pegTglLhr'   =>  $request->pegTglLhr,
-            'pegJenkel'  =>  $request->pegJenkel,
-            'pegKetkawin'  =>  $ketKawin->KET,
-            'pegKdkawin'  =>  $request->pegKetKawin,
-            'pegTmtCpns'  =>  $request->pegTmtCpns,
-            'pegTmtPns'  =>  $request->pegTmtPns,
-            'pegGolTerakhir'  =>  $request->pegGolTerakhir,
-            'pegTmtGol'  =>  $request->pegTmtGol,
-            'pegMaskerthn'  =>  $request->pegMaskerthn,
-            'pegMaskerbln'  =>  $request->pegMaskerbln,
-            'pegPendAkhir'  =>  $request->pegPendAkhir,
-            'pegThnLulus'  =>  $request->pegThnLulus,
-            'pegJurusan'  =>  $request->pegJurusan,
-            'pegTempat'  =>  $request->pegTempat,
-            'pegAgama'  =>  $request->pegAgama,
-            'pegStapeg'  =>  $request->pegStapeg,
-            'pegKedHukum'  =>  $kedkum->kedNmHukum,
-            'pegIdKedHukum'  =>  $request->pegKedHukum,
-            'pegJenisKepeg'  =>  $request->pegJenisKepeg,
-            // 'pegKdJenKepeg'  =>  $request->pegKdJenKepeg,
-            'pegNmJabatan'  =>  $request->pegNmJabatan,
-            // 'pegKdJab'  =>  $request->pegKdJab,
-            'pegMasapensiun'  =>  $request->pegMasapensiun,
-            'pegTmtJab'  =>  $request->pegTmtJab,
-            'pegKdJenisjab' =>  $request->pegKdJenisjab,
-            'pegNamaTgsTmbhan'  =>  $request->pegNamaTgsTmbhan,
-            // 'pegIdTgsTmbhan'  =>  $request->pegIdTgsTmbhan,
-            'pegTmtTugasTmbhan'  =>  $request->pegTmtTugasTmbhan,
-            'pegNoKarpeg'  =>  $request->pegNoKarpeg,
-            'pegSertifikasi'  =>  $request->pegSertifikasi,
-            'pegNosertifikasi'  =>  $request->pegNosertifikasi,
-            'pegNidn'  =>  $request->pegNidn,
-            'pegNamaSubUnit' =>  $request->pegNamaSubUnit,
-            // 'pegKdUnitKerja'  =>  $request->pegKdUnitKerja,
-            'pegNpwp'  =>  $request->pegNpwp,
-            'pegAlamat'  =>  $request->pegAlamat,
-            'pegRt_Rw'  =>  $request->pegRt_Rw,
-            'pegDesa'  =>  $request->pegDesa,
-            'pegKecamatan'  =>  $request->pegKecamatan,
-            'pegKabupaten'  =>  $request->pegKabupaten,
-            'pegProvinsi'  =>  $request->pegProvinsi,
-            'pegNoHp'  =>  $request->pegNoHp,
-            'pegNik'  =>  $request->pegNik,
-            'pegEmail'  =>  $request->pegEmail,
-            'pegPoto'  =>  $model['foto'],
-            // 'pegHobi'  =>  $request->
-            // 'pegPoto'  =>  $request->
-            // 'pegIdpasword'  =>  $request->
-            'pegTglUbah'  =>  $request->pegTglUbah,
-            ]);
-
-            $notification = array(
-                'message' => 'Berhasil, data kepangkatan berhasil ditambahkan!',
-                'alert-type' => 'success'
+        }catch(\Exception $e){
+            DB::rollback();
+            $notification2 = array(
+                'message' => 'Gagal, data personal gagal diperbarui!',
+                'alert-type' => 'error'
             );
-            return redirect()->route('guru.personal')->with($notification);
+            return redirect()->route('guru.personal')
+                        ->with($notification2);
         }
     }
 

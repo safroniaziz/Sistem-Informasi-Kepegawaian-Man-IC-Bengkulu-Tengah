@@ -414,7 +414,7 @@
 
                             <div class="form-group col-md-4">
                                 <label>Pas Foto</label>
-                                <input type="file" disabled name="pegPoto" id="foto" onchange="previewFoto()" class="form-control file-upload-default">
+                                <input type="file" disabled name="pegPoto" id="foto" onchange="previewFoto()" class="form-control">
                                 @if ($errors->has('pegPoto'))
                                     <small class="form-text text-danger">{{ $errors->first('pegPoto') }}</small>
                                 @endif
