@@ -124,7 +124,7 @@ class DataPersonalController extends Controller
             'pegPoto'   =>  'Foto',
         ];
         $this->validate($request, [
-            'pegPoto'    =>  'mimes:jpg,png|max:1000',
+            'pegPoto'    =>  'required|mimes:jpg,png|max:1000',
             'pegKetKawin'   =>  'required'
         ],$messages,$attributes);
         
