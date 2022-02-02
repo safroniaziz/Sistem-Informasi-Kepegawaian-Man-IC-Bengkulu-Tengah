@@ -124,7 +124,7 @@ class DataPersonalController extends Controller
             'pegPoto'   =>  'Foto',
         ];
         $this->validate($request, [
-            'pegPoto'    =>  'required|mimes:jpg,png|max:500',
+            'pegPoto'    =>  'mimes:jpg,png|max:1000',
             'pegKetKawin'   =>  'required'
         ],$messages,$attributes);
         
@@ -138,11 +138,12 @@ class DataPersonalController extends Controller
         // $jenisjabatan = JenisJab::where('jenKdJenJab',$request->pegKdJenisjab)->first();
         $personal = Pegawai::where('pegNip',$pegNip)->select('pegPoto')->first();
         $slug_user = Str::slug(Auth::user()->pegNama);
+        $slug_time = $time_now = date("Y-m-d h:i:s a");
         if ($request->hasFile('pegPoto')){
             if (!$personal->pegPoto == NULL){
                 unlink(public_path('/upload/pas_foto/'.$personal->pegPoto));
             }
-            $model['foto'] = $slug_user.'-'.Auth::user()->pegNip.'.'.$request->pegPoto->getClientOriginalExtension();
+            $model['foto'] = $slug_user.'-'.Auth::user()->pegNip.'-'.$slug_time.'.'.$request->pegPoto->getClientOriginalExtension();
             $request->pegPoto->move(public_path('/upload/pas_foto/'), $model['foto']);
         // return $ketKawin;
             Pegawai::where('pegNip',$pegNip)->update([
