@@ -125,6 +125,7 @@ class DataPersonalController extends Controller
         ];
         $this->validate($request, [
             'pegPoto'    =>  'required|mimes:jpg,png|max:500',
+            'pegKetKawin'   =>  'required'
         ],$messages,$attributes);
         
         $ketKawin = Kawin::where('KODE',$request->pegKetKawin)->first();

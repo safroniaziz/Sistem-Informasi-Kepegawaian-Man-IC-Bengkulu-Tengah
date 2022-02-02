@@ -67,8 +67,14 @@ class RiwayatJabatanFungsionalController extends Controller
             $request->jfDokumen->move(public_path('/upload/dokumen_jabatan_fungsional/'.$slug_user), $model['jfDokumen']);
         }
         $jenjab = JenJab::where('jabKdJab',$request->jenjab)->first();
-       
+        $jfNoUrt = RiwayatJabatan::max('jfNoUrt');
+        if (empty($jfNoUrt)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $jfNoUrt+1;
+        }
         RiwayatJabatan::create([
+            'jfNoUrt' => $nourut,
             'jfNip'       =>  Auth::user()->pegNip,
             'jfKdjab'    =>  $request->jenjab,
             'jfNamajab'    =>  $jenjab->jabNama,

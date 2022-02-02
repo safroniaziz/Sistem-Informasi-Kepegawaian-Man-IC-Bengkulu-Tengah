@@ -66,8 +66,14 @@ class RiwayatPelatihanController extends Controller
             $request->pltDokumen->move(public_path('/upload/dokumen_pelatihan/'.$slug_user), $model['pltDokumen']);
         }
         $jendiklat = RefJendiklat::where('jendikkd',$request->jendiklat)->first();
-
+        $pltNourt = Pelatihan::max('pltNourt');
+        if (empty($pltNourt)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $pltNourt+1;
+        }
         Pelatihan::create([
+            'pltNourt' => $nourut,
             'pltnip'       =>  Auth::user()->pegNip,
             'pltKddiklat'    =>  $request->jendiklat,
             'pltNmdiklat'    =>  $jendiklat->jendiknama,

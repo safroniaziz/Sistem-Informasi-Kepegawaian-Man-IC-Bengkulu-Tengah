@@ -43,13 +43,10 @@ class RiwayatTugasTambahancontroller extends Controller
             'tgsDokumen'   =>  'Upload Dokumen',
         ];
         $this->validate($request, [
-          
             'tgsNamajab'    =>  'required',
             'tgsTmt'    =>  'required',
             'tgsNoSk'    =>  'required',
             'tgsTglSk'    =>  'required',
-          
- 
         ],$messages,$attributes);
 
         $model = $request->all();
@@ -60,15 +57,19 @@ class RiwayatTugasTambahancontroller extends Controller
             $model['tgsDokumen'] = $slug_user.'-'.Auth::user()->tgsNip.'-'.date('now').'.'.$request->tgsDokumen->getClientOriginalExtension();
             $request->tgsDokumen->move(public_path('/upload/dokumen_tugas_tambahan/'.$slug_user), $model['tgsDokumen']);
         }
-
+        $tgsNoUrut = TugasTambahan::max('tgsNoUrut');
+        if (empty($tgsNoUrut)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $tgsNoUrut+1;
+        }
         TugasTambahan::create([
+            'tgsNoUrut' => $nourut,
             'tgsNip'       =>  Auth::user()->pegNip,
-     
             'tgsNamajab'    =>  $request->tgsNamajab,
             'tgsTmt'    =>  $request->tgsTmt,
             'tgsNoSk'    =>  $request->tgsNoSk,
             'tgsTglSk'    =>  $request->tgsTglSk,
-           
             'tgsDokumen'    =>  $model['tgsDokumen'],
             'tgsTglUnggah' =>  date("Y-m-d H:i:s"),
         ]);

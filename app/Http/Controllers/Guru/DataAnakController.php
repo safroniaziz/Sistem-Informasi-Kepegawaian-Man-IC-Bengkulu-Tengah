@@ -62,11 +62,16 @@ class DataAnakController extends Controller
             // 'akNoBpjs'    =>  'required',
             // 'akIbu'    =>  'required',
         ],$messages,$attributes);
-
+        $akNoUrt = Anak::max('akNoUrt');
+        if (empty($akNoUrt)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $akNoUrt+1;
+        }
         Anak::create([
             // 'akNoUrt'       =>  Auth::user()->pegNoUrt,
             'akNip'       =>  Auth::user()->pegNip,
-            
+            'akNoUrt'   =>  $nourut,            
             'akNama'    =>  $request->akNama,
             'akStatus'    =>  $request->akStatus,
             'akJenkel'    =>  $request->akJenkel,

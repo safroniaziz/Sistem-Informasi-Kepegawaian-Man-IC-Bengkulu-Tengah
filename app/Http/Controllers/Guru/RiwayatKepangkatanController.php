@@ -65,8 +65,14 @@ class RiwayatKepangkatanController extends Controller
             $model['goDokumen'] = $slug_user.'-'.Auth::user()->goNoUrt.'-'.date('now').'.'.$request->goDokumen->getClientOriginalExtension();
             $request->goDokumen->move(public_path('/upload/dokumen_kepangkatan/'.$slug_user), $model['goDokumen']);
         }
-
+        $goNoUrt = RiwayatGolongan::max('goNoUrt');
+        if (empty($goNoUrt)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $goNoUrt+1;
+        }
         RiwayatGolongan::create([
+            'goNoUrt' => $nourut,
             'goNip'       =>  Auth::user()->pegNip,
             'goGol'    =>  $request->goGol,
             'goTmtGol'    =>  $request->goTmtGol,

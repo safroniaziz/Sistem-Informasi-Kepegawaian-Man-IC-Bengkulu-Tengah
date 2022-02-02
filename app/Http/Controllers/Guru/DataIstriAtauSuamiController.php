@@ -56,9 +56,15 @@ class DataIstriAtauSuamiController extends Controller
             'kelBpjs'    =>  'required',
         ],$messages,$attributes);
 
-      
+        $kelNoUrt = Keluarga::max('kelNoUrt');
+        if (empty($kelNoUrt)) {
+            $nourut = 1;
+        } else {
+            $nourut =   $kelNoUrt+1;
+        }
       
         Keluarga::create([
+            'kelNoUrt' => $nourut,
             'kelNip'       =>  Auth::user()->pegNip,
             'kelNama'    =>  $request->kelNama,
             'kelIstrike'    =>  $request->kelIstrike,

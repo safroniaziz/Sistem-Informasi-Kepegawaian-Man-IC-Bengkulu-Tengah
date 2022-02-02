@@ -45,7 +45,7 @@
                 <div class="col-md-12">
                     <a href="{{ route('guru.istri_atau_suami.add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 table-responsive">
                     <table class="table table-striped table-bordered" id="table" style="width:100%;">
                         <thead>
                             <tr>
